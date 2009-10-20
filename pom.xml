@@ -25,15 +25,24 @@
     <packaging>jar</packaging>
     
     <scm>
-        <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/trunk/</connection>
-        <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/trunk/</developerConnection>
+      <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
+      <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</developerConnection>
+      <url>http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk</url>
     </scm>
     
+    <distributionManagement>
+      <repository>
+        <uniqueVersion>false</uniqueVersion>
+        <id>breadcrumb-maven-repo</id>
+        <url>svn:http://forge.hippo-ecm.org/svn/breadcrumb/maven2/</url>
+      </repository>
+    </distributionManagement>
+  
     <issueManagement>
-        <system>Hippo Forge</system>
-        <url>http://forge.onehippo.org/tracker/?group_id=33</url>
+      <system>Hippo Forge</system>
+      <url>http://forge.onehippo.org/tracker/?group_id=33</url>
     </issueManagement>
-    
+  
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -43,7 +52,7 @@
     
     <properties>
         <servlet-api.version>2.4</servlet-api.version>
-        <hst.version>2.03.07-SNAPSHOT</hst.version>
+        <hst.version>2.04.00</hst.version>
     </properties>
     
     <build>
@@ -92,14 +101,6 @@
             <layout>legacy</layout>
         </repository>
     </repositories>
-    
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>repository.hippocms.org</id>
-            <url>ftp://repository.hippocms.org/maven2/</url>
-        </repository>
-    </distributionManagement>
     
     <dependencies>
         <dependency>
