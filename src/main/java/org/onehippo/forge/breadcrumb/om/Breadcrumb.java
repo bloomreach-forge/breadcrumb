@@ -10,7 +10,7 @@ public class Breadcrumb {
 	public Breadcrumb(List<BreadcrumbItem> items, String separator) {
 		super();
 		this.items = items;
-		this.separator=separator;    
+		this.separator = separator;    
 	}
 
 	/**
