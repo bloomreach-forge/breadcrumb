@@ -13,121 +13,121 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    
-    <name>Breadcrumb</name>
-    <description>Breadcrumb component for Hippo Site Toolkit</description>
-    <groupId>org.onehippo.forge</groupId>
-    <artifactId>breadcrumb</artifactId>
-    <version>1.01.00-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    
-    <scm>
-        <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/trunk/</connection>
-        <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/trunk/</developerConnection>
-    </scm>
-    
-    <issueManagement>
-        <system>Hippo Forge</system>
-        <url>http://forge.onehippo.org/tracker/?group_id=33</url>
-    </issueManagement>
-    
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
-    
-    <properties>
-        <servlet-api.version>2.4</servlet-api.version>
-        <hst.version>2.03.07-SNAPSHOT</hst.version>
-    </properties>
-    
-    <build>
-        <defaultGoal>package</defaultGoal>  
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>1.0-alpha-6</version>
-            </extension>
-        </extensions>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <inherited>true</inherited>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-    
-    <repositories>
-        <repository>
-            <id>hippoecm</id>
-            <name>Hippo ECM maven 2 repository.</name>
-            <url>http://repository.hippocms.org/maven2/</url>
-            <snapshots/>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>hippoecm.legacy</id>
-            <name>Hippo ECM Maven 1 repository.</name>
-            <url>http://repository.hippocms.org/maven/</url>
-            <snapshots/>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <layout>legacy</layout>
-        </repository>
-    </repositories>
-    
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>repository.hippocms.org</id>
-            <url>ftp://repository.hippocms.org/maven2/</url>
-        </repository>
-    </distributionManagement>
-    
-    <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
-            <version>${servlet-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onehippo.ecm.hst</groupId>
-            <artifactId>hst-api</artifactId>
-            <version>${hst.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onehippo.ecm.hst</groupId>
-            <artifactId>hst-commons</artifactId>
-            <version>${hst.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onehippo.ecm.hst.components</groupId>
-            <artifactId>hst-core</artifactId>
-            <version>${hst.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onehippo.ecm.hst</groupId>
-            <artifactId>hst-client</artifactId>
-            <version>${hst.version}</version>
-        </dependency>
-    </dependencies>
-    
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>Breadcrumb</name>
+  <description>Breadcrumb component for Hippo Site Toolkit</description>
+  <groupId>org.onehippo.forge</groupId>
+  <artifactId>breadcrumb</artifactId>
+  <version>1.01.00</version>
+  <packaging>jar</packaging>
+
+  <scm>
+    <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.01.00</connection>
+    <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.01.00</developerConnection>
+    <url>http://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.01.00</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>breadcrumb-maven-repo</id>
+      <url>svn:http://forge.onehippo.org/svn/breadcrumb/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <issueManagement>
+    <system>Hippo Forge</system>
+    <url>http://forge.onehippo.org/tracker/?group_id=33</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <servlet-api.version>2.4</servlet-api.version>
+    <hst.version>2.04.00</hst.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
+      <version>${servlet-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.ecm.hst</groupId>
+      <artifactId>hst-api</artifactId>
+      <version>${hst.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.ecm.hst</groupId>
+      <artifactId>hst-commons</artifactId>
+      <version>${hst.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.ecm.hst.components</groupId>
+      <artifactId>hst-core</artifactId>
+      <version>${hst.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.ecm.hst</groupId>
+      <artifactId>hst-client</artifactId>
+      <version>${hst.version}</version>
+    </dependency>
+  </dependencies>
+  
+  <repositories>
+    <repository>
+      <id>hippoecm</id>
+      <name>Hippo ECM maven 2 repository.</name>
+      <url>http://repository.hippocms.org/maven2/</url>
+      <snapshots />
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <id>hippoecm.legacy</id>
+      <name>Hippo ECM Maven 1 repository.</name>
+      <url>http://repository.hippocms.org/maven/</url>
+      <snapshots />
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <layout>legacy</layout>
+    </repository>
+  </repositories>
+
+  <build>
+    <defaultGoal>package</defaultGoal>
+    <extensions>
+      <extension>
+        <groupId>org.jvnet.wagon-svn</groupId>
+        <artifactId>wagon-svn</artifactId>
+        <version>1.9</version>
+      </extension>
+    </extensions>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <inherited>true</inherited>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
 </project>
