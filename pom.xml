@@ -13,21 +13,20 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
     <name>Breadcrumb</name>
     <description>Breadcrumb component for Hippo Site Toolkit</description>
     <groupId>org.onehippo.forge</groupId>
     <artifactId>breadcrumb</artifactId>
-    <version>1.01.00-SNAPSHOT</version>
+    <version>1.01.00</version>
     <packaging>jar</packaging>
     
     <scm>
-      <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
-      <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</developerConnection>
-      <url>http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk</url>
+      <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.01.00</connection>
+      <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.01.00</developerConnection>
+      <url>http://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.01.00</url>
     </scm>
     
     <distributionManagement>
@@ -84,7 +83,7 @@
             <id>hippoecm</id>
             <name>Hippo ECM maven 2 repository.</name>
             <url>http://repository.hippocms.org/maven2/</url>
-            <snapshots/>
+            <snapshots />
             <releases>
                 <updatePolicy>never</updatePolicy>
             </releases>
@@ -94,7 +93,7 @@
             <id>hippoecm.legacy</id>
             <name>Hippo ECM Maven 1 repository.</name>
             <url>http://repository.hippocms.org/maven/</url>
-            <snapshots/>
+            <snapshots />
             <releases>
                 <updatePolicy>never</updatePolicy>
             </releases>
