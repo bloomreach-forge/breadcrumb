@@ -14,7 +14,7 @@ public class Breadcrumb {
 	}
 
 	/**
-	 * Returns the list of breadcrumb items
+	 * Returns the list of breadcrumb items.
 	 * 
 	 * @return breadcrumb items
 	 */
