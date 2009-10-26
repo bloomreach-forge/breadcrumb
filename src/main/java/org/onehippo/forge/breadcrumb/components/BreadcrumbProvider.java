@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
-import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
@@ -23,8 +22,9 @@ import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
  * specific, custom needs. 
  * 
  * By default, the first part of the breadcrumb is generated from the expanded 
- * sitemenu items, and the last ("trailing") part of the breadcrumb is generated 
- * from the resolved sitemap item belonging to the current request.
+ * sitemenu items of the menu named 'main' or from multiple menu's as configured
+ * by parameter 'breadcrumb-menus'. The last ("trailing") part of the breadcrumb 
+ * is generated from the resolved sitemap item belonging to the current request.
  *  
  * However, the trailing items are only derived when the bean belonging to the 
  * current resolved sitemap item is a child bean of the bean belonging to the 
@@ -33,7 +33,7 @@ import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
 public class BreadcrumbProvider {
 
     public static final String ATTRIBUTE_NAME = "breadcrumb";
-    public static final String PARAMETER_MENU = "breadcrumb-menu";
+    public static final String PARAMETER_MENUS = "breadcrumb-menus";
     public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
     
     private final BaseHstComponent component;
@@ -52,35 +52,53 @@ public class BreadcrumbProvider {
      * @return
      */
     public Breadcrumb getBreadcrumb(HstRequest request){
-        
-        HstSiteMenu menu = request.getRequestContext().getHstSiteMenus().getSiteMenu(getSitemenuName(request));
 
-        if (menu == null) {
-            throw new HstComponentException("Cannot render breadcrumb: menu named '" 
-                    + getSitemenuName(request) + "' not found.");
+        List<String> siteMenuNames = getSitemenuNames(request);
+
+        // match deepest menu item for multiple configured menus
+        int i = 0; 
+        HstSiteMenuItem deepestMenuItem = null;
+        while ((i < siteMenuNames.size()) && (deepestMenuItem == null)) {
+            HstSiteMenu menu = request.getRequestContext().getHstSiteMenus().getSiteMenu(siteMenuNames.get(i));
+            deepestMenuItem = menu.getDeepestExpandedItem();
+            
+            i++;
         }
         
-        List<BreadcrumbItem> menuBreadcrumbItems = getMenuBreadcrumbItems(request, menu);
-        List<BreadcrumbItem> trailingBreadcrumbItems = getTrailingBreadcrumbItems(request, menu);
-        
+        // create items if a menu item is found
         List<BreadcrumbItem> finalList = new ArrayList<BreadcrumbItem>();
-        finalList.addAll(menuBreadcrumbItems);
-        finalList.addAll(trailingBreadcrumbItems);
+        if (deepestMenuItem != null) {
+            List<BreadcrumbItem> menuBreadcrumbItems = getMenuBreadcrumbItems(request, deepestMenuItem);
+            List<BreadcrumbItem> trailingBreadcrumbItems = getTrailingBreadcrumbItems(request, deepestMenuItem);
+        
+            finalList.addAll(menuBreadcrumbItems);
+            finalList.addAll(trailingBreadcrumbItems);
+        }
         
         return new Breadcrumb(finalList, getSeparator(request)); 
     }
 
     /**
-     * The site menu name is configured by configuration parameter 
-     * "breadcrumb-menu", defaulting to "main".
+     * The multiple site menu names are configured by configuration parameter 
+     * "breadcrumb-menus", defaulting to "main".
      * 
      * @param request
      * @return
      */
-    protected String getSitemenuName(HstRequest request){
+    protected List<String> getSitemenuNames(HstRequest request){
         
-        String menuName = component.getParameter(PARAMETER_MENU, request);
-        return (menuName != null) ? menuName : "main";
+        List<String> list = new ArrayList<String>(0);
+        String menuNames = component.getParameter(PARAMETER_MENUS, request);
+        if (menuNames == null) {
+            list.add("main");
+        }
+        else {
+            String[] names = menuNames.split(",");
+            for (int i = 0; i < names.length; i++) {
+                list.add(names[i].trim());
+            }
+        }
+        return list;
     }
     
     /**
@@ -101,14 +119,12 @@ public class BreadcrumbProvider {
      * Generate the breadcrumb items which correspond to the expanded menu item tree.
      * 
      * @param request
-     * @param menu 
+     * @param deepestMenuItem 
      * @return list of menu breadcrumb items
      */
-    protected List<BreadcrumbItem> getMenuBreadcrumbItems (HstRequest request, HstSiteMenu menu){
+    protected List<BreadcrumbItem> getMenuBreadcrumbItems(HstRequest request, HstSiteMenuItem menuItem){
         List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
 
-        HstSiteMenuItem menuItem = menu.getDeepestExpandedItem();
-        
         while (menuItem != null){
             items.add(getBreadcrumbItem(request, menuItem));
             menuItem = menuItem.getParentItem();
@@ -125,14 +141,13 @@ public class BreadcrumbProvider {
      * current request. 
      * 
      * @param request
-     * @param menu 
+     * @param deepestMenuItem 
      * @return list of trailing breadcrumb items
      */
-    protected List<BreadcrumbItem> getTrailingBreadcrumbItems (HstRequest request, HstSiteMenu menu){
+    protected List<BreadcrumbItem> getTrailingBreadcrumbItems(HstRequest request, HstSiteMenuItem menuItem){
 
         List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
 
-        HstSiteMenuItem menuItem = menu.getDeepestExpandedItem();
         ResolvedSiteMapItem ancestorSmi = menuItem.resolveToSiteMapItem(request);
         ResolvedSiteMapItem currentSmi = request.getRequestContext().getResolvedSiteMapItem();
         HippoBean ancestorBean = component.getBeanForResolvedSiteMapItem(request, ancestorSmi);
