@@ -1,2 +1,3 @@
 * text=auto !eol
+/releasenotes.txt svneol=native#text/plain
 src/main/java/org/onehippo/forge/breadcrumb/components/BreadcrumbProvider.java svneol=native#text/plain
