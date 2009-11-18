@@ -3,6 +3,15 @@ Hippo Forge Breadcrumb Plugin Release Notes
 ===========================================
 
 
+Release 1.01.02-SNAPSHOT
+------------------------
+- Possibility to set a flag 'addTrailingDocumentOnly' that changes behaviour
+  of the breadcrumb provider: it does not look at path between current document 
+  and deepest expanded menu item but just adds the document.
+- Add a fallback determination of the path between current document and deepest 
+  expanded menu item by looking at path information instead of bean ancestors.  
+  
+
 Release 1.01.01
 ---------------
 - Support to configure multiple menus to base the breadcrumb on. The component 
