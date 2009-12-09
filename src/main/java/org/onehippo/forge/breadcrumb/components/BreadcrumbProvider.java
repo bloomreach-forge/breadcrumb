@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
+import org.hippoecm.hst.content.beans.standard.HippoDocument;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
@@ -26,9 +27,8 @@ import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
  * by parameter 'breadcrumb-menus'. The last ("trailing") part of the breadcrumb 
  * is generated from the resolved sitemap item belonging to the current request.
  *  
- * However, the trailing items are only derived when the bean belonging to the 
- * current resolved sitemap item is a child bean of the bean belonging to the 
- * deepest expanded sitemenu item. 
+ * The trailing items are based on the current resolved sitemap item and then 
+ * moving upwards, until the deepest menu item is encountered. 
  */
 public class BreadcrumbProvider {
 
@@ -37,12 +37,25 @@ public class BreadcrumbProvider {
     public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
     
     private final BaseHstComponent component;
+    private boolean addTrailingDocumentOnly = false; 
 
-    /** Constructor */
+    /** 
+     * Constructor 
+     */
     public BreadcrumbProvider(BaseHstComponent component) {
         super();
         
         this.component = component;
+    }
+    
+    /** 
+     * Constructor with an extra flag that determines behaviour for the trailing items 
+     */
+    public BreadcrumbProvider(BaseHstComponent component, boolean addTrailingDocumentOnly) {
+        super();
+        
+        this.component = component;
+        this.addTrailingDocumentOnly = addTrailingDocumentOnly;
     }
     
      /**
@@ -102,6 +115,13 @@ public class BreadcrumbProvider {
     }
     
     /**
+     * Get the component as given in the constructor.
+     */
+    protected BaseHstComponent getComponent(){
+        return component;
+    }
+    
+    /**
      * Returns the separator string that separates two breadcrumb items.
      * It is configured by configuration parameter "breadcrumb-separator", 
      * defaulting to "»". 
@@ -148,19 +168,54 @@ public class BreadcrumbProvider {
 
         List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
 
-        ResolvedSiteMapItem ancestorSmi = menuItem.resolveToSiteMapItem(request);
         ResolvedSiteMapItem currentSmi = request.getRequestContext().getResolvedSiteMapItem();
-        HippoBean ancestorBean = component.getBeanForResolvedSiteMapItem(request, ancestorSmi);
-        HippoBean childBean = component.getBeanForResolvedSiteMapItem(request, currentSmi);
+        HippoBean currentBean = getComponent().getBeanForResolvedSiteMapItem(request, currentSmi);
         
-        if (ancestorBean != null && childBean != null && ancestorBean.isAncestor(childBean)){
-            
-            while (!childBean.isSelf(ancestorBean)){
-                items.add(getBreadcrumbItem(request,childBean));
-                childBean = childBean.getParentBean();
+        if (currentBean != null) {
+
+            if (addTrailingDocumentOnly) {
+                if (currentBean instanceof HippoDocument) {
+                    items.add(getBreadcrumbItem(request, currentBean));
+                }
             }
-            
-            Collections.reverse(items);
+            else {
+                ResolvedSiteMapItem menuItemSmi = menuItem.resolveToSiteMapItem(request);
+                HippoBean menuItemBean = getComponent().getBeanForResolvedSiteMapItem(request, menuItemSmi);
+                
+                // parent steps based on ancestor bean
+                if (menuItemBean != null && menuItemBean.isAncestor(currentBean)){
+                    
+                    while (!currentBean.isSelf(menuItemBean)){
+                        items.add(getBreadcrumbItem(request, currentBean));
+                        currentBean = currentBean.getParentBean();
+                    }
+                }
+                
+                // try to determine parent steps based on path info in case the 
+                // menuItemBean is not an ancestor, which occurs for instance  
+                // when faceted navigation is used on the menu item
+                else {
+                    String ancestorPath = menuItemSmi.getPathInfo();
+                    String currentPath = currentSmi.getPathInfo();
+                    
+                    if (currentPath.startsWith(ancestorPath)) {
+                        String trailingPath = currentPath.substring(ancestorPath.length());
+                        
+                        if (trailingPath.startsWith("/")) {
+                            trailingPath = trailingPath.substring(1);
+                        }
+                    
+                        int steps = trailingPath.split("/").length;
+                        
+                        for (int i = 0; i < steps; i++) {
+                            items.add(getBreadcrumbItem(request, currentBean));
+                            currentBean = currentBean.getParentBean();
+                        }
+                    }
+                }
+                
+                Collections.reverse(items);
+            }    
         }
         
         return items;
