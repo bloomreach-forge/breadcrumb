@@ -9,7 +9,8 @@ Release 1.01.02-SNAPSHOT
   of the breadcrumb provider: it does not look at path between current document 
   and deepest expanded menu item but just adds the document.
 - Add a fallback determination of the path between current document and deepest 
-  expanded menu item by looking at path information instead of bean ancestors.  
+  expanded menu item by looking at path information instead of bean ancestors,
+  applicable for faceted navigation on a menu item.  
   
 
 Release 1.01.01
