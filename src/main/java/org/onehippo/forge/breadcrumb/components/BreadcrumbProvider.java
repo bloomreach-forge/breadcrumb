@@ -161,10 +161,10 @@ public class BreadcrumbProvider {
      * current request. 
      * 
      * @param request
-     * @param deepestMenuItem 
+     * @param deepestExpandedMenuItem 
      * @return list of trailing breadcrumb items
      */
-    protected List<BreadcrumbItem> getTrailingBreadcrumbItems(HstRequest request, HstSiteMenuItem menuItem){
+    protected List<BreadcrumbItem> getTrailingBreadcrumbItems(HstRequest request, HstSiteMenuItem deepestExpandedMenuItem){
 
         List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
 
@@ -172,20 +172,19 @@ public class BreadcrumbProvider {
         HippoBean currentBean = getComponent().getBeanForResolvedSiteMapItem(request, currentSmi);
         
         if (currentBean != null) {
-
+            ResolvedSiteMapItem deepestExpandedmenuItemSmi = deepestExpandedMenuItem.resolveToSiteMapItem(request);
+            HippoBean deepestExpandedMenuItemBean = getComponent().getBeanForResolvedSiteMapItem(request, deepestExpandedmenuItemSmi);
+            
             if (addTrailingDocumentOnly) {
-                if (currentBean instanceof HippoDocument) {
+                if (currentBean instanceof HippoDocument && !deepestExpandedMenuItemBean.equalCompare(currentBean)) {
                     items.add(getBreadcrumbItem(request, currentBean));
                 }
             }
             else {
-                ResolvedSiteMapItem menuItemSmi = menuItem.resolveToSiteMapItem(request);
-                HippoBean menuItemBean = getComponent().getBeanForResolvedSiteMapItem(request, menuItemSmi);
-                
                 // parent steps based on ancestor bean
-                if (menuItemBean != null && menuItemBean.isAncestor(currentBean)){
+                if (deepestExpandedMenuItemBean != null && deepestExpandedMenuItemBean.isAncestor(currentBean)){
                     
-                    while (!currentBean.isSelf(menuItemBean)){
+                    while (!currentBean.isSelf(deepestExpandedMenuItemBean)){
                         items.add(getBreadcrumbItem(request, currentBean));
                         currentBean = currentBean.getParentBean();
                     }
@@ -195,7 +194,7 @@ public class BreadcrumbProvider {
                 // menuItemBean is not an ancestor, which occurs for instance  
                 // when faceted navigation is used on the menu item
                 else {
-                    String ancestorPath = menuItemSmi.getPathInfo();
+                    String ancestorPath = deepestExpandedmenuItemSmi.getPathInfo();
                     String currentPath = currentSmi.getPathInfo();
                     
                     if (currentPath.startsWith(ancestorPath)) {
