@@ -2,6 +2,17 @@
 Hippo Forge Breadcrumb Plugin Release Notes  
 ===========================================
 
+Idea:
+ - support for reverse list in standard component
+
+
+Release 1.01.03-SNAPSHOT
+------------------------
+- Fixed double item: if a menuitem directly linked to a document, both the 
+  menuitem and the document itself were added.
+
+   
+
 
 Release 1.01.02
 ---------------
