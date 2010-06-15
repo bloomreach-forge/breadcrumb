@@ -65,21 +65,25 @@
       <groupId>org.onehippo.ecm.hst</groupId>
       <artifactId>hst-api</artifactId>
       <version>${hst.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.onehippo.ecm.hst</groupId>
       <artifactId>hst-commons</artifactId>
       <version>${hst.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.onehippo.ecm.hst.components</groupId>
       <artifactId>hst-core</artifactId>
       <version>${hst.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.onehippo.ecm.hst</groupId>
       <artifactId>hst-client</artifactId>
       <version>${hst.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   
