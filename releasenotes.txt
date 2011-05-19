@@ -6,6 +6,12 @@ Idea:
  - support for reverse list in standard component
 
 
+Release 1.02.00
+------------------------
+- Breadcrumb plugin now uses hst tag 2.22.00
+
+
+
 Release 1.01.03-SNAPSHOT
 ------------------------
 - Fixed double item: if a menuitem directly linked to a document, both the 

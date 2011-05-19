@@ -20,7 +20,7 @@
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>
-  <version>1.01.03-SNAPSHOT</version>
+  <version>1.02.00-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <scm>
@@ -51,7 +51,8 @@
 
   <properties>
     <servlet-api.version>2.4</servlet-api.version>
-    <hst.version>2.04.00</hst.version>
+    <hst.version>2.22.00</hst.version>
+    <javax.jcr.version>2.0</javax.jcr.version>
   </properties>
 
   <dependencies>
@@ -62,51 +63,54 @@
       <version>${servlet-api.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.onehippo.ecm.hst</groupId>
+      <groupId>org.onehippo.cms7.hst</groupId>
       <artifactId>hst-api</artifactId>
       <version>${hst.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.onehippo.ecm.hst</groupId>
-      <artifactId>hst-commons</artifactId>
-      <version>${hst.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.ecm.hst.components</groupId>
+      <groupId>org.onehippo.cms7.hst.components</groupId>
       <artifactId>hst-core</artifactId>
       <version>${hst.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.onehippo.ecm.hst</groupId>
+     <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
       <artifactId>hst-client</artifactId>
       <version>${hst.version}</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-commons</artifactId>
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>javax.jcr</groupId>
+      <artifactId>jcr</artifactId>
+      <version>${javax.jcr.version}</version>
+      <scope>provided</scope>
+    </dependency>
+   
   </dependencies>
-  
+
   <repositories>
     <repository>
-      <id>hippoecm</id>
-      <name>Hippo ECM maven 2 repository.</name>
-      <url>http://repository.hippocms.org/maven2/</url>
-      <snapshots />
-      <releases>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <layout>default</layout>
+      <id>hippo-maven2-public</id>
+      <name>Hippo Maven 2 Public Repository</name>
+      <url>http://maven.onehippo.com/maven2</url>
     </repository>
     <repository>
-      <id>hippoecm.legacy</id>
-      <name>Hippo ECM Maven 1 repository.</name>
-      <url>http://repository.hippocms.org/maven/</url>
-      <snapshots />
-      <releases>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <layout>legacy</layout>
+      <id>hippo-maven2-forge</id>
+      <name>Hippo Maven 2 Forge Repositories</name>
+      <url>http://maven.onehippo.com/maven2-forge</url>
+    </repository>
+    <repository>
+      <id>hippo-maven2-private</id>
+      <name>Hippo Maven 2 Private Repository</name>
+      <url>https://maven.onehippo.com/maven2-private</url>
     </repository>
   </repositories>
 
@@ -133,5 +137,5 @@
       </plugins>
     </pluginManagement>
   </build>
-  
+
 </project>
