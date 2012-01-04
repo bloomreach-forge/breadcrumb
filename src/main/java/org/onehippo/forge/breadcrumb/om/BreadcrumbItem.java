@@ -4,9 +4,9 @@ import org.hippoecm.hst.core.linking.HstLink;
 
 public class BreadcrumbItem {
 
-	public String title;
-	public HstLink link;
-	
+    public String title;
+    public HstLink link;
+
     public BreadcrumbItem(HstLink link, String title) {
         this.link = link;
         this.title = title;
@@ -19,6 +19,4 @@ public class BreadcrumbItem {
     public HstLink getLink() {
         return link;
     }
-	
-	    
 }

@@ -6,19 +6,17 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 
 /**
- * Standard HST Breadcrumb component. 
+ * Standard HST Breadcrumb component.
  */
 public class BreadcrumbComponent extends BaseHstComponent {
 
-    private final BreadcrumbProvider breadcrumbProvider = new BreadcrumbProvider(this); 
-    
-	@Override
-	public void doBeforeRender(HstRequest request, HstResponse response)
-			throws HstComponentException {		
-	    super.doBeforeRender(request, response);
+    private final BreadcrumbProvider breadcrumbProvider = new BreadcrumbProvider(this);
 
-	    request.setAttribute(BreadcrumbProvider.ATTRIBUTE_NAME, breadcrumbProvider.getBreadcrumb(request));
-	}
-	
-	
+    @Override
+    public void doBeforeRender(HstRequest request, HstResponse response)
+            throws HstComponentException {
+        super.doBeforeRender(request, response);
+
+        request.setAttribute(BreadcrumbProvider.ATTRIBUTE_NAME, breadcrumbProvider.getBreadcrumb(request));
+    }
 }
