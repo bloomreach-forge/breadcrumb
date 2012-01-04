@@ -20,13 +20,13 @@
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>
-  <version>1.02.01-SNAPSHOT</version>
+  <version>1.02.01</version>
   <packaging>jar</packaging>
 
   <scm>
-    <connection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
-    <developerConnection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</developerConnection>
-    <url>https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk</url>
+    <connection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.02.01</connection>
+    <developerConnection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.02.01</developerConnection>
+    <url>https://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.02.01</url>
   </scm>
 
   <distributionManagement>
