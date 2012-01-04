@@ -1,51 +1,46 @@
 
-Hippo Forge Breadcrumb Plugin Release Notes  
+Hippo Forge Breadcrumb Plugin Release Notes
 ===========================================
 
-Idea:
- - support for reverse list in standard component
+Release 1.02.01
+------------------------
+- Use bean#getLocalizedName instead of bean#getName when creating a breadcrumb
+  item from a hippobean.
 
 
 Release 1.02.00
 ------------------------
-- Breadcrumb plugin now uses hst tag 2.22.00
-
-
-
-Release 1.01.03-SNAPSHOT
-------------------------
-- Fixed double item: if a menuitem directly linked to a document, both the 
+- Breadcrumb plugin now uses hst tag 2.22.00.
+- Fixed double item: if a menuitem directly linked to a document, both the
   menuitem and the document itself were added.
-
-   
 
 
 Release 1.01.02
 ---------------
 - Possibility to set a flag 'addTrailingDocumentOnly' that changes behaviour
-  of the breadcrumb provider: it does not look at path between current document 
+  of the breadcrumb provider: it does not look at path between current document
   and deepest expanded menu item but just adds the document.
-- Add a fallback determination of the path between current document and deepest 
+- Add a fallback determination of the path between current document and deepest
   expanded menu item by looking at path information instead of bean ancestors,
-  applicable for faceted navigation on a menu item.  
-  
+  applicable for faceted navigation on a menu item.
+
 
 Release 1.01.01
 ---------------
-- Support to configure multiple menus to base the breadcrumb on. The component 
-  parameter 'breadcrumb-menu' is renamed to 'breadcrumb-menus', a comma 
-  separated list, defaulting to a list with single item 'main'.     
+- Support to configure multiple menus to base the breadcrumb on. The component
+  parameter 'breadcrumb-menu' is renamed to 'breadcrumb-menus', a comma
+  separated list, defaulting to a list with single item 'main'.
 
 
 Release 1.01.00
 ---------------
-A breadcrumb structure is constructed by determining the deepest expanded item 
-from a menu for the first part and from the resolved sitemap item belonging to 
-the current request for the trailing part. 
-The breadcrumb is put on the request by attribute name 'breadcrumb' so a view 
+A breadcrumb structure is constructed by determining the deepest expanded item
+from a menu for the first part and from the resolved sitemap item belonging to
+the current request for the trailing part.
+The breadcrumb is put on the request by attribute name 'breadcrumb' so a view
 can access it.
 
-- The menu name is configurable by component parameter 'breadcrumb-menu' and 
+- The menu name is configurable by component parameter 'breadcrumb-menu' and
   defaults to 'main'.
-- A separator is configurable by component parameter 'breadcrumb-separator' and 
-  defaults to '»'.  
+- A separator is configurable by component parameter 'breadcrumb-separator' and
+  defaults to '»'.
