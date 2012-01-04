@@ -1,12 +1,12 @@
 <!--
-    Copyright 2009-2010 Hippo
-    
+    Copyright 2009-2012 Hippo
+
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS"
     BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,22 +24,22 @@
   <packaging>jar</packaging>
 
   <scm>
-    <connection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
-    <developerConnection>scm:svn:http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</developerConnection>
-    <url>http://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk</url>
+    <connection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
+    <developerConnection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</developerConnection>
+    <url>https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk</url>
   </scm>
 
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
       <id>breadcrumb-maven-repo</id>
-      <url>svn:http://forge.onehippo.org/svn/breadcrumb/maven2/</url>
+      <url>svn:https://forge.onehippo.org/svn/breadcrumb/maven2/</url>
     </repository>
   </distributionManagement>
 
   <issueManagement>
     <system>Hippo Forge</system>
-    <url>http://forge.onehippo.org/tracker/?group_id=33</url>
+    <url>https://forge.onehippo.org/tracker/?group_id=33</url>
   </issueManagement>
 
   <licenses>
@@ -86,14 +86,14 @@
       <version>${hst.version}</version>
       <scope>provided</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>javax.jcr</groupId>
       <artifactId>jcr</artifactId>
       <version>${javax.jcr.version}</version>
       <scope>provided</scope>
     </dependency>
-   
+
   </dependencies>
 
   <repositories>
@@ -106,11 +106,6 @@
       <id>hippo-maven2-forge</id>
       <name>Hippo Maven 2 Forge Repositories</name>
       <url>http://maven.onehippo.com/maven2-forge</url>
-    </repository>
-    <repository>
-      <id>hippo-maven2-private</id>
-      <name>Hippo Maven 2 Private Repository</name>
-      <url>https://maven.onehippo.com/maven2-private</url>
     </repository>
   </repositories>
 
