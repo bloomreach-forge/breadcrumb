@@ -2,6 +2,11 @@
 Hippo Forge Breadcrumb Plugin Release Notes
 ===========================================
 
+Release 1.02.02
+------------------------
+- Better extendibility of the BreadcrumbProvider.
+- Added JavaDoc, removing IDE warnings
+
 Release 1.02.01
 ------------------------
 - Use bean#getLocalizedName instead of bean#getName when creating a breadcrumb
