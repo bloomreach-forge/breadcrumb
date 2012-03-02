@@ -185,12 +185,7 @@ public class BreadcrumbProvider {
             HippoBean deepestExpandedMenuItemBean = getComponent().getBeanForResolvedSiteMapItem(request, deepestExpandedmenuItemSmi);
 
             if (addTrailingDocumentOnly) {
-                if (currentBean instanceof HippoDocument && !deepestExpandedMenuItemBean.equalCompare(currentBean)) {
-                    BreadcrumbItem item = getBreadcrumbItem(request, currentBean);
-                    if (item != null) {
-                        items.add(item);
-                    }
-                }
+                addTrailingDocument(items, currentBean, deepestExpandedMenuItemBean, request);
             }
             else {
                 // parent steps based on ancestor bean
@@ -210,6 +205,23 @@ public class BreadcrumbProvider {
         }
 
         return items;
+    }
+
+    /**
+     * Add one trailing document since the addTrailingDocumentOnly flag is up.
+     *
+     * @param items list of breadcrumb items
+     * @param currentBean a bean described by URL that is in the child tree of the ancestor bean
+     * @param deepestExpandedMenuItemBean bean corresponding to the deepest expanded site menu item
+     * @param request HST request
+     */
+    protected void addTrailingDocument(final List<BreadcrumbItem> items, final HippoBean currentBean, final HippoBean deepestExpandedMenuItemBean, final HstRequest request) {
+        if (currentBean instanceof HippoDocument && !deepestExpandedMenuItemBean.equalCompare(currentBean)) {
+            BreadcrumbItem item = getBreadcrumbItem(request, currentBean);
+            if (item != null) {
+                items.add(item);
+            }
+        }
     }
 
     /**
