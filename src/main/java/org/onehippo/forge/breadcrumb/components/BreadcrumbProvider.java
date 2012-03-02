@@ -292,14 +292,34 @@ public class BreadcrumbProvider {
     }
 
     /**
-     * Creates a breadcrumb item belonging to a Hippo bean
+     * Creates a breadcrumb item from a Hippo bean
      *
      * @param request HST request
      * @param bean hippo bean from which to create link and name
      * @return breadcrumb item
      */
     protected BreadcrumbItem getBreadcrumbItem(HstRequest request, HippoBean bean){
-        HstRequestContext context = request.getRequestContext();
-        return new BreadcrumbItem(context.getHstLinkCreator().create(bean, context), bean.getLocalizedName());
+        return getBreadcrumbItem(request, bean, false/*navigationStateful*/);
+    }
+
+    /**
+     * Creates a breadcrumb item from a Hippo bean
+     *
+     * @param request HST request
+     * @param bean hippo bean from which to create link and name
+     * @param navigationStateful is the created link navigation stateful
+     * @return breadcrumb item
+     */
+    protected BreadcrumbItem getBreadcrumbItem(HstRequest request, HippoBean bean, boolean navigationStateful) {
+        final HstRequestContext context = request.getRequestContext();
+        if (navigationStateful) {
+            return new BreadcrumbItem(
+                    context.getHstLinkCreator().create(bean.getNode(), context, null/*preferredItem*/, true/*fallback*/, navigationStateful),
+                    bean.getLocalizedName());
+        }
+        else {
+            return new BreadcrumbItem(context.getHstLinkCreator().create(bean, context), bean.getLocalizedName());
+
+        }
     }
 }
