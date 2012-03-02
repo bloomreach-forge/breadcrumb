@@ -220,14 +220,16 @@ public class BreadcrumbProvider {
      * @param ancestorBean a bean that the ancestor of the current bean
      * @param request HST request
      */
-    protected void addAncestorBasedParentItems(final List<BreadcrumbItem> items, HippoBean currentBean,
+    protected void addAncestorBasedParentItems(final List<BreadcrumbItem> items, final HippoBean currentBean,
                                                final HippoBean ancestorBean, final HstRequest request) {
-        while (!currentBean.isSelf(ancestorBean)){
-            BreadcrumbItem item = getBreadcrumbItem(request, currentBean);
+
+        HippoBean currentItemBean = currentBean;
+        while (!currentItemBean.isSelf(ancestorBean)){
+            BreadcrumbItem item = getBreadcrumbItem(request, currentItemBean);
             if (item != null) {
                 items.add(item);
             }
-            currentBean = currentBean.getParentBean();
+            currentItemBean = currentItemBean.getParentBean();
         }
     }
 
@@ -240,7 +242,7 @@ public class BreadcrumbProvider {
      *                                      currentSmi's info for the implementation to actually add items)
      * @param request HST request
      */
-    protected void addURLBasedParentItems(final List<BreadcrumbItem> items, HippoBean currentBean, final ResolvedSiteMapItem currentSmi,
+    protected void addURLBasedParentItems(final List<BreadcrumbItem> items, final HippoBean currentBean, final ResolvedSiteMapItem currentSmi,
                                           final ResolvedSiteMapItem deepestExpandedmenuItemSmi, final HstRequest request) {
         String ancestorPath = deepestExpandedmenuItemSmi.getPathInfo();
         String currentPath = currentSmi.getPathInfo();
@@ -254,12 +256,13 @@ public class BreadcrumbProvider {
 
             int steps = trailingPath.split("/").length;
 
+            HippoBean currentItemBean = currentBean;
             for (int i = 0; i < steps; i++) {
-                BreadcrumbItem item = getBreadcrumbItem(request, currentBean);
+                BreadcrumbItem item = getBreadcrumbItem(request, currentItemBean);
                 if (item != null) {
                     items.add(item);
                 }
-                currentBean = currentBean.getParentBean();
+                currentItemBean = currentItemBean.getParentBean();
             }
         }
     }
