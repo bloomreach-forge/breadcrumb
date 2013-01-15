@@ -149,7 +149,7 @@
             <artifactId>apache-rat-plugin</artifactId>
             <inherited>false</inherited>
             <configuration>
-              <excludes>
+              <excludes combine.children="append">
                 <exclude>releasenotes.txt</exclude>
               </excludes>
             </configuration>
