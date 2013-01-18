@@ -22,12 +22,14 @@
     <version>16</version>
   </parent>
 
-  <name>Breadcrumb</name>
+  <name>Hippo Forge Breadcrumb Addon Project</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>
   <version>1.02.03-SNAPSHOT</version>
   <packaging>jar</packaging>
+
+  <inceptionYear>2009</inceptionYear>
 
   <scm>
     <connection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
