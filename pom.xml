@@ -19,10 +19,10 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>18</version>
+    <version>19</version>
   </parent>
 
-  <name>Hippo Forge Breadcrumb Addon Project</name>
+  <name>Hippo Forge Breadcrumb Addon</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>
