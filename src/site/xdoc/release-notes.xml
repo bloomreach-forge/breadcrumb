@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+  Copyright 2010-2014 Hippo B.V. (http://www.onehippo.com)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<document>
+  <properties>
+    <title>Forge Breadcrumb Plugins - Release Notes</title>
+  </properties>
+  <body>
+  <section name="Release Notes">
+  <subsection name="1.02.02">
+    <ul>
+      <li>Better extendibility of the BreadcrumbProvider.</li>
+      <li>Added JavaDoc, removing IDE warnings</li>
+    </ul>
+  </subsection>
+  <subsection name="1.02.01">
+    <ul>
+      <li>Use bean#getLocalizedName instead of bean#getName when creating a breadcrumb
+        item from a hippobean.</li>
+    </ul>
+  </subsection>
+  <subsection name="1.02.00">
+    <ul>
+      <li>Breadcrumb plugin now uses hst tag 2.22.00.</li>
+      <li>Fixed double item: if a menuitem directly linked to a document, both the
+        menuitem and the document itself were added.</li>
+    </ul>
+  </subsection>
+  </section>
+  </body>
+</document>
