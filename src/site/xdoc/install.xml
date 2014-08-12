@@ -22,7 +22,7 @@
       <section name="Install">
       <subsection name="Prerequisites">
         <p>
-          These instructions assume that you have an Hippo project based on the Hippo Archetype 7.9.1, i.e.
+          These instructions assume that you have an Hippo project based on the Hippo Archetype, i.e.
           a Maven multiproject consisting of at least three submodules: cms, site and content.
         </p>
       </subsection>
@@ -51,9 +51,6 @@
           </li>
         </ol>
       </subsection>
-        <p><span class="note">Note:</span> on <strong>Hippo 7.8</strong> and later, if you want to add this to an existing repository, be sure to use startup option <code>-Drepo.bootstrap=true</code>
-          for initializing the types, see
-          <a href="http://www.onehippo.org/library/concepts/content-repository/content-bootstrap.html">Content Bootstrap</a></p>
       </section>
     </body>
 </document>

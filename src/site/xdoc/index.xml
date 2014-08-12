@@ -23,7 +23,7 @@
   </properties>
   <body>
     <section name="Breadcrumb Plugin">
-      <p>The Breadcrumb plugin is intended for navigation aid, providing links back to each previous page navigated through. </p>
+      <p>The Breadcrumb plugin is intended for navigation aid, providing the structure of your site based on a menu and also on the repository structure. </p>
 
     <subsection name="Install instructions">
       <p>Instructions on how to obtain and install the plugin can be found on the <a
