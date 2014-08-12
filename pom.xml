@@ -22,7 +22,7 @@
     <version>19</version>
   </parent>
 
-  <name>Hippo Forge Breadcrumb Addon</name>
+  <name>Hippo Forge Breadcrumb Plugin</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>

@@ -3,3 +3,6 @@
 /NOTICE -text
 /releasenotes.txt svneol=native#text/plain
 src/main/java/org/onehippo/forge/breadcrumb/components/BreadcrumbProvider.java svneol=native#text/plain
+src/site/resources/breadcrumb.jpg -text
+src/site/xdoc/index.xml -text
+src/site/xdoc/screenshots.xml -text

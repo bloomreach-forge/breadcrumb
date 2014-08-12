@@ -19,7 +19,7 @@
         <title>Forge Breadcrumb Plugins - How to install</title>
     </properties>
     <body>
-      <section name="How to install Breadcrumb Plugin">
+      <section name="Install">
       <subsection name="Prerequisites">
         <p>
           These instructions assume that you have an Hippo project based on the Hippo Archetype 7.9.1, i.e.
@@ -30,22 +30,18 @@
       <subsection name="Installation in Site">
         <ol>
           <li>
-            <p>Add plugin version to the main pom.xml of the project</p>
-            <source><![CDATA[
-            <forge.breadcrumb.version>1.02.02</forge.breadcrumb.version>
-            ]]></source>
+            <p>Add the plugin version to the main pom.xml of the project</p>
+            <source><![CDATA[<forge.breadcrumb.version>1.02.02</forge.breadcrumb.version>]]></source>
             <p><b>Note:</b> always check for the latest version number and compatibility with the project</p>
           </li>
           <li>
             <p>Add the following dependency to the site pom.xml of the project</p>
-            <source>
-              <![CDATA[
-          <dependency>
-            <groupId>org.onehippo.forge</groupId>
-            <artifactId>breadcrumb</artifactId>
-            <version>${forge.breadcrumb.version}</version>
-          </dependency>]]>
-            </source>
+            <source><![CDATA[
+<dependency>
+  <groupId>org.onehippo.forge</groupId>
+  <artifactId>breadcrumb</artifactId>
+  <version>${forge.breadcrumb.version}</version>
+</dependency>]]></source>
             <p><b>Note:</b> always check for the latest version number and compatibility with the Site</p>
           </li>
           <li>
@@ -55,6 +51,9 @@
           </li>
         </ol>
       </subsection>
+        <p><span class="note">Note:</span> on <strong>Hippo 7.8</strong> and later, if you want to add this to an existing repository, be sure to use startup option <code>-Drepo.bootstrap=true</code>
+          for initializing the types, see
+          <a href="http://www.onehippo.org/library/concepts/content-repository/content-bootstrap.html">Content Bootstrap</a></p>
       </section>
     </body>
 </document>
