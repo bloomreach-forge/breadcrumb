@@ -20,16 +20,67 @@
   </properties>
   <body>
     <section name="Configuration">
-      <subsection name="Setting up a template for the Breadcrumb">
+      <subsection name="Class Name">
+        <p>The Breadcrumb plugin is implemented by the class: </p>
+        <table border="1" cellpadding="0" cellspacing="5">
+          <tr>
+            <td>org.onehippo.forge.breadcrumb.components.BreadcrumbComponent</td>
+          </tr>
+        </table>
+      </subsection>
+
+      <subsection name="Purpose">
+        <p>This class is used to create a Breadcrumb provider and set the breadcrumbs.
+          The provider can be instantiated within a component to add breadcrumb functionalities by composition. It can be easily extended for specific, custom needs.</p>
+      </subsection>
+
+      <subsection name="Component Parameters">
+        <table border="1" cellpadding="0" cellspacing="5">
+          <tr>
+            <td>Name</td>
+            <td>Description</td>
+          </tr>
+          <tr>
+            <td>breadcrumb-separator</td>
+            <td>A separator for the links that are displayed.</td>
+          </tr>
+          <tr>
+            <td>breadcrumb-menus</td>
+            <td>The first part of the breadcrumb is generated from the expanded sitemenu items of the menu named 'main' or from multiple menu's as configured
+              by this parameter. The last ("trailing") part of the breadcrumb is generated from the resolved sitemap item belonging to the current request.
+              The trailing items are based on the current resolved sitemap item and then moving upwards, until the deepest menu item is encountered.</td>
+          </tr>
+        </table>
+      </subsection>
+
+      <subsection name="Rendering Attributes">
+        <table border="1" cellpadding="0" cellspacing="5">
+          <tr>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Description</td>
+          </tr>
+          <tr>
+            <td>breadcrumb</td>
+            <td>org.onehippo.forge.breadcrumb.om.Breadcrumb</td>
+            <td>List with the breadcrumb items</td>
+          </tr>
+        </table>
+      </subsection>
+
+
+
+      <subsection name="Example of a template for the Breadcrumb">
         <p>In this example we will show how to create a JSP Page for the breadcrumb, however you could use others, such as a Freemarker or a Velocity template.</p>
         <p>Create the following JSP Page in myhippoproject/WEB-INF/jsp/breadcrumb/breadcrumb.jsp</p>
         <source><![CDATA[
 <%@ include file="/WEB-INF/jspf/htmlTags.jspf" %>
 <c:if test="${not empty breadcrumb.items}">
   <ul>
-    <c:forEach items="${breadcrumb.items}" var="item">
+    <c:forEach items="${breadcrumb.items}" var="item" varStatus="status">
       <hst:link var="link" link="${item.link}"/>
-      <a href="${link}">${item.title}</a>|
+      <a href="${link}">${item.title}</a>
+      <c:if test="${!status.last}">${breadcrumb.separator}</c:if>&nbsp;
     </c:forEach>
   </ul>
 </c:if>]]></source>
@@ -51,7 +102,7 @@
           </li>
           <li>
             <p>In the console, add <code>breadcrumb</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:components</code> with a property as defined in the XML below.
-            Alternatively, create <code>breadcrumb.xml</code> in the <code>bootstrap/configuration/src/main/resources/hst/configurations/myhippoproject/components</code> with the following:</p>
+              Alternatively, create <code>breadcrumb.xml</code> in the <code>bootstrap/configuration/src/main/resources/hst/configurations/myhippoproject/components</code> with the following:</p>
             <source><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <sv:node sv:name="breadcrumb" xmlns:sv="http://www.jcp.org/jcr/sv/1.0">
@@ -87,8 +138,8 @@
       <subsection name="Applying breadcrumb to pages">
         <ol>
           <li><p>To apply the breadcrumb to a specific page in the website: in the console, add the breadcrumb to the specific page in <code>/hst:hst/hst:configurations/myhippoproject/hst:pages/</code>
-          For example, applying breadcrumb to the news page will require adding <code>breadcrumb</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:pages/newspage/main</code>.The XML
-          should look like this:</p>
+            For example, applying breadcrumb to the news page will require adding <code>breadcrumb</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:pages/newspage/main</code>.The XML
+            should look like this:</p>
             <source><![CDATA[
 <sv:node sv:name="breadcrumb" xmlns:sv="http://www.jcp.org/jcr/sv/1.0">
   <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -98,10 +149,10 @@
     <sv:value>hst:components/breadcrumb</sv:value>
   </sv:property>
 </sv:node>]]></source>
-          <p>In the news page JSP, add the following: <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code></p>
+            <p>In the news page JSP, add the following: <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code></p>
           </li>
           <li><p>To apply breadcrumb to *all* pages in the website: in the console, add <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/myhippoproject/hst:abstractpages/base/main/</code>.
-          Include the HST reference <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code> to the base page JSP.</p>
+            Include the HST reference <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code> to the base page JSP.</p>
           </li>
         </ol>
       </subsection>

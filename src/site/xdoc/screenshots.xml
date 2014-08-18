@@ -26,7 +26,7 @@
       <section name="Screenshots">
         <subsection name="Breadcrumb Example">
           <p>
-            After navigating to a page, you can see all previous pages navigated through:
+            After navigating to a page, you can see the structure of your site based on a menu and also on the repository structure:
           </p>
           <img src="breadcrumb.jpg" alt="Screenshot of the breadcrumb plugin"/>
           </subsection>
