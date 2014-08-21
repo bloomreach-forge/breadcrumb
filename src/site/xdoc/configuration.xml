@@ -149,7 +149,8 @@
     <sv:value>hst:components/breadcrumb</sv:value>
   </sv:property>
 </sv:node>]]></source>
-            <p>In the news page JSP, add the following: <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code></p>
+            <p>In the news page JSP, add the following reference: <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code></p>
+            <p>Please note: when the specific page inherits from general page, the JSP of the general page has to be updated with the reference. However, the <code>breadcrumb</code> component should be added only in that specific page</p>
           </li>
           <li><p>To apply breadcrumb to *all* pages in the website: in the console, add <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/myhippoproject/hst:abstractpages/base/main/</code>.
             Include the HST reference <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code> to the base page JSP.</p>
