@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>19</version>
+    <version>27.5</version>
   </parent>
 
   <name>Hippo Forge Breadcrumb Plugin</name>
@@ -58,17 +58,17 @@
   </licenses>
 
   <properties>
-    <servlet-api.version>2.4</servlet-api.version>
-    <hst.version>2.22.00</hst.version>
+    <servlet-api.version>3.0.1</servlet-api.version>
+    <hst.version>3.2.0</hst.version>
     <javax.jcr.version>2.0</javax.jcr.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <scope>provided</scope>
+      <artifactId>javax.servlet-api</artifactId>
       <version>${servlet-api.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.onehippo.cms7.hst</groupId>

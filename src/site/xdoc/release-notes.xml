@@ -20,6 +20,11 @@
   </properties>
   <body>
     <section name="Release Notes">
+      <subsection name="1.03.00">
+        <ul>
+          <li>Breadcrumb plugin now uses hst tag 3.2.0.</li>
+        </ul>
+      </subsection>
       <subsection name="1.02.02">
         <ul>
           <li>Better extendibility of the BreadcrumbProvider.</li>
