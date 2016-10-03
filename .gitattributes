@@ -6,3 +6,10 @@ src/main/java/org/onehippo/forge/breadcrumb/components/BreadcrumbProvider.java s
 src/site/resources/breadcrumb.jpg -text
 src/site/xdoc/index.xml -text
 src/site/xdoc/screenshots.xml -text
+trunk/LICENSE -text
+trunk/NOTICE -text
+trunk/releasenotes.txt svneol=native#text/plain
+trunk/src/main/java/org/onehippo/forge/breadcrumb/components/BreadcrumbProvider.java svneol=native#text/plain
+trunk/src/site/resources/breadcrumb.jpg -text
+trunk/src/site/xdoc/index.xml -text
+trunk/src/site/xdoc/screenshots.xml -text

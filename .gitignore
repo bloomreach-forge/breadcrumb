@@ -2,3 +2,7 @@
 /.project
 /.settings
 /target
+trunk/.classpath
+trunk/.project
+trunk/.settings
+trunk/target

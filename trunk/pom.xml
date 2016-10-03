@@ -1,0 +1,164 @@
+<!--
+    Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+
+    Licensed under the Apache License, Version 2.0 (the  "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS"
+    BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.onehippo.cms7</groupId>
+    <artifactId>hippo-cms7-project</artifactId>
+    <version>27.5</version>
+  </parent>
+
+  <name>Hippo Forge Breadcrumb Plugin</name>
+  <description>Breadcrumb component for Hippo Site Toolkit</description>
+  <groupId>org.onehippo.forge</groupId>
+  <artifactId>breadcrumb</artifactId>
+  <version>1.03.00</version>
+  <packaging>jar</packaging>
+
+  <inceptionYear>2009</inceptionYear>
+
+  <scm>
+    <connection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.03.00</connection>
+    <developerConnection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.03.00</developerConnection>
+    <url>https://forge.onehippo.org/svn/breadcrumb/breadcrumb/tags/breadcrumb-1.03.00</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>breadcrumb-maven-repo</id>
+      <url>svn:https://forge.onehippo.org/svn/breadcrumb/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <issueManagement>
+    <system>Hippo Forge</system>
+    <url>https://forge.onehippo.org/tracker/?group_id=33</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <servlet-api.version>3.0.1</servlet-api.version>
+    <hst.version>3.2.0</hst.version>
+    <javax.jcr.version>2.0</javax.jcr.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-api</artifactId>
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.cms7.hst.components</groupId>
+      <artifactId>hst-core</artifactId>
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
+     <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-client</artifactId>
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-commons</artifactId>
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.jcr</groupId>
+      <artifactId>jcr</artifactId>
+      <version>${javax.jcr.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>hippo-maven2-public</id>
+      <name>Hippo Maven 2 Public Repository</name>
+      <url>http://maven.onehippo.com/maven2</url>
+    </repository>
+    <repository>
+      <id>hippo-maven2-forge</id>
+      <name>Hippo Maven 2 Forge Repositories</name>
+      <url>http://maven.onehippo.com/maven2-forge</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <defaultGoal>package</defaultGoal>
+    <extensions>
+      <extension>
+        <groupId>org.jvnet.wagon-svn</groupId>
+        <artifactId>wagon-svn</artifactId>
+        <version>1.9</version>
+      </extension>
+    </extensions>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <inherited>true</inherited>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>pedantic</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.rat</groupId>
+            <artifactId>apache-rat-plugin</artifactId>
+            <inherited>false</inherited>
+            <configuration>
+              <excludes combine.children="append">
+                <exclude>releasenotes.txt</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+  Copyright 2010-2014 Hippo B.V. (http://www.onehippo.com)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<document>
+  <properties>
+    <title>Forge Breadcrumb Plugins - Release Notes</title>
+  </properties>
+  <body>
+    <section name="Release Notes">
+      <subsection name="1.03.00">
+        <ul>
+          <li>Breadcrumb plugin now uses hst tag 3.2.0.</li>
+        </ul>
+      </subsection>
+      <subsection name="1.02.02">
+        <ul>
+          <li>Better extendibility of the BreadcrumbProvider.</li>
+          <li>Added JavaDoc, removing IDE warnings</li>
+        </ul>
+      </subsection>
+      <subsection name="1.02.01">
+        <ul>
+          <li>Use bean#getLocalizedName instead of bean#getName when creating a breadcrumb
+            item from a hippobean.</li>
+        </ul>
+      </subsection>
+      <subsection name="1.02.00">
+        <ul>
+          <li>Breadcrumb plugin now uses hst tag 2.22.00.</li>
+          <li>Fixed double item: if a menuitem directly linked to a document, both the
+            menuitem and the document itself were added.</li>
+        </ul>
+      </subsection>
+      <subsection name="1.01.02">
+        <ul>
+          <li>Possibility to set a flag 'addTrailingDocumentOnly' that changes behaviour
+            of the breadcrumb provider: it does not look at path between current document
+            and deepest expanded menu item but just adds the document.</li>
+          <li>Add a fallback determination of the path between current document and deepest
+            expanded menu item by looking at path information instead of bean ancestors,
+            applicable for faceted navigation on a menu item.</li>
+        </ul>
+      </subsection>
+      <subsection name="1.01.01">
+        <ul>
+          <li>Support to configure multiple menus to base the breadcrumb on. The component
+            parameter 'breadcrumb-menu' is renamed to 'breadcrumb-menus', a comma
+            separated list, defaulting to a list with single item 'main'.</li>
+        </ul>
+      </subsection>
+      <subsection name="1.01.00">
+        <ul>
+          <li>A breadcrumb structure is constructed by determining the deepest expanded item
+            from a menu for the first part and from the resolved sitemap item belonging to
+            the current request for the trailing part.
+            The breadcrumb is put on the request by attribute name 'breadcrumb' so a view
+            can access it.</li>
+          <li>The menu name is configurable by component parameter 'breadcrumb-menu' and
+            defaults to 'main'.</li>
+          <li>A separator is configurable by component parameter 'breadcrumb-separator' and
+            defaults to '»'.</li>
+        </ul>
+      </subsection>
+
+    </section>
+  </body>
+</document>
