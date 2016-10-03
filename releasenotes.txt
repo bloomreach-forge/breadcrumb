@@ -2,6 +2,10 @@
 Hippo Forge Breadcrumb Plugin Release Notes
 ===========================================
 
+Release 1.03.00
+------------------------
+- Breadcrumb plugin now uses hst tag 3.2.0.
+
 Release 1.02.02
 ------------------------
 - Better extendibility of the BreadcrumbProvider.
