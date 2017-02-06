@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -203,9 +203,14 @@ public class BreadcrumbProvider {
                 addTrailingDocument(items, currentBean, deepestExpandedMenuItemBean, request);
             }
             else {
-                // parent steps based on ancestor bean
-                if (deepestExpandedMenuItemBean != null && deepestExpandedMenuItemBean.isAncestor(currentBean)){
-                    addAncestorBasedParentItems(items, currentBean, deepestExpandedMenuItemBean, request);
+                if (deepestExpandedMenuItemBean != null) {
+                    // if bean of the deepest menu item is the same as the current bean, no trailing items need to be added
+                    if (deepestExpandedMenuItemBean.isSelf(currentBean)) {
+                        return items;
+                    } else if (deepestExpandedMenuItemBean.isAncestor(currentBean)) {
+                        // add trailing items based on content structure
+                        addAncestorBasedParentItems(items, currentBean, deepestExpandedMenuItemBean, request);
+                    }
                 }
 
                 // try to determine parent steps based on path info in case the
