@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  Copyright 2010-2014 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2017 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -20,9 +20,17 @@
   </properties>
   <body>
     <section name="Release Notes">
+      <subsection name="1.03.01">
+        <p class="smallinfo">Release Date: 14 Februari 2017</p>
+        <ul>
+          <li><a href="https://issues.onehippo.com/browse/HIPPLUG-1412">HIPPLUG-1412</a>
+            Fix double breadcrumb items by not adding a trailing item if the bean for the last menu based item is the
+            same as current bean.</li>
+        </ul>
+      </subsection>
       <subsection name="1.03.00">
         <ul>
-          <li>Breadcrumb plugin now uses hst tag 3.2.0.</li>
+          <li>Breadcrumb plugin now uses HST 3.2.0, part of Hippo 10.2.</li>
         </ul>
       </subsection>
       <subsection name="1.02.02">
