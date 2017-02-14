@@ -204,10 +204,8 @@ public class BreadcrumbProvider {
             }
             else {
                 if (deepestExpandedMenuItemBean != null) {
-                    // if bean of the deepest menu item is the same as the current bean, no trailing items need to be added
-                    if (deepestExpandedMenuItemBean.isSelf(currentBean)) {
-                        return items;
-                    } else if (deepestExpandedMenuItemBean.isAncestor(currentBean)) {
+                    // deepest menu item bean must be (not same) AND ancestor of the current bean
+                    if (!deepestExpandedMenuItemBean.isSelf(currentBean) && deepestExpandedMenuItemBean.isAncestor(currentBean)) {
                         // add trailing items based on content structure
                         addAncestorBasedParentItems(items, currentBean, deepestExpandedMenuItemBean, request);
                     }
