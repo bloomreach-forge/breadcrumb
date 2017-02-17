@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -32,22 +32,24 @@
   <inceptionYear>2009</inceptionYear>
 
   <scm>
-    <connection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</connection>
-    <developerConnection>scm:svn:https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk/</developerConnection>
-    <url>https://forge.onehippo.org/svn/breadcrumb/breadcrumb/trunk</url>
+    <connection>scm:git:git@github.com:onehippo-forge/breadcrumb.git</connection>
+    <developerConnection>scm:git:git@github.com:onehippo-forge/breadcrumb.git</developerConnection>
+    <url>https://github.com/onehippo-forge/breadcrumb.git</url>
+    <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
     <repository>
+      <name>Hippo Maven 2 Forge Repository</name>
+      <id>hippo-maven2-forge</id>
+      <url>https://maven.onehippo.com/content/repositories/maven2-forge/</url>
       <uniqueVersion>false</uniqueVersion>
-      <id>breadcrumb-maven-repo</id>
-      <url>svn:https://forge.onehippo.org/svn/breadcrumb/maven2/</url>
     </repository>
   </distributionManagement>
 
   <issueManagement>
-    <system>Hippo Forge</system>
-    <url>https://forge.onehippo.org/tracker/?group_id=33</url>
+    <system>Jira</system>
+    <url>https://issues.onehippo.com/browse/HIPPLUG</url>
   </issueManagement>
 
   <licenses>
@@ -126,39 +128,16 @@
         <version>1.9</version>
       </extension>
     </extensions>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <inherited>true</inherited>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <source>1.5</source>
-            <target>1.5</target>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <outputDirectory>docs</outputDirectory>
+        </configuration>
+        <version>3.3</version>
+      </plugin>
+    </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>pedantic</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.rat</groupId>
-            <artifactId>apache-rat-plugin</artifactId>
-            <inherited>false</inherited>
-            <configuration>
-              <excludes combine.children="append">
-                <exclude>releasenotes.txt</exclude>
-              </excludes>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
 </project>

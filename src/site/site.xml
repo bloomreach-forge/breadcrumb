@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2009-2014 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -14,12 +14,12 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-<project name="Hippo CMS Selection Plugins">
+<project name="Hippo Breadcrumb Plugin">
 
   <skin>
     <groupId>org.onehippo.forge.mavenskin</groupId>
     <artifactId>forge-maven-skin</artifactId>
-    <version>1.02.00</version>
+    <version>1.04.00</version>
   </skin>
 
   <body>
@@ -27,7 +27,6 @@
       <item name="Welcome" href="index.html"/>
       <item name="Release Notes" href="release-notes.html"/>
       <item name="Screenshots" href="screenshots.html"/>
-      <item name="Hippo Forge Project Page" href="http://forge.onehippo.org/projects/breadcrumb/"/>
     </menu>
 
     <menu name="Use the plugin">
