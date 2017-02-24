@@ -49,7 +49,7 @@
 
   <issueManagement>
     <system>Jira</system>
-    <url>https://issues.onehippo.com/browse/HIPPLUG</url>
+    <url>https://issues.onehippo.com/browse/HIPFORGE</url>
   </issueManagement>
 
   <licenses>
@@ -121,13 +121,6 @@
 
   <build>
     <defaultGoal>package</defaultGoal>
-    <extensions>
-      <extension>
-        <groupId>org.jvnet.wagon-svn</groupId>
-        <artifactId>wagon-svn</artifactId>
-        <version>1.9</version>
-      </extension>
-    </extensions>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
