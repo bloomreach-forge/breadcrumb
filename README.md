@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/onehippo-forge/breadcrumb.svg?branch=develop)](https://travis-ci.org/onehippo-forge/breadcrumb)
 
 # Breadcrumb Plugin
 
