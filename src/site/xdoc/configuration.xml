@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2010-2014 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2017 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -37,8 +37,8 @@
       <subsection name="Component Parameters">
         <table border="1" cellpadding="0" cellspacing="5">
           <tr>
-            <td>Name</td>
-            <td>Description</td>
+            <th>Name</th>
+            <th>Description</th>
           </tr>
           <tr>
             <td>breadcrumb-separator</td>
@@ -48,7 +48,7 @@
             <td>breadcrumb-menus</td>
             <td>The first part of the breadcrumb is generated from the expanded sitemenu items of the menu named 'main' or from multiple menu's as configured
               by this parameter. The last ("trailing") part of the breadcrumb is generated from the resolved sitemap item belonging to the current request.
-              The trailing items are based on the current resolved sitemap item and then moving upwards, until the deepest menu item is encountered.</td>
+              The trailing items are based on the current resolved sitemap item and then moving upwards, until the highest menu item is encountered.</td>
           </tr>
         </table>
       </subsection>
@@ -56,9 +56,9 @@
       <subsection name="Rendering Attributes">
         <table border="1" cellpadding="0" cellspacing="5">
           <tr>
-            <td>Name</td>
-            <td>Type</td>
-            <td>Description</td>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
           </tr>
           <tr>
             <td>breadcrumb</td>
@@ -71,24 +71,23 @@
 
 
       <subsection name="Example of a template for the Breadcrumb">
-        <p>In this example we will show how to create a JSP Page for the breadcrumb, however you could use others, such as a Freemarker or a Velocity template.</p>
-        <p>Create the following JSP Page in myhippoproject/WEB-INF/jsp/breadcrumb/breadcrumb.jsp</p>
+        <p>This is an example Freemarker template for the breadcrumb.</p>
+        <p>Create the following Freemarker Page in bootstrap/webfiles/src/main/resources/site/freemarker/myhippoproject/breadcrumb.ftl</p>
         <source><![CDATA[
-<%@ include file="/WEB-INF/jspf/htmlTags.jspf" %>
-<c:if test="${not empty breadcrumb.items}">
-  <ul>
-    <c:forEach items="${breadcrumb.items}" var="item" varStatus="status">
-      <hst:link var="link" link="${item.link}"/>
-      <a href="${link}">${item.title}</a>
-      <c:if test="${!status.last}">${breadcrumb.separator}</c:if>&nbsp;
-    </c:forEach>
-  </ul>
-</c:if>]]></source>
+<#include "../include/imports.ftl">
+
+<#-- @ftlvariable name="breadcrumb" type="org.onehippo.forge.breadcrumb.om.Breadcrumb" -->
+<#if breadcrumb?? && breadcrumb.items??>
+  <#list breadcrumb.items as item>
+    <@hst.link var="link" link=item.link/>
+    <a href="${link}">${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
+  </#list>
+</#if>]]></source>
       </subsection>
       <subsection name="HST Configurations">
         <ol>
           <li>
-            <p>In the console, add <code>breadcrumb.template</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:templates</code> with property as defined in the XML below.
+            <p>In the console, add <code>breadcrumb.template</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:templates</code> with a property as defined in the XML below.
               Alternatively, append the following XML to the <code>bootstrap/configuration/src/main/resources/hst/configurations/myhippoproject/templates</code> </p>
             <source><![CDATA[
 <sv:node sv:name="breadcrumb.template">
@@ -96,7 +95,7 @@
     <sv:value>hst:template</sv:value>
   </sv:property>
   <sv:property sv:name="hst:renderpath" sv:type="String">
-    <sv:value>jsp/breadcrumb/breadcrumb.jsp</sv:value>
+    <sv:value>webfile:/freemarker/myhippoproject/breadcrumb.ftl</sv:value>
   </sv:property>
 </sv:node>]]></source>
           </li>
@@ -104,8 +103,7 @@
             <p>In the console, add <code>breadcrumb</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:components</code> with a property as defined in the XML below.
               Alternatively, create <code>breadcrumb.xml</code> in the <code>bootstrap/configuration/src/main/resources/hst/configurations/myhippoproject/components</code> with the following:</p>
             <source><![CDATA[
-<?xml version="1.0" encoding="UTF-8"?>
-<sv:node sv:name="breadcrumb" xmlns:sv="http://www.jcp.org/jcr/sv/1.0">
+<sv:node sv:name="breadcrumb">
   <sv:property sv:name="jcr:primaryType" sv:type="Name">
     <sv:value>hst:component</sv:value>
   </sv:property>
@@ -141,7 +139,7 @@
             For example, applying breadcrumb to the news page will require adding <code>breadcrumb</code> to the <code>/hst:hst/hst:configurations/myhippoproject/hst:pages/newspage/main</code>.The XML
             should look like this:</p>
             <source><![CDATA[
-<sv:node sv:name="breadcrumb" xmlns:sv="http://www.jcp.org/jcr/sv/1.0">
+<sv:node sv:name="breadcrumb">
   <sv:property sv:name="jcr:primaryType" sv:type="Name">
     <sv:value>hst:component</sv:value>
   </sv:property>
@@ -149,11 +147,10 @@
     <sv:value>hst:components/breadcrumb</sv:value>
   </sv:property>
 </sv:node>]]></source>
-            <p>In the news page JSP, add the following reference: <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code></p>
-            <p>Please note: when the specific page inherits from general page, the JSP of the general page has to be updated with the reference. However, the <code>breadcrumb</code> component should be added only in that specific page</p>
+            <p>In the news page Freemarker template, add the following reference: <code><![CDATA[<@hst.include ref="breadcrumb"/>]]></code></p>
           </li>
           <li><p>To apply breadcrumb to *all* pages in the website: in the console, add <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/myhippoproject/hst:abstractpages/base/main/</code>.
-            Include the HST reference <code><![CDATA[<hst:include ref="breadcrumb"/>]]></code> to the base page JSP.</p>
+            Include the HST reference <code><![CDATA[<@hst.include ref="breadcrumb"/>]]></code> to the base page Freemarker template.</p>
           </li>
         </ol>
       </subsection>

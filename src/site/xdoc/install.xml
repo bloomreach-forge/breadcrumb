@@ -31,7 +31,7 @@
         <ol>
           <li>
             <p>Add the plugin version to the main pom.xml of the project</p>
-            <source><![CDATA[<forge.breadcrumb.version>1.03.00</forge.breadcrumb.version>]]></source>
+            <source><![CDATA[<forge.breadcrumb.version>1.4.0</forge.breadcrumb.version>]]></source>
             <p><b>Note:</b> always check for the latest version number and compatibility with the project</p>
           </li>
           <li>
