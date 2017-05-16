@@ -33,81 +33,84 @@ import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
 /**
  * Provider that can be instantiated within a component to add breadcrumb
  * functionalities by composition.
- *
+ * <p>
  * This component creates a basic breadcrumb, but can be easily extended for
  * specific, custom needs.
- *
+ * <p>
  * By default, the first part of the breadcrumb is generated from the expanded
- * sitemenu items of the menu named 'main' or from multiple menu's as configured
+ * site menu items of the menu named 'main' or from multiple menu's as configured
  * by parameter 'breadcrumb-menus'. The last ("trailing") part of the breadcrumb
  * is generated from the resolved sitemap item belonging to the current request.
- *
+ * <p>
  * The trailing items are based on the current resolved sitemap item and then
- * moving upwards, until the deepest menu item is encountered.
+ * moving upwards, until the highest menu item is encountered.
  */
 public class BreadcrumbProvider {
 
     public static final String ATTRIBUTE_NAME = "breadcrumb";
     public static final String PARAMETER_MENUS = "breadcrumb-menus";
     public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
+    public static final String DEFAULT_MENU_NAME = "main";
+    public static final String DEFAULT_SEPARATOR = "&#187;";
 
     private final BaseHstComponent component;
     private boolean addTrailingDocumentOnly = false;
+    private final String breadcrumbMenus;
+    private final String breadcrumbSeparator;
 
     /**
      * Constructor
+     *
      * @param component component that creates this provider
      */
-    public BreadcrumbProvider(BaseHstComponent component) {
-        super();
-
+    public BreadcrumbProvider(final BaseHstComponent component) {
         this.component = component;
+        this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
+        this.breadcrumbSeparator = component.getComponentParameter(PARAMETER_SEPARATOR);
     }
 
     /**
      * Constructor with an extra flag that determines behaviour for the trailing items
-     * @param component component that creates this provider
+     *
+     * @param component               component that creates this provider
      * @param addTrailingDocumentOnly flag determining behaviour whether to add just one trailing document or all.
      */
     @SuppressWarnings("unused")
-    public BreadcrumbProvider(BaseHstComponent component, boolean addTrailingDocumentOnly) {
-        super();
-
-        this.component = component;
+    public BreadcrumbProvider(final BaseHstComponent component, final boolean addTrailingDocumentOnly) {
+        this(component);
         this.addTrailingDocumentOnly = addTrailingDocumentOnly;
     }
 
-     /**
+    /**
      * Generate the breadcrumb.
      *
      * @param request HST request
      * @return the generated breadcrumb
      */
-    public Breadcrumb getBreadcrumb(HstRequest request){
+    public Breadcrumb getBreadcrumb(final HstRequest request) {
 
-        List<String> siteMenuNames = getSitemenuNames(request);
+        final List<String> siteMenuNames = getSitemenuNames();
 
         // match deepest menu item for multiple configured menus
         int i = 0;
         HstSiteMenuItem deepestMenuItem = null;
-        while ((i < siteMenuNames.size()) && (deepestMenuItem == null)) {
+        while (i < siteMenuNames.size() && deepestMenuItem == null) {
             HstSiteMenu menu = request.getRequestContext().getHstSiteMenus().getSiteMenu(siteMenuNames.get(i));
             deepestMenuItem = menu.getDeepestExpandedItem();
-
             i++;
         }
 
         // create items if a menu item is found
-        List<BreadcrumbItem> finalList = new ArrayList<BreadcrumbItem>();
+        final List<BreadcrumbItem> finalList = new ArrayList<>();
         if (deepestMenuItem != null) {
-            List<BreadcrumbItem> menuBreadcrumbItems = getMenuBreadcrumbItems(request, deepestMenuItem);
-            List<BreadcrumbItem> trailingBreadcrumbItems = getTrailingBreadcrumbItems(request, deepestMenuItem);
+            final List<BreadcrumbItem> menuBreadcrumbItems = getMenuBreadcrumbItems(request, deepestMenuItem);
+            final List<BreadcrumbItem> trailingBreadcrumbItems = getTrailingBreadcrumbItems(request, deepestMenuItem);
 
             finalList.addAll(menuBreadcrumbItems);
             finalList.addAll(trailingBreadcrumbItems);
         }
 
-        return new Breadcrumb(finalList, getSeparator(request));
+        return new Breadcrumb(finalList, getSeparator());
     }
 
     /**
@@ -116,18 +119,28 @@ public class BreadcrumbProvider {
      *
      * @param request HST request
      * @return all configured menu names, or "main"
+     * @deprecated use {@link #getSitemenuNames()}  instead
      */
-    protected List<String> getSitemenuNames(HstRequest request){
+    @Deprecated
+    protected List<String> getSitemenuNames(final HstRequest request) {
+        return getSitemenuNames();
+    }
 
-        List<String> list = new ArrayList<String>(0);
-        String menuNames = component.getParameter(PARAMETER_MENUS, request);
-        if (menuNames == null) {
-            list.add("main");
-        }
-        else {
-            String[] names = menuNames.split(",");
-            for (int i = 0; i < names.length; i++) {
-                list.add(names[i].trim());
+    /**
+     * The multiple site menu names are configured by configuration parameter
+     * "breadcrumb-menus", defaulting to "main".
+     *
+     * @return all configured menu names, or "main"
+     */
+    protected List<String> getSitemenuNames() {
+
+        final List<String> list = new ArrayList<>();
+        if (breadcrumbMenus == null) {
+            list.add(DEFAULT_MENU_NAME);
+        } else {
+            final String[] names = breadcrumbMenus.split(",");
+            for (String name : names) {
+                list.add(name.trim());
             }
         }
         return list;
@@ -138,7 +151,7 @@ public class BreadcrumbProvider {
      *
      * @return the component as given in the constructor
      */
-    protected BaseHstComponent getComponent(){
+    protected BaseHstComponent getComponent() {
         return component;
     }
 
@@ -148,30 +161,42 @@ public class BreadcrumbProvider {
      * defaulting to "»".
      *
      * @param request HST request
-     * @return configured or defautl separator between breadcrumb items
+     * @return configured or default separator between breadcrumb items
+     * @deprecated use {@link #getSeparator()}  instead
      */
-    protected String getSeparator(HstRequest request){
+    @Deprecated
+    protected String getSeparator(HstRequest request) {
+        return getSeparator();
+    }
 
-        String separator = component.getParameter(PARAMETER_SEPARATOR, request);
-        return (separator != null) ? separator : "&#187;";
+    /**
+     * Returns the separator string that separates two breadcrumb items.
+     * It is configured by configuration parameter "breadcrumb-separator",
+     * defaulting to "»".
+     *
+     * @return configured or default separator between breadcrumb items
+     */
+    protected String getSeparator() {
+        return (breadcrumbSeparator != null) ? breadcrumbSeparator : DEFAULT_SEPARATOR;
     }
 
     /**
      * Generate the breadcrumb items which correspond to the expanded menu item tree.
      *
-     * @param request HST request
+     * @param request  HST request
      * @param menuItem HST menu item
      * @return list of menu breadcrumb items
      */
-    protected List<BreadcrumbItem> getMenuBreadcrumbItems(HstRequest request, HstSiteMenuItem menuItem){
-        List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
+    protected List<BreadcrumbItem> getMenuBreadcrumbItems(final HstRequest request, final HstSiteMenuItem menuItem) {
+        final List<BreadcrumbItem> items = new ArrayList<>();
 
-        while (menuItem != null){
-            BreadcrumbItem item = getBreadcrumbItem(request, menuItem);
+        HstSiteMenuItem traverseUp = menuItem;
+        while (traverseUp != null) {
+            final BreadcrumbItem item = getBreadcrumbItem(request, traverseUp);
             if (item != null) {
                 items.add(item);
             }
-            menuItem = menuItem.getParentItem();
+            traverseUp = traverseUp.getParentItem();
         }
 
         Collections.reverse(items);
@@ -184,25 +209,24 @@ public class BreadcrumbProvider {
      * are derived from the bean structure of the resolved sitemap item of the
      * current request.
      *
-     * @param request HST request
+     * @param request                 HST request
      * @param deepestExpandedMenuItem HST menu item
      * @return list of trailing breadcrumb items
      */
-    protected List<BreadcrumbItem> getTrailingBreadcrumbItems(HstRequest request, HstSiteMenuItem deepestExpandedMenuItem){
+    protected List<BreadcrumbItem> getTrailingBreadcrumbItems(final HstRequest request, final HstSiteMenuItem deepestExpandedMenuItem) {
 
-        List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
+        final List<BreadcrumbItem> items = new ArrayList<>();
 
-        ResolvedSiteMapItem currentSmi = request.getRequestContext().getResolvedSiteMapItem();
-        HippoBean currentBean = getComponent().getBeanForResolvedSiteMapItem(request, currentSmi);
+        final ResolvedSiteMapItem currentSmi = request.getRequestContext().getResolvedSiteMapItem();
+        final HippoBean currentBean = getComponent().getBeanForResolvedSiteMapItem(request, currentSmi);
 
         if (currentBean != null) {
-            ResolvedSiteMapItem deepestExpandedmenuItemSmi = deepestExpandedMenuItem.resolveToSiteMapItem(request);
-            HippoBean deepestExpandedMenuItemBean = getComponent().getBeanForResolvedSiteMapItem(request, deepestExpandedmenuItemSmi);
+            final ResolvedSiteMapItem deepestExpandedmenuItemSmi = deepestExpandedMenuItem.resolveToSiteMapItem();
+            final HippoBean deepestExpandedMenuItemBean = getComponent().getBeanForResolvedSiteMapItem(request, deepestExpandedmenuItemSmi);
 
             if (addTrailingDocumentOnly) {
                 addTrailingDocument(items, currentBean, deepestExpandedMenuItemBean, request);
-            }
-            else {
+            } else {
                 if (deepestExpandedMenuItemBean != null) {
                     // deepest menu item bean must be (not same) AND ancestor of the current bean
                     if (!deepestExpandedMenuItemBean.isSelf(currentBean) && deepestExpandedMenuItemBean.isAncestor(currentBean)) {
@@ -228,54 +252,61 @@ public class BreadcrumbProvider {
     /**
      * Add one trailing document since the addTrailingDocumentOnly flag is up.
      *
-     * @param items list of breadcrumb items
-     * @param currentBean a bean described by URL that is in the child tree of the ancestor bean
+     * @param items                       list of breadcrumb items
+     * @param currentBean                 a bean described by URL that is in the child tree of the ancestor bean
      * @param deepestExpandedMenuItemBean bean corresponding to the deepest expanded site menu item
-     * @param request HST request
+     * @param request                     HST request
      */
-    protected void addTrailingDocument(final List<BreadcrumbItem> items, final HippoBean currentBean, final HippoBean deepestExpandedMenuItemBean, final HstRequest request) {
+    protected void addTrailingDocument(final List<BreadcrumbItem> items, final HippoBean currentBean,
+                                       final HippoBean deepestExpandedMenuItemBean, final HstRequest request) {
+
         if (currentBean instanceof HippoDocument && !deepestExpandedMenuItemBean.equalCompare(currentBean)) {
-            BreadcrumbItem item = getBreadcrumbItem(request, currentBean);
+            final BreadcrumbItem item = getBreadcrumbItem(request, currentBean);
             if (item != null) {
                 items.add(item);
             }
         }
+
     }
 
     /**
      * Add breadcrumb items based on an ancestor
      *
-     * @param items list of breadcrumb items
-     * @param currentBean a bean described by URL that is in the child tree of the ancestor bean
+     * @param items        list of breadcrumb items
+     * @param currentBean  a bean described by URL that is in the child tree of the ancestor bean
      * @param ancestorBean a bean that the ancestor of the current bean
-     * @param request HST request
+     * @param request      HST request
      */
     protected void addAncestorBasedParentItems(final List<BreadcrumbItem> items, final HippoBean currentBean,
                                                final HippoBean ancestorBean, final HstRequest request) {
 
         HippoBean currentItemBean = currentBean;
-        while (!currentItemBean.isSelf(ancestorBean)){
-            BreadcrumbItem item = getBreadcrumbItem(request, currentItemBean);
+        while (!currentItemBean.isSelf(ancestorBean)) {
+            final BreadcrumbItem item = getBreadcrumbItem(request, currentItemBean);
             if (item != null) {
                 items.add(item);
             }
             currentItemBean = currentItemBean.getParentBean();
         }
+
     }
 
     /**
      * Add breadcrumb items
-     * @param items list of breadcrumb items
-     * @param currentBean bean described by URL
-     * @param currentSmi site map item of the current bean
-     * @param deepestExpandedmenuItemSmi deepest expanded site map item (it's info should be the first part of the
-     *                                      currentSmi's info for the implementation to actually add items)
-     * @param request HST request
+     *
+     * @param items                      list of breadcrumb items
+     * @param currentBean                bean described by URL
+     * @param currentSmi                 site map item of the current bean
+     * @param deepestExpandedmenuItemSmi deepest expanded site map item (its info should be the first part of the
+     *                                   currentSmi's info for the implementation to actually add items)
+     * @param request                    HST request
      */
-    protected void addURLBasedParentItems(final List<BreadcrumbItem> items, final HippoBean currentBean, final ResolvedSiteMapItem currentSmi,
-                                          final ResolvedSiteMapItem deepestExpandedmenuItemSmi, final HstRequest request) {
-        String ancestorPath = deepestExpandedmenuItemSmi.getPathInfo();
-        String currentPath = currentSmi.getPathInfo();
+    protected void addURLBasedParentItems(final List<BreadcrumbItem> items, final HippoBean currentBean,
+                                          final ResolvedSiteMapItem currentSmi,
+                                          final ResolvedSiteMapItem deepestExpandedmenuItemSmi,
+                                          final HstRequest request) {
+        final String ancestorPath = deepestExpandedmenuItemSmi.getPathInfo();
+        final String currentPath = currentSmi.getPathInfo();
 
         if (currentPath.startsWith(ancestorPath)) {
             String trailingPath = currentPath.substring(ancestorPath.length());
@@ -300,12 +331,12 @@ public class BreadcrumbProvider {
     /**
      * Creates a breadcrumb item belonging to a sitemenu item
      *
-     * @param request HST request (not used in default implementation)
+     * @param request  HST request (not used in default implementation)
      * @param menuItem menu item
      * @return breadcrumb item
      */
     @SuppressWarnings("unused")
-    protected BreadcrumbItem getBreadcrumbItem(HstRequest request, HstSiteMenuItem menuItem){
+    protected BreadcrumbItem getBreadcrumbItem(final HstRequest request, final HstSiteMenuItem menuItem) {
         return new BreadcrumbItem(menuItem.getHstLink(), menuItem.getName());
     }
 
@@ -313,30 +344,30 @@ public class BreadcrumbProvider {
      * Creates a breadcrumb item from a Hippo bean
      *
      * @param request HST request
-     * @param bean hippo bean from which to create link and name
+     * @param bean    hippo bean from which to create link and name
      * @return breadcrumb item
      */
-    protected BreadcrumbItem getBreadcrumbItem(HstRequest request, HippoBean bean){
+    protected BreadcrumbItem getBreadcrumbItem(final HstRequest request, final HippoBean bean) {
         return getBreadcrumbItem(request, bean, false/*navigationStateful*/);
     }
 
     /**
      * Creates a breadcrumb item from a Hippo bean
      *
-     * @param request HST request
-     * @param bean hippo bean from which to create link and name
+     * @param request            HST request
+     * @param bean               hippo bean from which to create link and name
      * @param navigationStateful is the created link navigation stateful
      * @return breadcrumb item
      */
-    protected BreadcrumbItem getBreadcrumbItem(HstRequest request, HippoBean bean, boolean navigationStateful) {
+    protected BreadcrumbItem getBreadcrumbItem(final HstRequest request, final HippoBean bean,
+                                               final boolean navigationStateful) {
         final HstRequestContext context = request.getRequestContext();
         if (navigationStateful) {
             return new BreadcrumbItem(
-                    context.getHstLinkCreator().create(bean.getNode(), context, null/*preferredItem*/, true/*fallback*/, navigationStateful),
-                    bean.getLocalizedName());
-        }
-        else {
-            return new BreadcrumbItem(context.getHstLinkCreator().create(bean, context), bean.getLocalizedName());
+                    context.getHstLinkCreator().create(bean.getNode(), context, null/*preferredItem*/, true/*fallback*/,
+                            navigationStateful), bean.getDisplayName());
+        } else {
+            return new BreadcrumbItem(context.getHstLinkCreator().create(bean, context), bean.getDisplayName());
 
         }
     }
