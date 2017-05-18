@@ -24,7 +24,8 @@
         <p class="smallinfo">Release Date: May 2017</p>
         <ul>
           <li><a href="https://issues.onehippo.com/browse/HIPFORGE-76">HIPFORGE-76</a>
-            Upgrade to Hippo version 11.2.</li>
+            Upgrade to Hippo version 11.2.<p>Upgrade instruction: you cannot instantiate a BreadCrumbProvider as private Component
+            propery directly anymore. You can keep the private property, but instantiate it in the #init() method of the component.</p></li>
         </ul>
       </subsection>
       <subsection name="1.03.01">
