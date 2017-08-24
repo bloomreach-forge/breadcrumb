@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ public class BreadcrumbItem {
     public String title;
     public HstLink link;
 
-    public BreadcrumbItem(HstLink link, String title) {
+    public BreadcrumbItem(final HstLink link, final String title) {
         this.link = link;
         this.title = title;
     }

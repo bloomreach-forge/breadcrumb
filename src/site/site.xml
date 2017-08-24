@@ -19,8 +19,17 @@
   <skin>
     <groupId>org.onehippo.forge.mavenskin</groupId>
     <artifactId>forge-maven-skin</artifactId>
-    <version>1.04.00</version>
+    <version>2.0.1</version>
   </skin>
+
+  <custom>
+    <hippoSkin>
+     <!-- Add a 'Fork me on GitHub' ribbon  -->
+      <gitHub>
+        <projectId>onehippo-forge/breadcrumb</projectId>
+      </gitHub>
+    </hippoSkin>
+  </custom>
 
   <body>
     <menu name="Essentials">
@@ -30,7 +39,7 @@
     </menu>
 
     <menu name="Use the plugin">
-      <item name="Install" href="install.html" collapse="true"/>
+      <item name="Installation" href="install.html"/>
       <item name="Configuration" href="configuration.html"/>
     </menu>
 
