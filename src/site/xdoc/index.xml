@@ -19,13 +19,13 @@
 -->
 <document>
   <properties>
-    <title>Hippo Forge Breadcrumb -  About</title>
+    <title>Welcome</title>
   </properties>
   <body>
     <section name="Breadcrumb Plugin">
-      <p>The Breadcrumb plugin is an HST component, , providing the structure of your site based on a menu and also on the repository structure. </p>
+      <p>The Breadcrumb plugin is an HST component, providing the structure of your site based on a menu and also on the repository structure. </p>
 
-    <subsection name="Install instructions">
+    <subsection name="Installation instructions">
       <p>Instructions on how to obtain and install the plugin can be found on the <a
       href="install.html">install page</a>. </p>
     </subsection>
@@ -33,14 +33,18 @@
       <p>To see how the Breadcrumb Plugin looks go the <a href="screenshots.html">screenshots</a> page </p>
     </subsection>
       <subsection name="Project status">
-        <p>The latest version of the Breadcrumb Plugin is compatible with Hippo 10.2.
+        <p>The latest version of the Breadcrumb Plugin is compatible with Hippo 11.2.
           Use an earlier version range for previous Hippo versions.
           See the <a href="release-notes.html">release notes</a> for details.</p>
         <table border="1" cellpadding="0" cellspacing="5">
           <tbody>
             <tr>
               <th>Version</th>
-              <th>Hippo CMS Suite</th>
+              <th>Hippo CMS Version</th>
+            </tr>
+            <tr>
+              <td>1.4.x</td>
+              <td>11.2.x</td>
             </tr>
             <tr>
               <td>1.03.xx</td>

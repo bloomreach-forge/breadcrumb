@@ -16,14 +16,24 @@
 -->
 <document>
   <properties>
-    <title>Forge Breadcrumb Plugins - Release Notes</title>
+    <title>Release Notes</title>
   </properties>
   <body>
     <section name="Release Notes">
+      <subsection name="1.4.0">
+        <p class="smallinfo">Release Date: 24 August 2017</p>
+        <ul>
+          <li><a href="https://issues.onehippo.com/browse/HIPFORGE-76">HIPFORGE-76</a><br/>
+            Upgrade to Hippo version 11.2.<br/>
+            Note: no longer possible to instantiate a BreadCrumbProvider as private component property
+            at constructor time. The private property can be kept, but should be instantiated in the #init() method of
+            the component.</li>
+        </ul>
+      </subsection>
       <subsection name="1.03.01">
         <p class="smallinfo">Release Date: 14 Februari 2017</p>
         <ul>
-          <li><a href="https://issues.onehippo.com/browse/HIPPLUG-1412">HIPPLUG-1412</a>
+          <li><a href="https://issues.onehippo.com/browse/HIPPLUG-1412">HIPPLUG-1412</a><br/>
             Fix double breadcrumb items by not adding a trailing item if the bean for the last menu based item is the
             same as current bean.</li>
         </ul>
