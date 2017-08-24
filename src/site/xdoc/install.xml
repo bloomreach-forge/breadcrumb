@@ -16,10 +16,10 @@
 -->
 <document>
     <properties>
-        <title>Forge Breadcrumb Plugins - How to install</title>
+        <title>Installation</title>
     </properties>
     <body>
-      <section name="Install">
+      <section name="Installation">
       <subsection name="Prerequisites">
         <p>
           These instructions assume that you have an Hippo project based on the Hippo Archetype, i.e.

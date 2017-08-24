@@ -124,7 +124,7 @@
         <configuration>
           <outputDirectory>docs</outputDirectory>
         </configuration>
-        <version>3.3</version>
+        <version>3.6</version>
       </plugin>
     </plugins>
   </build>

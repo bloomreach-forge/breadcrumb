@@ -19,13 +19,13 @@
 -->
 <document>
   <properties>
-    <title>Hippo Forge Breadcrumb -  About</title>
+    <title>Welcome</title>
   </properties>
   <body>
     <section name="Breadcrumb Plugin">
       <p>The Breadcrumb plugin is an HST component, providing the structure of your site based on a menu and also on the repository structure. </p>
 
-    <subsection name="Install instructions">
+    <subsection name="Installation instructions">
       <p>Instructions on how to obtain and install the plugin can be found on the <a
       href="install.html">install page</a>. </p>
     </subsection>
