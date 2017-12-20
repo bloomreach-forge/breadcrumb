@@ -61,6 +61,7 @@
 
   <properties>
     <hst.version>4.2.1</hst.version>
+    <junit.version>4.10</junit.version>
   </properties>
 
   <dependencies>
@@ -99,6 +100,19 @@
       <artifactId>jcr</artifactId>
       <version>${javax.jcr.version}</version>
       <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-mock</artifactId>
+      <version>${hst.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
