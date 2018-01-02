@@ -31,6 +31,9 @@ import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
 import org.onehippo.forge.breadcrumb.om.Breadcrumb;
 import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Provider that can be instantiated within a component to add breadcrumb
  * functionalities by composition.
@@ -48,6 +51,8 @@ import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
  * until the site content base bean is reached.
  */
 public class BreadcrumbProvider {
+
+    private static final Logger log = LoggerFactory.getLogger(BreadcrumbProvider.class);
 
     public static final String ATTRIBUTE_NAME = "breadcrumb";
 
@@ -98,6 +103,7 @@ public class BreadcrumbProvider {
     public Breadcrumb getBreadcrumb(final HstRequest request) {
 
         final List<String> siteMenuNames = getSitemenuNames();
+        log.debug("{} creating breadcrumb based on site menu names {}", this.getClass().getName(), siteMenuNames);
 
         // match deepest menu item for multiple configured menus
         int i = 0;
@@ -106,17 +112,24 @@ public class BreadcrumbProvider {
             final HstSiteMenu menu = request.getRequestContext().getHstSiteMenus().getSiteMenu(siteMenuNames.get(i));
             if (menu != null) {
                 deepestMenuItem = menu.getDeepestExpandedItem();
+                log.debug("{} creating breadcrumb based on deepest menu item '{}' of menu '{}'", this.getClass().getName(),
+                        (deepestMenuItem == null) ? "null" : deepestMenuItem.getName(), menu.getName());
             }
             i++;
         }
 
         // create items from a current menu item and upwards
         final List<BreadcrumbItem> breadcrumbItems = getMenuBreadcrumbItems(request, deepestMenuItem);
+        log.debug("{} created {} menu based breadcrumb items: {}", this.getClass().getName(), breadcrumbItems.size(), breadcrumbItems);
 
         // create items from current content bean and upwards to a current menu item or to content base
         final List<BreadcrumbItem> contentBreadcrumbItems = getContentBreadcrumbItems(request, deepestMenuItem);
+        log.debug("{} created {} content based breadcrumb items: {}", this.getClass().getName(), contentBreadcrumbItems.size(), contentBreadcrumbItems);
 
         breadcrumbItems.addAll(contentBreadcrumbItems);
+
+        log.info("{} created {} breadcrumb items: {}", this.getClass().getName(), breadcrumbItems.size(),
+                breadcrumbItems.stream().map(BreadcrumbItem::getTitle).toArray());
 
         return new Breadcrumb(breadcrumbItems, getSeparator());
     }
@@ -151,6 +164,7 @@ public class BreadcrumbProvider {
                 list.add(name.trim());
             }
         }
+
         return list;
     }
 

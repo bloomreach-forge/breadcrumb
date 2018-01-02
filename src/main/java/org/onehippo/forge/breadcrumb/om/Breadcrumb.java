@@ -45,4 +45,9 @@ public class Breadcrumb {
     public String getSeparator() {
         return separator;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "[separator=" + separator + ", items=" + items + "]";
+    }
 }

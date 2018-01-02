@@ -34,4 +34,9 @@ public class BreadcrumbItem {
     public HstLink getLink() {
         return link;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "[title=" + title + ", link=" + ((link == null) ? "null" : "path:" + link.getPath()) + "]";
+    }
 }
