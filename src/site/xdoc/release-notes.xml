@@ -20,6 +20,14 @@
   </properties>
   <body>
     <section name="Release Notes">
+      <subsection name="1.4.1">
+        <p class="smallinfo">Release Date: TBD</p>
+        <ul>
+          <li><a href="https://issues.onehippo.com/browse/HIPFORGE-127">HIPFORGE-127</a><br/>
+            Add feature to create a breadcrumb without menu item involved, activated with the
+            'breadcrumb-add-content-based' component parameter, see <a href="configuration.html">configuration page</a>.</li>
+        </ul>
+      </subsection>
       <subsection name="1.4.0">
         <p class="smallinfo">Release Date: 24 August 2017</p>
         <ul>
