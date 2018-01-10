@@ -36,6 +36,11 @@ public class BreadcrumbItem {
     }
 
     @Override
+    public String toString() {
+        return super.toString() + "[title=" + title + ", link=" + ((link == null) ? "null" : "path:" + link.getPath()) + "]";
+    }
+
+    @Override
     public boolean equals(final Object o) {
         if (this == o) {
             return true;
