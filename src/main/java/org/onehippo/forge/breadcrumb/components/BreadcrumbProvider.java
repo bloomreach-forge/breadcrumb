@@ -404,7 +404,7 @@ public class BreadcrumbProvider {
         // go up to until site content base bean
         while (!bean.isSelf(siteContentBean)){
             final BreadcrumbItem item = getBreadcrumbItem(request, bean);
-            if ((item != null) && (!item.getLink().isNotFound())) {
+            if ((item != null) && (item.getLink() != null) && !item.getLink().isNotFound()) {
                 items.add(item);
             }
             bean = bean.getParentBean();
