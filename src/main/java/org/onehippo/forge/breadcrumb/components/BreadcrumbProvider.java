@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2009-2018 Hippo B.V. (http://www.onehippo.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -404,7 +404,7 @@ public class BreadcrumbProvider {
         // go up to until site content base bean
         while (!bean.isSelf(siteContentBean)){
             final BreadcrumbItem item = getBreadcrumbItem(request, bean);
-            if (item != null) {
+            if ((item != null) && (!item.getLink().isNotFound())) {
                 items.add(item);
             }
             bean = bean.getParentBean();
