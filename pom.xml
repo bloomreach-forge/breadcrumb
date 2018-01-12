@@ -26,7 +26,7 @@
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>
-  <version>1.4.0</version>
+  <version>1.5.0</version>
   <packaging>jar</packaging>
 
   <inceptionYear>2009</inceptionYear>
@@ -61,6 +61,7 @@
 
   <properties>
     <hst.version>4.2.1</hst.version>
+    <junit.version>4.10</junit.version>
 
     <maven.plugin.site.version>3.6</maven.plugin.site.version>
   </properties>
@@ -103,6 +104,18 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-mock</artifactId>
+      <version>${hst.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>
