@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2010-2017 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2018 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@
           <tr>
             <td>breadcrumb-add-content-based</td>
             <td>
-              <strong>Since 1.4.1</strong><br/>
+              <strong>Since 1.5.0</strong><br/>
               If 'true', and there is no active menu item to base the breadcrumb on, the breadcrumb is created from
               content, i.e. with items pointing to the current content bean and to upward content folders, if URLs
               exist for those.</td>

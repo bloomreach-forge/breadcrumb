@@ -20,8 +20,8 @@
   </properties>
   <body>
     <section name="Release Notes">
-      <subsection name="1.4.1">
-        <p class="smallinfo">Release Date: TBD</p>
+      <subsection name="1.5.0">
+        <p class="smallinfo">Release Date: 12 January 2018</p>
         <ul>
           <li><a href="https://issues.onehippo.com/browse/HIPFORGE-126">HIPFORGE-126</a><br/>
             Implementation of BreadcrumbItem#equals and #hashCode methods, for convenience, supporting easier

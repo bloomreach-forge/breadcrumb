@@ -62,6 +62,8 @@
   <properties>
     <hst.version>4.2.1</hst.version>
     <junit.version>4.10</junit.version>
+
+    <maven.plugin.site.version>3.6</maven.plugin.site.version>
   </properties>
 
   <dependencies>
@@ -135,12 +137,26 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <outputDirectory>docs</outputDirectory>
-        </configuration>
-        <version>3.6</version>
+        <version>${maven.plugin.site.version}</version>
       </plugin>
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <!-- For generating/publishing GitHub Site Pages into /docs/ folder on master branch only -->
+      <id>github.pages</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <configuration>
+              <outputDirectory>docs</outputDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
