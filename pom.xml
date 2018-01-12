@@ -61,6 +61,8 @@
 
   <properties>
     <hst.version>4.2.1</hst.version>
+
+    <maven.plugin.site.version>3.6</maven.plugin.site.version>
   </properties>
 
   <dependencies>
@@ -100,6 +102,19 @@
       <version>${javax.jcr.version}</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-mock</artifactId>
+      <version>${hst.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>
@@ -121,12 +136,26 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <outputDirectory>docs</outputDirectory>
-        </configuration>
-        <version>3.6</version>
+        <version>${maven.plugin.site.version}</version>
       </plugin>
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <!-- For generating/publishing GitHub Site Pages into /docs/ folder on master branch only -->
+      <id>github.pages</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <configuration>
+              <outputDirectory>docs</outputDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
