@@ -106,7 +106,8 @@
 <h3><a name="Purpose"></a>Purpose</h3>
         
 <p>This class is used to create a Breadcrumb provider and set the breadcrumbs.
-          The provider can be instantiated within a component to add breadcrumb functionalities by composition. It can be easily extended for specific, custom needs.</p>
+          The provider can be instantiated within a component to add breadcrumb functionalities by composition. It can
+          be easily extended for specific, custom needs.</p>
       </div>
 
       
@@ -133,9 +134,22 @@
             
 <td>breadcrumb-menus</td>
             
-<td>The first part of the breadcrumb is generated from the expanded sitemenu items of the menu named 'main' or from multiple menu's as configured
-              by this parameter. The last (&quot;trailing&quot;) part of the breadcrumb is generated from the resolved sitemap item belonging to the current request.
-              The trailing items are based on the current resolved sitemap item and then moving upwards, until the highest menu item is encountered.</td>
+<td>The first part of the breadcrumb is generated from the expanded site menu items of the menu named 'main'
+              or from multiple menu's as configured by this parameter. The last (trailing) part of the breadcrumb is
+              generated from the resolved sitemap item belonging to the current request.
+              The trailing items are based on the current resolved sitemap item and then moving upwards, until the
+              highest menu item is encountered.</td>
+          </tr>
+          
+<tr class="b">
+            
+<td>breadcrumb-add-content-based</td>
+            
+<td>
+              <b>Since 1.5.0</b><br />
+              If 'true', and there is no active menu item to base the breadcrumb on, the breadcrumb is created from
+              content, i.e. with items pointing to the current content bean and to upward content folders, if URLs
+              exist for those.</td>
           </tr>
         </table>
       </div>
@@ -180,8 +194,8 @@
 &lt;#-- @ftlvariable name=&quot;breadcrumb&quot; type=&quot;org.onehippo.forge.breadcrumb.om.Breadcrumb&quot; --&gt;
 &lt;#if breadcrumb?? &amp;&amp; breadcrumb.items??&gt;
   &lt;#list breadcrumb.items as item&gt;
-    &lt;@hst.link var=&quot;link&quot; link=item.link/&gt;
-    &lt;a href=&quot;${link}&quot;&gt;${item.title?html}&lt;/a&gt;&lt;#sep&gt; ${breadcrumb.separator}&amp;nbsp;
+     &lt;@hst.link var=&quot;link&quot; link=item.link/&gt;
+     &lt;a href=&quot;${link}&quot;&gt;${item.title?html}&lt;/a&gt;&lt;#sep&gt; ${breadcrumb.separator}&amp;nbsp;
   &lt;/#list&gt;
 &lt;/#if&gt;</pre></div>
       </div>
