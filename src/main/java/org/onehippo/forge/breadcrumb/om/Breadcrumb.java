@@ -17,15 +17,19 @@ package org.onehippo.forge.breadcrumb.om;
 
 import java.util.List;
 
+import org.onehippo.forge.breadcrumb.components.BreadcrumbProvider;
+
 public class Breadcrumb {
 
     private List<BreadcrumbItem> items;
     private String separator;
+    private String linkNotFoundMode;
 
-    public Breadcrumb(final List<BreadcrumbItem> items, final String separator) {
+    public Breadcrumb(final List<BreadcrumbItem> items, final String separator, final BreadcrumbProvider.LinkNotFoundMode linkNotFoundMode) {
         super();
         this.items = items;
         this.separator = separator;
+        this.linkNotFoundMode = linkNotFoundMode == null ? null : linkNotFoundMode.name().toLowerCase();
     }
 
     /**
@@ -46,8 +50,18 @@ public class Breadcrumb {
         return separator;
     }
 
+
+    /**
+     * Operation mode for breadcrumb entries that point to 404.
+     *
+     * @return linkNotFoundMode
+     */
+    public String getLinkNotFoundMode() {
+        return linkNotFoundMode;
+    }
+
     @Override
     public String toString() {
-        return super.toString() + "[separator=" + separator + ", items=" + items + "]";
+        return super.toString() + "[separator=" + separator + ", items=" + items + ", linkNotFoundMode=" + linkNotFoundMode + "]";
     }
 }
