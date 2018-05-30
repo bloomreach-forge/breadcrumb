@@ -61,6 +61,14 @@
               content, i.e. with items pointing to the current content bean and to upward content folders, if URLs
               exist for those.</td>
           </tr>
+          <tr>
+            <td>breadcrumb-link-not-found-mode</td>
+            <td>
+              <strong>Since 2.0.0</strong><br/>
+              Entries of the breadcrumb path may link to the pagenotfound sitemapitem, effectively giving a 404 if the user navigates to them. This parameter
+              specifies alternative behaviour regarding rendering these items: if the value is "hide", the plugin will not render these entries at all. If the value is "unlink", the
+              plugin will render the entries but without a link (so, as plain text).</td>
+          </tr>
         </table>
       </subsection>
 
@@ -87,10 +95,16 @@
 
 <#-- @ftlvariable name="breadcrumb" type="org.onehippo.forge.breadcrumb.om.Breadcrumb" -->
 <#if breadcrumb?? && breadcrumb.items??>
-  <#list breadcrumb.items as item>
-     <@hst.link var="link" link=item.link/>
-     <a href="${link}">${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
-  </#list>
+    <#list breadcrumb.items as item>
+        <#if item.link.notFound && (breadcrumb.linkNotFoundMode == 'hide' || breadcrumb.linkNotFoundMode == 'unlink')>
+            <#if breadcrumb.linkNotFoundMode == 'unlink'>
+                <a>${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
+            </#if>
+        <#else>
+            <@hst.link var="link" link=item.link/>
+            <a <#sep>href="${link}"</#sep>>${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
+        </#if>
+    </#list>
 </#if>]]></source>
       </subsection>
       <subsection name="HST Configurations">
