@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2010-2017 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2018 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -31,7 +31,8 @@
 
       <subsection name="Purpose">
         <p>This class is used to create a Breadcrumb provider and set the breadcrumbs.
-          The provider can be instantiated within a component to add breadcrumb functionalities by composition. It can be easily extended for specific, custom needs.</p>
+          The provider can be instantiated within a component to add breadcrumb functionalities by composition. It can
+          be easily extended for specific, custom needs.</p>
       </subsection>
 
       <subsection name="Component Parameters">
@@ -46,9 +47,27 @@
           </tr>
           <tr>
             <td>breadcrumb-menus</td>
-            <td>The first part of the breadcrumb is generated from the expanded sitemenu items of the menu named 'main' or from multiple menu's as configured
-              by this parameter. The last ("trailing") part of the breadcrumb is generated from the resolved sitemap item belonging to the current request.
-              The trailing items are based on the current resolved sitemap item and then moving upwards, until the highest menu item is encountered.</td>
+            <td>The first part of the breadcrumb is generated from the expanded site menu items of the menu named 'main'
+              or from multiple menu's as configured by this parameter. The last (trailing) part of the breadcrumb is
+              generated from the resolved sitemap item belonging to the current request.
+              The trailing items are based on the current resolved sitemap item and then moving upwards, until the
+              highest menu item is encountered.</td>
+          </tr>
+          <tr>
+            <td>breadcrumb-add-content-based</td>
+            <td>
+              <strong>Since 1.5.0</strong><br/>
+              If 'true', and there is no active menu item to base the breadcrumb on, the breadcrumb is created from
+              content, i.e. with items pointing to the current content bean and to upward content folders, if URLs
+              exist for those.</td>
+          </tr>
+          <tr>
+            <td>breadcrumb-link-not-found-mode</td>
+            <td>
+              <strong>Since 2.0.0</strong><br/>
+              Entries of the breadcrumb path may link to the pagenotfound sitemapitem, effectively giving a 404 if the user navigates to them. This parameter
+              specifies alternative behaviour regarding rendering these items: if the value is "hide", the plugin will not render these entries at all. If the value is "unlink", the
+              plugin will render the entries but without a link (so, as plain text).</td>
           </tr>
         </table>
       </subsection>
@@ -68,8 +87,6 @@
         </table>
       </subsection>
 
-
-
       <subsection name="Example of a template for the Breadcrumb">
         <p>This is an example Freemarker template for the breadcrumb.</p>
         <p>Create the following Freemarker Page in bootstrap/webfiles/src/main/resources/site/freemarker/myhippoproject/breadcrumb.ftl</p>
@@ -78,10 +95,16 @@
 
 <#-- @ftlvariable name="breadcrumb" type="org.onehippo.forge.breadcrumb.om.Breadcrumb" -->
 <#if breadcrumb?? && breadcrumb.items??>
-  <#list breadcrumb.items as item>
-    <@hst.link var="link" link=item.link/>
-    <a href="${link}">${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
-  </#list>
+    <#list breadcrumb.items as item>
+        <#if item.link.notFound && (breadcrumb.linkNotFoundMode == 'hide' || breadcrumb.linkNotFoundMode == 'unlink')>
+            <#if breadcrumb.linkNotFoundMode == 'unlink'>
+                <a>${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
+            </#if>
+        <#else>
+            <@hst.link var="link" link=item.link/>
+            <a <#sep>href="${link}"</#sep>>${item.title?html}</a><#sep> ${breadcrumb.separator}&nbsp;
+        </#if>
+    </#list>
 </#if>]]></source>
       </subsection>
       <subsection name="HST Configurations">
