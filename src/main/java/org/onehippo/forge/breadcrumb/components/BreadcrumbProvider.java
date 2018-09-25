@@ -19,8 +19,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.configuration.HstNodeTypes;
+import org.hippoecm.hst.configuration.sitemap.HstSiteMapItem;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoDocument;
 import org.hippoecm.hst.core.component.HstRequest;
@@ -30,7 +32,6 @@ import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
 import org.onehippo.forge.breadcrumb.om.Breadcrumb;
 import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,16 +60,31 @@ public class BreadcrumbProvider {
     public static final String PARAMETER_MENUS = "breadcrumb-menus";
     public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
     public static final String PARAMETER_ADD_CONTENT_BASED = "breadcrumb-add-content-based";
+    public static final String PARAMETER_LINK_NOT_FOUND_MODE = "breadcrumb-link-not-found-mode";
 
     public static final String DEFAULT_MENU_NAME = "main";
     public static final String DEFAULT_SEPARATOR = "&#187;";
+    public static final String HST_PAGES_PAGENOTFOUND_ID = "pagenotfound";
 
     private final BaseHstComponent component;
     private boolean addTrailingDocumentOnly = false;
     private final boolean addContentBased;
+    private final LinkNotFoundMode linkNotFoundMode;
 
     private final String breadcrumbMenus;
     private final String breadcrumbSeparator;
+
+    public enum LinkNotFoundMode {
+        HIDE, UNLINK;
+
+        public static LinkNotFoundMode safeValueOf(String name) {
+            try {
+                return StringUtils.isBlank(name) ? null : valueOf(name.toUpperCase());
+            } catch (Exception e) {
+                return null;
+            }
+        }
+    }
 
     /**
      * Constructor
@@ -80,6 +96,7 @@ public class BreadcrumbProvider {
         this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
         this.breadcrumbSeparator = component.getComponentParameter(PARAMETER_SEPARATOR);
         this.addContentBased = Boolean.valueOf(component.getComponentParameter(PARAMETER_ADD_CONTENT_BASED));
+        this.linkNotFoundMode = LinkNotFoundMode.safeValueOf(component.getComponentParameter(PARAMETER_LINK_NOT_FOUND_MODE));
     }
 
     /**
@@ -131,8 +148,15 @@ public class BreadcrumbProvider {
         log.info("{} created {} breadcrumb items: {}", this.getClass().getName(), breadcrumbItems.size(),
                 breadcrumbItems.stream().map(BreadcrumbItem::getTitle).toArray());
 
-        return new Breadcrumb(breadcrumbItems, getSeparator());
+        // post process the generated breadcrumb for any entries that point to pagenotfound
+        if(linkNotFoundMode != null) {
+            postProcessItemsForNotFoundLinks(request, breadcrumbItems);
+            log.info("{} post processed breadcrumb entries, using mode for not found links: {}", this.getClass().getName(), linkNotFoundMode);
+        }
+
+        return new Breadcrumb(breadcrumbItems, getSeparator(), linkNotFoundMode);
     }
+
 
     /**
      * The multiple site menu names are configured by configuration parameter
@@ -408,6 +432,31 @@ public class BreadcrumbProvider {
                 items.add(item);
             }
             bean = bean.getParentBean();
+        }
+    }
+
+    /**
+     * Post processes the breadcrumb items to check if the contained link points to the pagenotfound hst:page. If so, it sets the notFound flag in that link
+     *
+     * @param items                      list of breadcrumb items
+     * @param request                    HST request
+     */
+    protected void postProcessItemsForNotFoundLinks(final HstRequest request, final List<BreadcrumbItem> items) {
+        for (BreadcrumbItem item : items) {
+            HstSiteMapItem hstSiteMapItem = item.getLink().getHstSiteMapItem();
+            if (hstSiteMapItem != null) {
+                if (hstSiteMapItem.getComponentConfigurationId().endsWith(HST_PAGES_PAGENOTFOUND_ID)) {
+                    item.getLink().setNotFound(true);
+                }
+                if (hstSiteMapItem.getComponentConfigurationIdMappings().size() != 0) {
+                    ResolvedSiteMapItem resolvedSiteMapItem = item.getLink().getMount().getHstSiteMapMatcher().match(
+                        item.getLink().getPath(), request.getRequestContext().getResolvedMount());
+                    if (resolvedSiteMapItem != null &&
+                        HST_PAGES_PAGENOTFOUND_ID.equals(resolvedSiteMapItem.getHstComponentConfiguration().getName())) {
+                        item.getLink().setNotFound(true);
+                    }
+                }
+            }
         }
     }
 
