@@ -32,9 +32,9 @@
   <inceptionYear>2009</inceptionYear>
 
   <scm>
-    <connection>scm:git:git@github.com:onehippo-forge/breadcrumb.git</connection>
-    <developerConnection>scm:git:git@github.com:onehippo-forge/breadcrumb.git</developerConnection>
-    <url>https://github.com/onehippo-forge/breadcrumb.git</url>
+    <connection>scm:git:git@github.com:bloomreach-forge/breadcrumb.git</connection>
+    <developerConnection>scm:git:git@github.com:bloomreach-forge/breadcrumb.git</developerConnection>
+    <url>https://github.com/bloomreach-forge/breadcrumb.git</url>
     <tag>HEAD</tag>
   </scm>
 
