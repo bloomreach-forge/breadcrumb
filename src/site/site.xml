@@ -14,7 +14,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-<project name="Hippo Breadcrumb Plugin">
+<project name="Breadcrumb Plugin">
 
   <skin>
     <groupId>org.bloomreach.forge.mavenskin</groupId>
