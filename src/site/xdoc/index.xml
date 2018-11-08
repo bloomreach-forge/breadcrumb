@@ -43,6 +43,10 @@
               <th>Hippo CMS Version</th>
             </tr>
             <tr>
+              <td>2.x</td>
+              <td>12.x</td>
+            </tr>
+            <tr>
               <td>1.4.0, 1.5.0</td>
               <td>11.2.x</td>
             </tr>
