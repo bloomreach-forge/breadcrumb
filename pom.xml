@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2018 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
     <version>29.4</version>
   </parent>
 
-  <name>Hippo Forge Breadcrumb Plugin</name>
+  <name>BloomReach Forge Breadcrumb Plugin</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>breadcrumb</artifactId>
