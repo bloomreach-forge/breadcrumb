@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  Copyright 2010-2018 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2019 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -20,6 +20,12 @@
   </properties>
   <body>
     <section name="Release Notes">
+      <subsection name="3.0.0">
+        <p class="smallinfo">Release Date: 12 March 2019</p>
+        <ul>
+          <li>Upgrade to BloomReach Experience Manager 13.</li>
+        </ul>
+      </subsection>
       <subsection name="2.0.0">
         <p class="smallinfo">Release Date: 25 Sep 2018</p>
         <ul>

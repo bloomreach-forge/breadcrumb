@@ -33,14 +33,17 @@
       <p>To see how the Breadcrumb Plugin looks go the <a href="screenshots.html">screenshots</a> page </p>
     </subsection>
       <subsection name="Project status">
-        <p>The latest version of the Breadcrumb Plugin is compatible with Hippo 11.2.
-          Use an earlier version range for previous Hippo versions.
-          See the <a href="release-notes.html">release notes</a> for details.</p>
+        <p>The latest version of the Breadcrumb Plugin is compatible with BloomReach Experience Manager 13, f.k.a. Hippo CMS.
+          Use an earlier version range for previous versions. See the <a href="release-notes.html">release notes</a> for details.</p>
         <table border="1" cellpadding="0" cellspacing="5">
           <tbody>
             <tr>
               <th>Version</th>
-              <th>Hippo CMS Version</th>
+              <th>BloomReach XM / Hippo CMS Version</th>
+            </tr>
+            <tr>
+              <td>3.x</td>
+              <td>13.x</td>
             </tr>
             <tr>
               <td>2.x</td>

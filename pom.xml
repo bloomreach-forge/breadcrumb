@@ -63,7 +63,7 @@
     <hst.version>4.2.1</hst.version>
     <junit.version>4.10</junit.version>
 
-    <maven.plugin.site.version>3.6</maven.plugin.site.version>
+    <maven.plugin.site.version>3.7.1</maven.plugin.site.version>
   </properties>
 
   <dependencies>
