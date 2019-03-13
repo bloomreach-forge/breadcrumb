@@ -22,8 +22,8 @@
       <section name="Installation">
       <subsection name="Prerequisites">
         <p>
-          These instructions assume that you have an Hippo project based on the Hippo Archetype, i.e.
-          a Maven multiproject consisting of at least three submodules: cms, site and content.
+          These instructions assume that you have a BloomReach Experience project based on the archetype, i.e.
+          a Maven multi-module project consisting of at least three submodules: cms, site and repository-data.
         </p>
       </subsection>
 
@@ -33,7 +33,7 @@
             <source><![CDATA[
     <repository>
       <id>hippo-forge</id>
-      <name>Hippo Forge maven 2 repository.</name>
+      <name>Hippo Forge Maven 2 repository.</name>
       <url>https://maven.onehippo.com/maven2-forge/</url>
       <snapshots>
         <enabled>false</enabled>
