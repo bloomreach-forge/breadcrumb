@@ -22,7 +22,7 @@
       <section name="Installation">
       <subsection name="Prerequisites">
         <p>
-          These instructions assume that you have a BloomReach Experience project based on the archetype, i.e.
+          These instructions assume that you have a Bloomreach Experience project based on the archetype, i.e.
           a Maven multi-module project consisting of at least three submodules: cms, site and repository-data.
         </p>
       </subsection>
