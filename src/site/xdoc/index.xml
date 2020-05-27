@@ -42,6 +42,10 @@
               <th>BloomReach XM / Hippo CMS Version</th>
             </tr>
             <tr>
+              <td>4.x</td>
+              <td>14.x</td>
+            </tr>
+            <tr>
               <td>3.x</td>
               <td>13.x</td>
             </tr>
