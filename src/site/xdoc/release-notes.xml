@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  Copyright 2010-2019 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2020 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@
   <body>
     <section name="Release Notes">
       <subsection name="4.0.0">
-        <p class="smallinfo">Release Date: 27 May 2020</p>
+        <p class="smallinfo">Release Date: 29 May 2020</p>
         <ul>
-          <li>Upgrade to Bloomreach Experience Manager 14.0.0-2</li>
+          <li>Upgrade to Bloomreach Experience Manager 14.</li>
         </ul>
       </subsection>
       <subsection name="3.0.0">
