@@ -24,6 +24,8 @@
         <p class="smallinfo">Release Date: 29 May 2020</p>
         <ul>
           <li>Upgrade to Bloomreach Experience Manager 14.</li>
+          <li>The artifact's groupId was changed from <code>org.onehippo.forge</code> to <code>org.bloomreach.forge.breadcrumb</code>
+          (but no repackaging of Java classes though).</li>
         </ul>
       </subsection>
       <subsection name="3.0.0">

@@ -58,11 +58,13 @@
             <p>Add the following dependency to the site pom.xml of the project</p>
             <source><![CDATA[
 <dependency>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb</artifactId>
   <version>${forge.breadcrumb.version}</version>
 </dependency>]]></source>
-            <p><b>Note:</b> always check for the latest version number and compatibility with the Site</p>
+            <p class="alert alert-info">
+              Note: before version 4.0.0, the artifacts' groupId was <code>org.onehippo.forge</code>
+            </p>
           </li>
           <li>
             <p>

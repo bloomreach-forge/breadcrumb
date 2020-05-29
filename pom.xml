@@ -24,7 +24,7 @@
 
   <name>BloomReach Forge Breadcrumb Plugin</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb</artifactId>
   <version>4.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
