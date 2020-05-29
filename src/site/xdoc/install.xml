@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2010-2017 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2020 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
       <section name="Installation">
       <subsection name="Prerequisites">
         <p>
-          These instructions assume that you have a BloomReach Experience project based on the archetype, i.e.
+          These instructions assume that you have a Bloomreach Experience project based on the archetype, i.e.
           a Maven multi-module project consisting of at least three submodules: cms, site and repository-data.
         </p>
       </subsection>
@@ -58,11 +58,13 @@
             <p>Add the following dependency to the site pom.xml of the project</p>
             <source><![CDATA[
 <dependency>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb</artifactId>
   <version>${forge.breadcrumb.version}</version>
 </dependency>]]></source>
-            <p><b>Note:</b> always check for the latest version number and compatibility with the Site</p>
+            <p class="alert alert-info">
+              Note: before version 4.0.0, the artifacts' groupId was <code>org.onehippo.forge</code>
+            </p>
           </li>
           <li>
             <p>

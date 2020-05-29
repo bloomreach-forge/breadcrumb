@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2018 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2020 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -19,14 +19,14 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>30.0</version>
+    <version>31.0.0</version>
   </parent>
 
-  <name>BloomReach Forge Breadcrumb Plugin</name>
+  <name>Bloomreach Forge Breadcrumb Plugin</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb</artifactId>
-  <version>3.0.0</version>
+  <version>4.0.0</version>
   <packaging>jar</packaging>
 
   <inceptionYear>2009</inceptionYear>
@@ -60,7 +60,7 @@
   </licenses>
 
   <properties>
-    <hst.version>4.2.1</hst.version>
+    <hst.version>14.0.0</hst.version>
     <junit.version>4.10</junit.version>
 
     <maven.plugin.site.version>3.7.1</maven.plugin.site.version>

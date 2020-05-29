@@ -3,7 +3,7 @@
   "-//Apache Software Foundation//DTD XDOC 1.0//EN"
   "http://maven.apache.org/dtd/xdoc_1_0.dtd">
 <!--
-    Copyright 2009-2018 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2020 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -33,13 +33,17 @@
       <p>To see how the Breadcrumb Plugin looks go the <a href="screenshots.html">screenshots</a> page </p>
     </subsection>
       <subsection name="Project status">
-        <p>The latest version of the Breadcrumb Plugin is compatible with BloomReach Experience Manager 13, f.k.a. Hippo CMS.
+        <p>The latest version of the Breadcrumb Plugin is compatible with Bloomreach Experience Manager 14.
           Use an earlier version range for previous versions. See the <a href="release-notes.html">release notes</a> for details.</p>
         <table border="1" cellpadding="0" cellspacing="5">
           <tbody>
             <tr>
               <th>Version</th>
-              <th>BloomReach XM / Hippo CMS Version</th>
+              <th>Bloomreach XM / Hippo CMS Version</th>
+            </tr>
+            <tr>
+              <td>4.x</td>
+              <td>14.x</td>
             </tr>
             <tr>
               <td>3.x</td>
