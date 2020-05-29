@@ -22,7 +22,7 @@
     <version>31.0.0</version>
   </parent>
 
-  <name>BloomReach Forge Breadcrumb Plugin</name>
+  <name>Bloomreach Forge Breadcrumb Plugin</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb</artifactId>
