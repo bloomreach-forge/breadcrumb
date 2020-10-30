@@ -85,6 +85,13 @@
       <version>${hst.version}</version>
       <scope>provided</scope>
     </dependency>
+    
+    <dependency>
+     <groupId>org.onehippo.cms7</groupId>
+     <artifactId>hippo-cms7-commons</artifactId> 
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
      <dependency>
       <groupId>org.onehippo.cms7.hst</groupId>
       <artifactId>hst-client</artifactId>
@@ -116,6 +123,7 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    
   </dependencies>
 
   <repositories>

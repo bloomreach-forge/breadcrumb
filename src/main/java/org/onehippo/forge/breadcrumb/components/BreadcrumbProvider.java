@@ -30,6 +30,7 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
+import org.onehippo.forge.breadcrumb.components.BreadcrumbProvider;
 import org.onehippo.forge.breadcrumb.om.Breadcrumb;
 import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
 import org.slf4j.Logger;
@@ -58,7 +59,7 @@ public class BreadcrumbProvider {
     public static final String ATTRIBUTE_NAME = "breadcrumb";
 
     public static final String PARAMETER_MENUS = "breadcrumb-menus";
-    public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
+    public static final String PARAMETER_SEPARATOR = "separator";
     public static final String PARAMETER_ADD_CONTENT_BASED = "breadcrumb-add-content-based";
     public static final String PARAMETER_LINK_NOT_FOUND_MODE = "breadcrumb-link-not-found-mode";
 
@@ -67,7 +68,7 @@ public class BreadcrumbProvider {
     public static final String HST_PAGES_PAGENOTFOUND_ID = "pagenotfound";
 
     private final BaseHstComponent component;
-    private boolean addTrailingDocumentOnly = false;
+    private boolean addTrailingDocumentOnly;
     private final boolean addContentBased;
     private final LinkNotFoundMode linkNotFoundMode;
 
@@ -91,12 +92,27 @@ public class BreadcrumbProvider {
      *
      * @param component component that creates this provider
      */
+    @SuppressWarnings("unused")
     public BreadcrumbProvider(final BaseHstComponent component) {
         this.component = component;
         this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
         this.breadcrumbSeparator = component.getComponentParameter(PARAMETER_SEPARATOR);
         this.addContentBased = Boolean.valueOf(component.getComponentParameter(PARAMETER_ADD_CONTENT_BASED));
         this.linkNotFoundMode = LinkNotFoundMode.safeValueOf(component.getComponentParameter(PARAMETER_LINK_NOT_FOUND_MODE));
+    }
+    
+    /**
+     * Constructor
+     *
+     * @param component component that has extra flag "separator" this provider
+     */
+    public BreadcrumbProvider(final BaseHstComponent component, String separator, final boolean addTrailingDocumentOnly) {
+        this.component = component;
+        this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
+        this.breadcrumbSeparator = separator;
+        this.addContentBased = Boolean.valueOf(component.getComponentParameter(PARAMETER_ADD_CONTENT_BASED));
+        this.linkNotFoundMode = LinkNotFoundMode.safeValueOf(component.getComponentParameter(PARAMETER_LINK_NOT_FOUND_MODE));
+        this.addTrailingDocumentOnly = addTrailingDocumentOnly;
     }
 
     /**
@@ -223,7 +239,7 @@ public class BreadcrumbProvider {
      * @return configured or default separator between breadcrumb items
      */
     protected String getSeparator() {
-        return (breadcrumbSeparator != null) ? breadcrumbSeparator : DEFAULT_SEPARATOR;
+        return (!breadcrumbSeparator.isEmpty()) ? breadcrumbSeparator : DEFAULT_SEPARATOR;
     }
 
     /**
