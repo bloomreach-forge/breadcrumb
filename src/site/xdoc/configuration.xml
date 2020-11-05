@@ -44,7 +44,7 @@
           <tr>
             <td>breadcrumb-separator</td>
             <td>A separator for the links that are displayed.
-              <br/>The default is right double angle quotes "&#187;".</td>
+              <br/>Value can be entered to the text field for separator. The default is right double angle quotes "&#187;".</td>
           </tr>
           <tr>
             <td>breadcrumb-menus</td>
@@ -62,7 +62,7 @@
               If 'true', and there is no active menu item to base the breadcrumb on, the breadcrumb is created from
               content, i.e. with items pointing to the current content bean and to upward content folders, if URLs
               exist for those.
-              <br/>The default is <code>false</code>.</td>
+              <br/>A boolean value can be assigned using the checkbox field "addContentBased". The default is <code>false</code>.</td>
           </tr>
           <tr>
             <td>breadcrumb-link-not-found-mode</td>
@@ -71,7 +71,17 @@
               Entries of the breadcrumb path may link to the pagenotfound sitemapitem, effectively giving a 404 if the user navigates to them. This parameter
               specifies alternative behaviour regarding rendering these items: if the value is "hide", the plugin will not render these entries at all. If the value is "unlink", the
               plugin will render the entries but without a link (so, as plain text).
-              <br/>The default is <code>null</code>, meaning no rendering behaviour change.
+              <br/>Values can be selected from the dropdown field "linkNotFoundMode". The default is <code>null</code>, meaning no rendering behaviour change.
+          </td>
+          </tr>
+          <tr>
+            <td>addTrailingDocumentOnly</td>
+            <td>
+              <strong>Since 5.0.0</strong><br/>
+              set a flag 'addTrailingDocumentOnly' that changes behaviour of the breadcrumb provider: it does not look at path between current document
+              and deepest expanded menu item but just adds the document.
+              <br/>A boolean value can be assigned using the checkbox field "addTrailingDocumentOnly".
+              The default is <code>false</code>, meaning it looks at path between current document and deepest expanded menu item.
           </td>
           </tr>
         </table>
@@ -152,6 +162,21 @@ definitions:
   hst:referencecomponent: hst:components/breadcrumb]]></source>
         <p>Then, to relevant Freemarker template <code>base-layout.ftl</code>, add the following reference:
           <code><![CDATA[<@hst.include ref="breadcrumb"/>]]></code></p>
+      </subsection>
+      <subsection name="Adding breadcrumb component to catalog"> 
+      <p>To drag and drop breadcrumb component to a page, it should be added to the essentials catalog.</p>
+      <p>For example, to add the breadcrumb component to essentials-catalog, after creating breadcrumb template, add node <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/hst:default/hst:catalog/essentials-catalog/</code>.
+          Auto-export should insert a piece of yaml that looks like this:</p>
+       <source><![CDATA[
+/breadcrumb:
+  jcr:primaryType: hst:containeritemcomponent
+  hst:componentclassname:org.onehippo.forge.breadcrumb.components.BreadcrumbComponent
+  hst:iconpath: images/essentials/catalog-component-icons/breadrumb.png
+  hst:label: Breadcrumb
+  hst:template: breadcrumb.template]]></source>
+  <p><b>Note:</b> add the provided breadcrumb icon image in the Resource folder to your existing project at <code>/myproject-webapp/src/main/webapp/images/essentials/catalog-component-icons</code>
+            </p>
+   <p>You should be able to drag and drop the Breadcrumb component on the pages you want. Configure the component as required and see the changes.</p>         
       </subsection>
     </section>
   </body>

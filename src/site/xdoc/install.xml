@@ -26,6 +26,14 @@
           a Maven multi-module project consisting of at least three submodules: cms, site and repository-data.
         </p>
       </subsection>
+      <subsection name="Add dependency to Breadcrumb project"></subsection>
+      <p>Add the below dependency to main pom.xml of Breadcrumb project</p>
+          <source><![CDATA[ <dependency>
+     <groupId>org.onehippo.cms7</groupId>
+     <artifactId>hippo-cms7-commons</artifactId> 
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>]]></source>
 
       <subsection name="Add the Forge repository configuration">
           <p>In the main <code>pom.xml</code> of the project, in the <code>repositories</code> section, add this repository if it is not configured there yet.</p>

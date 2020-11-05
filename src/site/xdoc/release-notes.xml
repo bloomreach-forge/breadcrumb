@@ -19,7 +19,18 @@
     <title>Release Notes</title>
   </properties>
   <body>
+  
     <section name="Release Notes">
+     <subsection name="5.0.0">
+        <p class="smallinfo">Release Date: 6 November 2020</p>
+        <ul>
+          <li>Making Breadcrumb component configurable</li>
+          <li>A separator for the links that are displayed.Value can be entered to the text field for separator.</li>
+          <li>addContentBased flag, a boolean value can be assigned using the checkbox field "addContentBased"</li>
+          <li>linkNotFoundMode to handle the entries of pagenotfound sitemapitem. Values can be selected from the dropdown field "linkNotFoundMode".</li>
+          <li>addTrailingDocumentOnly flag to change the way breadcrumb items can be displayed on the pages. A boolean value can be assigned using the checkbox field </li>
+        </ul>
+      </subsection>
       <subsection name="4.0.0">
         <p class="smallinfo">Release Date: 29 May 2020</p>
         <ul>

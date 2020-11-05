@@ -15,11 +15,14 @@
  */
 package org.onehippo.forge.breadcrumb.components;
 
+import javax.servlet.ServletContext;
+
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
+import org.hippoecm.hst.core.request.ComponentConfiguration;
 
 /**
  * Standard HST Breadcrumb component.
@@ -27,15 +30,21 @@ import org.hippoecm.hst.core.parameters.ParametersInfo;
 
 @ParametersInfo(type = BreadcrumbConfigInfo.class)
 public class BreadcrumbComponent extends BaseHstComponent {
-    private BreadcrumbProvider breadcrumbProvider;
+	private BreadcrumbProvider breadcrumbProvider;
+	public BreadcrumbConfigInfo info;
 
-    @Override
-    public void doBeforeRender(final HstRequest request, final HstResponse response) throws HstComponentException {
-        super.doBeforeRender(request, response);
-        BreadcrumbConfigInfo info = getComponentParametersInfo(request); 
-        breadcrumbProvider = new BreadcrumbProvider(this, info.getSeparator(), info.getDisplayOption());
-        request.setAttribute(BreadcrumbProvider.ATTRIBUTE_NAME, breadcrumbProvider.getBreadcrumb(request));
-    }
+	@Override
+	public void doBeforeRender(final HstRequest request, final HstResponse response) throws HstComponentException {
+		super.doBeforeRender(request, response);
+		info = getComponentParametersInfo(request);
+		breadcrumbProvider = new BreadcrumbProvider(this, info);
+		request.setAttribute(BreadcrumbProvider.ATTRIBUTE_NAME, breadcrumbProvider.getBreadcrumb(request));
+	}
 
+	@Override
+	public void init(final ServletContext servletContext, final ComponentConfiguration componentConfig)
+			throws HstComponentException {
+		super.init(servletContext, componentConfig);
 
+	}
 }
