@@ -1,0 +1,5 @@
+definitions:
+  namespace:
+    breadcrumb:
+      uri: http://www.breadcrumb.com/breadcrumb/nt/1.0
+      cnd: namespaces/breadcrumb.cnd

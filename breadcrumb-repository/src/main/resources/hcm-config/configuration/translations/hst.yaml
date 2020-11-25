@@ -1,0 +1,48 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:hst/componentparameters/org/onehippo/forge:
+      jcr:primaryType: hipposys:resourcebundles
+      /breadcrumb:
+        jcr:primaryType: hipposys:resourcebundles
+        /components:
+          jcr:primaryType: hipposys:resourcebundles
+          /BreadcrumbParametersInfo:
+            jcr:primaryType: hipposys:resourcebundles
+            /de:
+              jcr:primaryType: hipposys:resourcebundle
+              separator: scheidingsteken
+              linkNotFoundMode: link niet gevonden modus
+              linkNotFoundMode#hide: Zich verstoppen
+              linkNotFoundMode#unlink: Ontkoppelen
+              addTrailingDocumentOnly: alleen achterliggend document toevoegen
+              addContentBased: op basis van inhoud toevoegen
+              breadcrumbMenus: breadcrumb menu's
+              addTrailingDocumentOnly.hint: het voegt alleen het document toe en kijkt
+                niet naar het pad tussen het huidige document
+              separator.hint: voeg een toe voor de links die worden weergegeven e.g.
+                "»"
+              linkNotFoundMode.hint: specificeert alternatief gedrag met betrekking
+                tot het weergeven van paginaniet gevonden sitemapitem
+              addContentBased.hint: als er geen actief menu is, wordt de broodkruimel
+                gemaakt op basis van inhoud
+              breadcrumbMenus.hint: door komma's gescheiden lijst met menunamen, standaard
+                is "main"
+            /en:
+              jcr:primaryType: hipposys:resourcebundle
+              separator: Separator
+              linkNotFoundMode: LinkNotFoundMode
+              linkNotFoundMode#hide: Hide
+              linkNotFoundMode#unlink: Unlink
+              addTrailingDocumentOnly: AddTrailingDocumentOnly
+              addContentBased: AddContentBased
+              breadcrumbMenus: BreadcrumbMenus
+              addTrailingDocumentOnly.hint: it just adds the document and not look
+                at path between current document
+              separator.hint: add a separator for the links that are displayed e.g.
+                "»"
+              linkNotFoundMode.hint: specifies alternative behavior regarding rendering
+                of pagenotfound sitemapitem
+              addContentBased.hint: if there is no active menu the breadcrumb is created
+                from content
+              breadcrumbMenus.hint: comma separated list of menu names, default is
+                "main"

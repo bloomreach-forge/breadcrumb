@@ -28,10 +28,10 @@ import org.hippoecm.hst.core.request.ComponentConfiguration;
  * Standard HST Breadcrumb component.
  */
 
-@ParametersInfo(type = BreadcrumbConfigInfo.class)
+@ParametersInfo(type = BreadcrumbParametersInfo.class)
 public class BreadcrumbComponent extends BaseHstComponent {
 	private BreadcrumbProvider breadcrumbProvider;
-	public BreadcrumbConfigInfo info;
+	public BreadcrumbParametersInfo info;
 
 	@Override
 	public void doBeforeRender(final HstRequest request, final HstResponse response) throws HstComponentException {

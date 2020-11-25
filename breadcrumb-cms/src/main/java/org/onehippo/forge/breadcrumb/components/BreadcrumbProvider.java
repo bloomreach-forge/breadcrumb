@@ -64,6 +64,7 @@ public class BreadcrumbProvider {
 	public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
 	public static final String PARAMETER_ADD_CONTENT_BASED = "breadcrumb-add-content-based";
 	public static final String PARAMETER_LINK_NOT_FOUND_MODE = "breadcrumb-link-not-found-mode";
+	public static final String PARAMETER_ADD_TRAILING_DOCUMENT =  "breadcrumb-add-trailing-document";
 
 	public static final String DEFAULT_MENU_NAME = "main";
 	public static final String DEFAULT_SEPARATOR = "&#187;";
@@ -109,7 +110,7 @@ public class BreadcrumbProvider {
 	 *
 	 * @param component component that has extra flag "separator" this provider
 	 */
-	public BreadcrumbProvider(final BaseHstComponent component, BreadcrumbConfigInfo info) {
+	public BreadcrumbProvider(final BaseHstComponent component, BreadcrumbParametersInfo info) {
 		this.component = component;
 		this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
 		this.breadcrumbSeparator = info.getSeparator();
