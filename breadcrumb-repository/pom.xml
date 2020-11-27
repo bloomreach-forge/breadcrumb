@@ -5,9 +5,6 @@
     <artifactId>breadcrumb</artifactId>
     <version>4.0.1-SNAPSHOT</version>
   </parent>
-  
-  <name>Breadcrumb Repository Data For Application</name>
-  <description>Breadcrumb Repository Data For Application</description>
   <artifactId>breadcrumb-repository</artifactId>
- 
+  <name>Breadcrumb repository module </name>
 </project>
