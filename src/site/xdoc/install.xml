@@ -67,13 +67,34 @@
             <source><![CDATA[
 <dependency>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
-  <artifactId>breadcrumb</artifactId>
+  <artifactId>breadcrumb-root</artifactId>
   <version>${forge.breadcrumb.version}</version>
+  <type>pom</type>
 </dependency>]]></source>
             <p class="alert alert-info">
               Note: before version 4.0.0, the artifacts' groupId was <code>org.onehippo.forge</code>
             </p>
-          </li>
+            </li>
+            <li>
+            <p>Add the following dependency to your components(sub-module under site module) pom.xml </p>
+            <source><![CDATA[
+    <dependency>
+      <groupId>org.bloomreach.forge.breadcrumb</groupId>
+      <artifactId>breadcrumb</artifactId>
+       <version>${forge.breadcrumb.version}</version>
+    </dependency> ]]></source>
+            </li>
+            
+             <li>
+            <p>Add the following dependency to your cms-dependencies pom.xml </p>
+            <source><![CDATA[
+    <dependency>
+      <groupId>org.bloomreach.forge.breadcrumb</groupId>
+      <artifactId>breadcrumb-repository</artifactId>
+       <version>${forge.breadcrumb.version}</version>
+    </dependency> ]]></source>
+            </li>
+          
           <li>
             <p>
               Rebuild your project using Maven and go to <a href="configuration.html">configuration</a>.

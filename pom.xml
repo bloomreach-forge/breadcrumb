@@ -25,7 +25,7 @@
   <name>Bloomreach Forge Breadcrumb Plugin</name>
   <description>Breadcrumb component for Hippo Site Toolkit</description>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
-  <artifactId>breadcrumb</artifactId>
+  <artifactId>breadcrumb-root</artifactId>
   <version>4.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -157,16 +157,6 @@
         <version>${maven.plugin.site.version}</version>
       </plugin>
     </plugins>
-    
-    <resources>
-      <resource>
-        <filtering>false</filtering>
-        <directory>${basedir}/src/main/java</directory>
-        <includes>
-          <include>**/*.properties</include>
-        </includes>
-      </resource>
-    </resources>
   </build>
 
   <profiles>
@@ -188,6 +178,6 @@
   </profiles>
   <modules>
   	<module>breadcrumb-repository</module>
-  	<module>breadcrumb-cms</module>
+  	<module>breadcrumb</module>
   </modules>
 </project>

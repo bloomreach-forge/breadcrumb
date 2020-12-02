@@ -2,9 +2,20 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.bloomreach.forge.breadcrumb</groupId>
-    <artifactId>breadcrumb</artifactId>
+    <artifactId>breadcrumb-root</artifactId>
     <version>4.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>breadcrumb-repository</artifactId>
-  <name>Breadcrumb repository module </name>
+  <name>Breadcrumb repository module</name>
+  <build>
+  <resources>
+    <resource>
+      <directory>src/main/resources</directory>
+      <filtering>false</filtering>
+      <includes>
+        <include>**/*.yaml</include>
+      </includes>
+    </resource>
+    </resources>
+  </build>
 </project>

@@ -21,8 +21,8 @@
   <body>
   
     <section name="Release Notes">
-     <subsection name="5.0.0">
-        <p class="smallinfo">Release Date: 6 November 2020</p>
+     <subsection name="4.1.0">
+        <p class="smallinfo">Release Date: 2 December 2020</p>
         <ul>
           <li>Making Breadcrumb component configurable</li>
           <li>A separator for the links that are displayed.Value can be entered to the text field for separator.</li>

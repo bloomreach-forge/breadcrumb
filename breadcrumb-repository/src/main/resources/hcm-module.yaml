@@ -1,7 +1,7 @@
 group:
-  name: bloomreach-forge
-  after: hippo-cms
-project:
   name: breadcrumb
-module: breadcrumb-repository
+  after: hippo-cms
+project: breadcrumb
+module:
+  name: breadcrumb-repository
   

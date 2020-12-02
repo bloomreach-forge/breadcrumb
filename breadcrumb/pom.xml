@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.bloomreach.forge.breadcrumb</groupId>
-    <artifactId>breadcrumb</artifactId>
+    <artifactId>breadcrumb-root</artifactId>
     <version>4.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>breadcrumb-cms</artifactId>
+  <artifactId>breadcrumb</artifactId>
   <name>Breadcrumb components module</name>
 </project>
