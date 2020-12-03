@@ -8,7 +8,7 @@ definitions:
           jcr:primaryType: hipposys:resourcebundles
           /BreadcrumbParametersInfo:
             jcr:primaryType: hipposys:resourcebundles
-            /de:
+            /nl:
               jcr:primaryType: hipposys:resourcebundle
               separator: scheidingsteken
               linkNotFoundMode: link niet gevonden modus
