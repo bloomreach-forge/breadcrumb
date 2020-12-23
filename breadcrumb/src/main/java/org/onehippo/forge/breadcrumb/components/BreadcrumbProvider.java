@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2009-2020 Bloomreach
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.core.request.ResolvedSiteMapItem;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenu;
 import org.hippoecm.hst.core.sitemenu.HstSiteMenuItem;
-import org.onehippo.forge.breadcrumb.components.BreadcrumbProvider;
+
 import org.onehippo.forge.breadcrumb.om.Breadcrumb;
 import org.onehippo.forge.breadcrumb.om.BreadcrumbItem;
 import org.slf4j.Logger;
@@ -64,7 +64,7 @@ public class BreadcrumbProvider {
 	public static final String PARAMETER_SEPARATOR = "breadcrumb-separator";
 	public static final String PARAMETER_ADD_CONTENT_BASED = "breadcrumb-add-content-based";
 	public static final String PARAMETER_LINK_NOT_FOUND_MODE = "breadcrumb-link-not-found-mode";
-	public static final String PARAMETER_ADD_TRAILING_DOCUMENT =  "breadcrumb-add-trailing-document";
+	public static final String PARAMETER_ADD_TRAILING_DOCUMENT_ONLY =  "breadcrumb-add-trailing-document-only";
 
 	public static final String DEFAULT_MENU_NAME = "main";
 	public static final String DEFAULT_SEPARATOR = "&#187;";
@@ -93,33 +93,34 @@ public class BreadcrumbProvider {
 	/**
 	 * Constructor
 	 *
-	 * @param component component that creates this provider
-	 */
-	@SuppressWarnings("unused")
-	public BreadcrumbProvider(final BaseHstComponent component) {
-		this.component = component;
-		this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
-		this.breadcrumbSeparator = component.getComponentParameter(PARAMETER_SEPARATOR);
-		this.addContentBased = Boolean.valueOf(component.getComponentParameter(PARAMETER_ADD_CONTENT_BASED));
-		this.linkNotFoundMode = LinkNotFoundMode
-				.safeValueOf(component.getComponentParameter(PARAMETER_LINK_NOT_FOUND_MODE));
-	}
-
-	/**
-	 * Constructor
-	 *
 	 * @param component component that has extra flag "separator" this provider
 	 */
 	public BreadcrumbProvider(final BaseHstComponent component, BreadcrumbParametersInfo info) {
 		this.component = component;
-		this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
+
+		this.breadcrumbMenus = info.getBreadcrumbMenus();
 		this.breadcrumbSeparator = info.getSeparator();
 		this.addContentBased = info.getAddContentBased();
 		this.linkNotFoundMode = LinkNotFoundMode.safeValueOf(info.getLinkNotFoundMode());
-		this.addTrailingDocumentOnly = info.getDisplayOption();
+		this.addTrailingDocumentOnly = info.getAddTrailingDocumentOnly();
 	}
 
-	/**
+    /**
+     * Constructor
+     *
+     * @param component component that creates this provider
+     */
+    @SuppressWarnings("unused")
+    public BreadcrumbProvider(final BaseHstComponent component) {
+        this.component = component;
+
+        this.breadcrumbMenus = component.getComponentParameter(PARAMETER_MENUS);
+        this.breadcrumbSeparator = component.getComponentParameter(PARAMETER_SEPARATOR);
+        this.addContentBased = Boolean.parseBoolean(component.getComponentParameter(PARAMETER_ADD_CONTENT_BASED));
+        this.linkNotFoundMode = LinkNotFoundMode.safeValueOf(component.getComponentParameter(PARAMETER_LINK_NOT_FOUND_MODE));
+    }
+
+    /**
 	 * Constructor with an extra flag that determines behaviour for the trailing
 	 * items
 	 *
