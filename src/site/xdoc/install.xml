@@ -26,14 +26,6 @@
           a Maven multi-module project consisting of at least three submodules: cms, site and repository-data.
         </p>
       </subsection>
-      <subsection name="Add dependency to Breadcrumb project"></subsection>
-      <p>Add the below dependency to main pom.xml of Breadcrumb project</p>
-          <source><![CDATA[ <dependency>
-     <groupId>org.onehippo.cms7</groupId>
-     <artifactId>hippo-cms7-commons</artifactId> 
-      <version>${hst.version}</version>
-      <scope>provided</scope>
-    </dependency>]]></source>
 
       <subsection name="Add the Forge repository configuration">
           <p>In the main <code>pom.xml</code> of the project, in the <code>repositories</code> section, add this repository if it is not configured there yet.</p>
@@ -63,38 +55,37 @@
             <p><b>Note:</b> always check for the latest version number and compatibility with the project on the <a href="release-notes.html">Release Notes page</a>.</p>
           </li>
           <li>
-            <p>Add the following dependency to the site pom.xml of the project</p>
+            <p>Add the following dependency to the site components pom.xml</p>
             <source><![CDATA[
 <dependency>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
-  <artifactId>breadcrumb-root</artifactId>
+  <artifactId>breadcrumb</artifactId>
   <version>${forge.breadcrumb.version}</version>
-  <type>pom</type>
 </dependency>]]></source>
             <p class="alert alert-info">
               Note: before version 4.0.0, the artifacts' groupId was <code>org.onehippo.forge</code>
             </p>
-            </li>
-            <li>
-            <p>Add the following dependency to your components(sub-module under site module) pom.xml </p>
+           </li>
+           <li>
+            <p>Add the following dependency to your cms-dependencies pom.xml</p>
             <source><![CDATA[
-    <dependency>
-      <groupId>org.bloomreach.forge.breadcrumb</groupId>
-      <artifactId>breadcrumb</artifactId>
-       <version>${forge.breadcrumb.version}</version>
-    </dependency> ]]></source>
-            </li>
-            
-             <li>
-            <p>Add the following dependency to your cms-dependencies pom.xml </p>
+<dependency>
+  <groupId>org.bloomreach.forge.breadcrumb</groupId>
+  <artifactId>breadcrumb-repository</artifactId>
+  <version>${forge.breadcrumb.version}</version>
+</dependency>]]></source>
+             <p class="alert alert-info">
+               Note: this artifact exists since version 4.1.0.
+             </p>
+          </li>
+          <li>
+            Make sure your project bootstraps after 'bloomreach-forge' group. Typically, add it in file repository-data/application/src/main/resources/hcm-module.yaml:
             <source><![CDATA[
-    <dependency>
-      <groupId>org.bloomreach.forge.breadcrumb</groupId>
-      <artifactId>breadcrumb-repository</artifactId>
-       <version>${forge.breadcrumb.version}</version>
-    </dependency> ]]></source>
-            </li>
-          
+group:
+  name: <your-group-name>
+  after: [hippo-cms, bloomreach-forge]
+]]></source>
+          </li>
           <li>
             <p>
               Rebuild your project using Maven and go to <a href="configuration.html">configuration</a>.

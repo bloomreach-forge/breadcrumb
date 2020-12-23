@@ -22,13 +22,10 @@
   
     <section name="Release Notes">
      <subsection name="4.1.0">
-        <p class="smallinfo">Release Date: 2 December 2020</p>
+        <p class="smallinfo">Release Date: January 2021</p>
         <ul>
-          <li>Making Breadcrumb component configurable</li>
-          <li>A separator for the links that are displayed.Value can be entered to the text field for separator.</li>
-          <li>addContentBased flag, a boolean value can be assigned using the checkbox field "addContentBased"</li>
-          <li>linkNotFoundMode to handle the entries of pagenotfound sitemapitem. Values can be selected from the dropdown field "linkNotFoundMode".</li>
-          <li>addTrailingDocumentOnly flag to change the way breadcrumb items can be displayed on the pages. A boolean value can be assigned using the checkbox field </li>
+          <li><a href="https://issues.onehippo.com/browse/HIPFORGE-365">HIPFORGE-365</a><br/>
+             Make the Breadcrumb component configurable from the Experience Manager, see <a href="configuration.html">Configuration page</a>.</li>
         </ul>
       </subsection>
       <subsection name="4.0.0">

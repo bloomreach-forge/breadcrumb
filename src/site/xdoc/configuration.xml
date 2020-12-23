@@ -42,13 +42,10 @@
             <th>Description</th>
           </tr>
           <tr>
-            <td>breadcrumb-separator</td>
-            <td>A separator for the links that are displayed.
-              <br/>Value can be entered to the text field for separator. The default is right double angle quotes "&#187;".</td>
-          </tr>
-          <tr>
             <td>breadcrumb-menus</td>
-            <td>Comma separated list of menu names. The first part of the breadcrumb is generated from the expanded site menu items of the menu named 'main'
+            <td>
+              <strong>Not visible in the Experience Manager</strong> since webmasters do not know internal menu names.<br/>
+              Comma separated list of menu names. The first part of the breadcrumb is generated from the expanded site menu items of the menu named 'main'
               or from multiple menu's as configured by this parameter. The last (trailing) part of the breadcrumb is
               generated from the resolved sitemap item belonging to the current request.
               The trailing items are based on the current resolved sitemap item and then moving upwards, until the
@@ -56,9 +53,16 @@
               <br/>The default is "main".</td>
           </tr>
           <tr>
+            <td>breadcrumb-separator</td>
+            <td>
+              <strong>Visible in the Experience Manager (since 4.1.0)</strong><br/>
+              A separator for the links that are displayed.<br/>
+              Value can be entered to the text field for separator. The default is right double angle quotes "&#187;".</td>
+          </tr>
+          <tr>
             <td>breadcrumb-add-content-based</td>
             <td>
-              <strong>Since 1.5.0</strong><br/>
+              <strong>Visible in the Experience Manager (since 4.1.0)</strong><br/>
               If 'true', and there is no active menu item to base the breadcrumb on, the breadcrumb is created from
               content, i.e. with items pointing to the current content bean and to upward content folders, if URLs
               exist for those.
@@ -67,20 +71,19 @@
           <tr>
             <td>breadcrumb-link-not-found-mode</td>
             <td>
-              <strong>Since 2.0.0</strong><br/>
-              Entries of the breadcrumb path may link to the pagenotfound sitemapitem, effectively giving a 404 if the user navigates to them. This parameter
+              <strong>Visible in the Experience Manager (since 4.1.0)</strong><br/>
+              Entries of the breadcrumb path may link to the 'pagenotfound' sitemap item, effectively giving a 404 if the user navigates to them. This parameter
               specifies alternative behaviour regarding rendering these items: if the value is "hide", the plugin will not render these entries at all. If the value is "unlink", the
               plugin will render the entries but without a link (so, as plain text).
               <br/>Values can be selected from the dropdown field "linkNotFoundMode". The default is <code>null</code>, meaning no rendering behaviour change.
           </td>
           </tr>
           <tr>
-            <td>addTrailingDocumentOnly</td>
+            <td>breadcrumb-add-trailing-document-only</td>
             <td>
-              <strong>Since 5.0.0</strong><br/>
-              set a flag 'addTrailingDocumentOnly' that changes behaviour of the breadcrumb provider: it does not look at path between current document
+              <strong>Visible in the Experience Manager (since 4.1.0)</strong><br/>
+              Set a flag that changes behaviour of the breadcrumb provider: it does not look at path between current document
               and deepest expanded menu item but just adds the document.
-              <br/>A boolean value can be assigned using the checkbox field "addTrailingDocumentOnly".
               The default is <code>false</code>, meaning it looks at path between current document and deepest expanded menu item.
           </td>
           </tr>
@@ -104,7 +107,7 @@
 
       <subsection name="Example of a template for the Breadcrumb">
         <p>Create a Freemarker template such as the following example in the project's webfiles module, per default at
-          <code>repository-data/webfiles/src/main/resources/site/freemarker/myhippoproject/breadcrumb.ftl</code></p>
+          <code>repository-data/webfiles/src/main/resources/site/freemarker/myproject/breadcrumb.ftl</code></p>
         <source><![CDATA[
 <#include "../include/imports.ftl">
 
@@ -125,25 +128,25 @@
       <subsection name="HST Configuration">
         <ol>
           <li>
-            <p>In the console, add node <code>breadcrumb.template</code> to <code>/hst:hst/hst:configurations/myhippoproject/hst:templates</code>
+            <p>In the console, add node <code>breadcrumb.template</code> to <code>/hst:hst/hst:configurations/myproject/hst:templates</code>
               as defined in the YAML below and have it auto-exported.</p>
             <p>Alternatively, append the following piece of YAML to the existing
-              <code>repository-data/application/src/main/resources/hcm-config/hst/configurations/myhippoproject/templates.yaml</code> file:</p>
+              <code>repository-data/application/src/main/resources/hcm-config/hst/configurations/myproject/templates.yaml</code> file:</p>
             <source><![CDATA[
 /breadcrumb.template:
   jcr:primaryType: hst:template
-  hst:renderpath: webfile:/freemarker/myhippoproject/breadcrumb.ftl
+  hst:renderpath: webfile:/freemarker/myproject/breadcrumb.ftl
 ]]></source>
           </li>
           <li>
-            <p>In the console, add node <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/myhippoproject/hst:components</code>
+            <p>In the console, add node <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/myproject/hst:components</code>
               as defined in the YAML below and have it auto-exported.</p>
             <p>Alternatively, create <code>breadcrumb.yaml</code> in
-              <code>repository-data/application/src/main/resources/hcm-config/hst/configurations/myhippoproject/components/</code>:</p>
+              <code>repository-data/application/src/main/resources/hcm-config/hst/configurations/myproject/components/</code>:</p>
             <source><![CDATA[
 definitions:
   config:
-    /hst:hst/hst:configurations/myhippoproject/hst:components/breadcrumb:
+    /hst:hst/hst:configurations/myproject/hst:components/breadcrumb:
       jcr:primaryType: hst:component
       hst:componentclassname: org.onehippo.forge.breadcrumb.components.BreadcrumbComponent
       hst:template: breadcrumb.template]]></source>
@@ -151,10 +154,10 @@ definitions:
         </ol>
       </subsection>
       <subsection name="Applying breadcrumb to pages">
-        <p>To apply the breadcrumb to pages in the website, use the standard method, see
-            <a href="https://www.onehippo.org/library/concepts/component-development/hstcomponent-configuration.html">HST Component Configuration</a> page.</p>
+        <p>To apply the breadcrumb to pages in the website, you can use the developer's method, see
+            <a href="https://documentation.bloomreach.com/14/library/concepts/component-development/hstcomponent-configuration.html">HST Component Configuration</a> page.</p>
         <p>For example, to apply the breadcrumb to all pages, add node <code>breadcrumb</code> to
-              <code>/hst:hst/hst:configurations/myhippoproject/hst:abstractpages/base</code>.
+              <code>/hst:hst/hst:configurations/myproject/hst:abstractpages/base</code>.
               Auto-export should insert a piece of yaml that looks like this:</p>
         <source><![CDATA[
 /breadcrumb:
@@ -164,19 +167,19 @@ definitions:
           <code><![CDATA[<@hst.include ref="breadcrumb"/>]]></code></p>
       </subsection>
       <subsection name="Adding breadcrumb component to catalog"> 
-      <p>To drag and drop breadcrumb component to a page, it should be added to the essentials catalog.</p>
-      <p>For example, to add the breadcrumb component to essentials-catalog, after creating breadcrumb template, add node <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/hst:default/hst:catalog/essentials-catalog/</code>.
+      <p>To be able to drag and drop the breadcrumb component to a page in the Experience Manager, it should be added to
+        your project's catalog.</p>
+      <p>For example, add node <code>breadcrumb</code> to <code>/hst:hst/hst:configurations/myproject/hst:catalog/myproject-catalog/</code>.
           Auto-export should insert a piece of yaml that looks like this:</p>
        <source><![CDATA[
 /breadcrumb:
   jcr:primaryType: hst:containeritemcomponent
   hst:componentclassname:org.onehippo.forge.breadcrumb.components.BreadcrumbComponent
-  hst:iconpath: images/essentials/catalog-component-icons/breadrumb.png
+  hst:iconpath: images/myproject/catalog-component-icons/breadrumb.png
   hst:label: Breadcrumb
   hst:template: breadcrumb.template]]></source>
-  <p><b>Note:</b> add the provided breadcrumb icon image in the Resource folder to your existing project at <code>/myproject-webapp/src/main/webapp/images/essentials/catalog-component-icons</code>
-            </p>
-   <p>You should be able to drag and drop the Breadcrumb component on the pages you want. Configure the component as required and see the changes.</p>         
+  <p><b>Note:</b> add your own breadcrumb icon image in the Resource folder to your existing project at <code>/myproject-webapp/src/main/webapp/images/myproject/catalog-component-icons</code></p>
+   <p>You now should be able to drag and drop the Breadcrumb component on the pages you want. Configure the component as required and see the changes.</p>
       </subsection>
     </section>
   </body>
