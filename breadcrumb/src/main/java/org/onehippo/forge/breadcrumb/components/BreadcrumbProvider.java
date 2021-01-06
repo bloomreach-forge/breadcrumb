@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2020 Bloomreach
+ * Copyright 2009-2021 Bloomreach
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@ public class BreadcrumbProvider {
 	 *
 	 * @param component component that has extra flag "separator" this provider
 	 */
-	public BreadcrumbProvider(final BaseHstComponent component, BreadcrumbParametersInfo info) {
+	public BreadcrumbProvider(final BaseHstComponent component, final BreadcrumbParametersInfo info) {
 		this.component = component;
 
 		this.breadcrumbMenus = info.getBreadcrumbMenus();
@@ -164,8 +164,7 @@ public class BreadcrumbProvider {
 		log.debug("{} created {} menu based breadcrumb items: {}", this.getClass().getName(), breadcrumbItems.size(),
 				breadcrumbItems);
 
-		// create items from current content bean and upwards to a current menu item or
-		// to content base
+		// create items from current content bean and upwards to a current menu item or to content base
 		final List<BreadcrumbItem> contentBreadcrumbItems = getContentBreadcrumbItems(request, deepestMenuItem);
 		log.debug("{} created {} content based breadcrumb items: {}", this.getClass().getName(),
 				contentBreadcrumbItems.size(), contentBreadcrumbItems);
@@ -175,8 +174,7 @@ public class BreadcrumbProvider {
 		log.info("{} created {} breadcrumb items: {}", this.getClass().getName(), breadcrumbItems.size(),
 				breadcrumbItems.stream().map(BreadcrumbItem::getTitle).toArray());
 
-		// post process the generated breadcrumb for any entries that point to
-		// pagenotfound
+		// post process the generated breadcrumb for any entries that point to pagenotfound
 		if (linkNotFoundMode != null) {
 			postProcessItemsForNotFoundLinks(request, breadcrumbItems);
 			log.info("{} post processed breadcrumb entries, using mode for not found links: {}",
