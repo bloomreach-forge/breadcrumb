@@ -1,5 +1,5 @@
 <!--
-    Copyright 2020 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.bloomreach.forge.breadcrumb</groupId>
     <artifactId>breadcrumb-root</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.1-SNAPSHOT</version>
   </parent>
 
   <name>Bloomreach Forge Breadcrumb Component</name>
