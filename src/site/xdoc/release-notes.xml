@@ -22,7 +22,7 @@
   
     <section name="Release Notes">
      <subsection name="4.1.0">
-        <p class="smallinfo">Release Date: January 2021</p>
+        <p class="smallinfo">Release Date: 8 January 2021</p>
         <ul>
           <li><a href="https://issues.onehippo.com/browse/HIPFORGE-365">HIPFORGE-365</a><br/>
              Make the Breadcrumb component configurable from the Experience Manager, see <a href="configuration.html">Configuration page</a>.</li>
