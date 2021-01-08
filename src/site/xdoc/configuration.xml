@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2010-2020 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2021 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -178,8 +178,10 @@ definitions:
   hst:iconpath: images/myproject/catalog-component-icons/breadrumb.png
   hst:label: Breadcrumb
   hst:template: breadcrumb.template]]></source>
-  <p><b>Note:</b> add your own breadcrumb icon image in the Resource folder to your existing project at <code>/myproject-webapp/src/main/webapp/images/myproject/catalog-component-icons</code></p>
-   <p>You now should be able to drag and drop the Breadcrumb component on the pages you want. Configure the component as required and see the changes.</p>
+  <p><b>Note:</b> add a breadcrumb icon image in the Resource folder to your existing project at <code>/myproject-webapp/src/main/webapp/images/myproject/catalog-component-icons</code>.
+    For example, <a href="breadcrumb_icon.png">this icon here</a>.</p>
+   <p>After rebuilding and restarting you should now be able to drag and drop the Breadcrumb component on the pages you want.
+     Configure the component as required and see the changes.</p>
       </subsection>
     </section>
   </body>
