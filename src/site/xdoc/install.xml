@@ -55,7 +55,7 @@
             <p><b>Note:</b> always check for the latest version number and compatibility with the project on the <a href="release-notes.html">Release Notes page</a>.</p>
           </li>
           <li>
-            <p>Add the following dependency to the site pom.xml of the project</p>
+            <p>Add the following dependency to the site components pom.xml</p>
             <source><![CDATA[
 <dependency>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
@@ -65,6 +65,26 @@
             <p class="alert alert-info">
               Note: before version 4.0.0, the artifacts' groupId was <code>org.onehippo.forge</code>
             </p>
+           </li>
+           <li>
+            <p>Add the following dependency to your cms-dependencies pom.xml</p>
+            <source><![CDATA[
+<dependency>
+  <groupId>org.bloomreach.forge.breadcrumb</groupId>
+  <artifactId>breadcrumb-repository</artifactId>
+  <version>${forge.breadcrumb.version}</version>
+</dependency>]]></source>
+             <p class="alert alert-info">
+               Note: this artifact exists since version 4.1.0.
+             </p>
+          </li>
+          <li>
+            Make sure your project bootstraps after 'bloomreach-forge' group. Typically, add it in file repository-data/application/src/main/resources/hcm-module.yaml:
+            <source><![CDATA[
+group:
+  name: <your-group-name>
+  after: [hippo-cms, bloomreach-forge]
+]]></source>
           </li>
           <li>
             <p>

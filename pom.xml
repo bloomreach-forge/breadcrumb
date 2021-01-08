@@ -23,11 +23,11 @@
   </parent>
 
   <name>Bloomreach Forge Breadcrumb Plugin</name>
-  <description>Breadcrumb component for Hippo Site Toolkit</description>
+  <description>Bloomreach Forge Breadcrumb Plugin</description>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
-  <artifactId>breadcrumb</artifactId>
-  <version>4.0.0</version>
-  <packaging>jar</packaging>
+  <artifactId>breadcrumb-root</artifactId>
+  <version>4.1.0</version>
+  <packaging>pom</packaging>
 
   <inceptionYear>2009</inceptionYear>
 
@@ -63,7 +63,7 @@
     <hst.version>14.0.0</hst.version>
     <junit.version>4.10</junit.version>
 
-    <maven.plugin.site.version>3.7.1</maven.plugin.site.version>
+    <maven.plugin.site.version>3.9.1</maven.plugin.site.version>
   </properties>
 
   <dependencies>
@@ -82,6 +82,13 @@
     <dependency>
       <groupId>org.onehippo.cms7.hst.components</groupId>
       <artifactId>hst-core</artifactId>
+      <version>${hst.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+     <groupId>org.onehippo.cms7</groupId>
+     <artifactId>hippo-cms7-commons</artifactId> 
       <version>${hst.version}</version>
       <scope>provided</scope>
     </dependency>
@@ -116,6 +123,15 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.hippoecm/ippo-ecm-frontend-plugins -->
+     <dependency>
+      <groupId>org.hippoecm</groupId>
+      <artifactId>hippo-ecm-frontend-plugins</artifactId>
+      <version>2.16.13</version>
+      <scope>provided</scope>
+     </dependency>
+    
+    
   </dependencies>
 
   <repositories>
@@ -130,6 +146,11 @@
       <url>http://maven.onehippo.com/maven2-forge</url>
     </repository>
   </repositories>
+
+  <modules>
+    <module>breadcrumb-repository</module>
+    <module>breadcrumb</module>
+  </modules>
 
   <build>
     <defaultGoal>package</defaultGoal>

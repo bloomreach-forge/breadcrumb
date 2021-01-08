@@ -1,0 +1,6 @@
+group:
+  name: bloomreach-forge
+  after: hippo-cms
+project: breadcrumb
+module: breadcrumb-repository
+  

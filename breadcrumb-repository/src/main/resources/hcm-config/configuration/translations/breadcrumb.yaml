@@ -1,0 +1,34 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:hst/componentparameters/org/onehippo/forge:
+      jcr:primaryType: hipposys:resourcebundles
+      /breadcrumb:
+        jcr:primaryType: hipposys:resourcebundles
+        /components:
+          jcr:primaryType: hipposys:resourcebundles
+          /BreadcrumbParametersInfo:
+            jcr:primaryType: hipposys:resourcebundles
+            /nl:
+              jcr:primaryType: hipposys:resourcebundle
+              breadcrumb-separator: Scheidingsteken
+              breadcrumb-separator.hint: Specificeert het scheidingsteken tussen de links die worden weergegeven
+              breadcrumb-link-not-found-mode: Items met gebroken links
+              breadcrumb-link-not-found-mode#hide: Verbergen
+              breadcrumb-link-not-found-mode#unlink: Tonen zonder link
+              breadcrumb-link-not-found-mode.hint: Specificeert het gedrag voor items met gebroken links
+              breadcrumb-add-content-based: Items op basis van content
+              breadcrumb-add-content-based.hint: Als er geen actief menu is, maak het broodkruimelpad op basis van de content
+              breadcrumb-add-trailing-document-only: Alleen het huidige document toevoegen
+              breadcrumb-add-trailing-document-only.hint: Voeg slechts het huidige document toe en gebruik niet het pad tussen het menu en het huidige document
+            /en:
+              jcr:primaryType: hipposys:resourcebundle
+              breadcrumb-separator: Separator
+              breadcrumb-separator.hint: Specifies the separator between the links that are displayed
+              breadcrumb-link-not-found-mode: Items with broken links
+              breadcrumb-link-not-found-mode#hide: Hide
+              breadcrumb-link-not-found-mode#unlink: Unlink
+              breadcrumb-link-not-found-mode.hint: Specifies behavior regarding items with broken links
+              breadcrumb-add-content-based: Add items based on content
+              breadcrumb-add-content-based.hint: If there is no active menu item, create the breadcrumb from content tree
+              breadcrumb-add-trailing-document-only: Add only the current document
+              breadcrumb-add-trailing-document-only.hint: Only add the current document and don't use the path between the active menu item and the current document
