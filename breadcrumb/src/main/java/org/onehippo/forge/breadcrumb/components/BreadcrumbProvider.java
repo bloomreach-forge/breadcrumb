@@ -432,6 +432,10 @@ public class BreadcrumbProvider {
 
 			int steps = trailingPath.split("/").length;
 
+			if (trailingPath.endsWith("/_index_")) {
+				trailingPath = trailingPath.substring(0,trailingPath.indexOf("/_index_"));
+			}
+
 			HippoBean currentItemBean = currentBean;
 			for (int i = 0; i < steps; i++) {
 				BreadcrumbItem item = getBreadcrumbItem(request, currentItemBean);
