@@ -33,6 +33,6 @@ public class BreadcrumbComponent extends BaseHstComponent {
 
         final BreadcrumbParametersInfo info = getComponentParametersInfo(request);
         final BreadcrumbProvider breadcrumbProvider = new BreadcrumbProvider(this, info);
-		request.setAttribute(BreadcrumbProvider.ATTRIBUTE_NAME, breadcrumbProvider.getBreadcrumb(request));
+		request.setModel(BreadcrumbProvider.ATTRIBUTE_NAME, breadcrumbProvider.getBreadcrumb(request));
 	}
 }
