@@ -484,7 +484,7 @@ public class BreadcrumbProvider {
 		for (BreadcrumbItem item : items) {
 			HstSiteMapItem hstSiteMapItem = item.getLink().getHstSiteMapItem();
 			if (hstSiteMapItem != null) {
-				if (hstSiteMapItem.getComponentConfigurationId().endsWith(HST_PAGES_PAGENOTFOUND_ID)) {
+				if (StringUtils.isNotEmpty(hstSiteMapItem.getComponentConfigurationId()) && hstSiteMapItem.getComponentConfigurationId().endsWith(HST_PAGES_PAGENOTFOUND_ID)) {
 					item.getLink().setNotFound(true);
 				}
 				if (hstSiteMapItem.getComponentConfigurationIdMappings().size() != 0) {
