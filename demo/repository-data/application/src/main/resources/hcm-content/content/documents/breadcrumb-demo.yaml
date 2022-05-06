@@ -1,0 +1,9 @@
+/content/documents/breadcrumbdemo:
+  .meta:order-before: administration
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'hippotranslation:translated', 'mix:referenceable']
+  jcr:uuid: d91cb7d2-b8af-4d23-8c15-b4b6594e6c6d
+  hippo:name: Bloomreach Forge Breadcrumb Demo
+  hippostd:foldertype: [new-translated-folder, new-document]
+  hippotranslation:id: 996bcac5-86cf-49b5-a7a3-16a74863e814
+  hippotranslation:locale: en

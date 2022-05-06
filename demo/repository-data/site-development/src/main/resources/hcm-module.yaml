@@ -1,0 +1,6 @@
+site: breadcrumb-demo
+group: breadcrumb-demo
+project: breadcrumb-demo
+module:
+  name: breadcrumb-demo-repository-data-site-development
+  after: breadcrumb-demo-repository-data-site

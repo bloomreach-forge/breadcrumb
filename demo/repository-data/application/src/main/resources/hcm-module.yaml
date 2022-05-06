@@ -1,0 +1,6 @@
+group:
+  name: breadcrumb-demo
+  after: [hippo-cms, bloomreach-forge]
+project: breadcrumb-demo
+module:
+  name: breadcrumb-demo-repository-data-application

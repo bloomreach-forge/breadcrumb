@@ -1,0 +1,180 @@
+definitions:
+  config:
+    /hippo:namespaces/breadcrumbdemo/blogpost:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: c578f601-1f4d-4d08-bc9c-278494d791d5
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: d0e030cd-736d-4032-93dc-27ca760f8988
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['hipposysedit:remodel', 'mix:referenceable']
+          jcr:uuid: 099f2687-3241-4a84-bdb8-199e66bd44da
+          hipposysedit:node: true
+          hipposysedit:supertype: ['breadcrumbdemo:basedocument', 'hippostd:relaxed',
+            'hippotranslation:translated']
+          hipposysedit:uri: http://www.breadcrumbdemo.com/breadcrumbdemo/nt/1.0
+          /publicationdate:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: breadcrumbdemo:publicationdate
+            hipposysedit:primary: false
+            hipposysedit:type: Date
+            hipposysedit:validators: [required]
+          /title:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: breadcrumbdemo:title
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [required]
+          /introduction:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: breadcrumbdemo:introduction
+            hipposysedit:primary: false
+            hipposysedit:type: Text
+          /content:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: breadcrumbdemo:content
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+          /categories:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: false
+            hipposysedit:path: breadcrumbdemo:categories
+            hipposysedit:primary: false
+            hipposysedit:type: DynamicDropdown
+          /authors:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: breadcrumbdemo:authors
+            hipposysedit:primary: false
+            hipposysedit:type: hippo:mirror
+            hipposysedit:validators: [required]
+          /authornames:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: true
+            hipposysedit:ordered: true
+            hipposysedit:path: breadcrumbdemo:authornames
+            hipposysedit:primary: false
+            hipposysedit:type: String
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 49bd8f0d-c596-46a4-8d3e-6d6a582536fb
+        /hipposysedit:prototype:
+          jcr:primaryType: breadcrumbdemo:blogpost
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: c224df2f-4204-4e89-8e63-0fcaf2e86dea
+          breadcrumbdemo:authornames: ['']
+          breadcrumbdemo:introduction: ''
+          breadcrumbdemo:publicationdate: 0001-01-01T13:00:00+01:00
+          breadcrumbdemo:title: ''
+          hippo:related___pathreference: blogpost/hipposysedit:prototypes
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:creationDate: 2014-03-06T15:13:00+01:00
+          hippostdpubwf:lastModificationDate: 2014-03-06T15:13:00+01:00
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          /breadcrumbdemo:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: ''
+          /breadcrumbdemo:authors:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [engine, wicket.model, model.compareTo, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            extension.left: ${cluster.id}.left
+            extension.right: ${cluster.id}.right
+            plugin.class: org.hippoecm.frontend.editor.layout.TwoColumn
+            wicket.extensions: [extension.left, extension.right]
+            wicket.id: ${wicket.id}
+          /left:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.left.item
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+            wicket.id: ${cluster.id}.left
+          /right:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.right.item
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+            wicket.id: ${cluster.id}.right
+          /authors:
+            jcr:primaryType: frontend:plugin
+            field: authors
+            hint: authors.hint
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.right.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              nodetypes: ['breadcrumbdemo:author']
+          /publicationdate:
+            jcr:primaryType: frontend:plugin
+            field: publicationdate
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.right.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /title:
+            jcr:primaryType: frontend:plugin
+            field: title
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.left.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /introduction:
+            jcr:primaryType: frontend:plugin
+            field: introduction
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.left.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /content:
+            jcr:primaryType: frontend:plugin
+            field: content
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.left.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /categories:
+            jcr:primaryType: frontend:plugin
+            caption: Categories
+            field: categories
+            multiselect.type: selectlist
+            plugin.class: org.onehippo.forge.selection.frontend.plugin.DynamicMultiSelectPlugin
+            selectlist.maxrows: '8'
+            valuelist.provider: service.valuelist.default
+            wicket.id: ${cluster.id}.right.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+              source: /content/documents/breadcrumbdemo/blog/blog-categories
+          /taggable:
+            jcr:primaryType: frontend:plugin
+            mixin: hippostd:taggable
+            plugin.class: org.hippoecm.frontend.editor.plugins.mixin.MixinLoaderPlugin
+            wicket.id: ${cluster.id}.left.item
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig

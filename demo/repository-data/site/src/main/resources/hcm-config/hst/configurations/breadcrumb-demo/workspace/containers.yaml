@@ -1,0 +1,115 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/breadcrumbdemo/hst:workspace/hst:containers:
+      jcr:primaryType: hst:containercomponentfolder
+      /base:
+        jcr:primaryType: hst:containercomponentfolder
+        /top:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 2e70c8ab-9617-4910-a5a3-6e422c1d2d7a
+          hst:label: Top
+          hst:xtype: hst.vbox
+        /footer:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 89439c88-3b14-48c2-a034-5c99a9300ce0
+          hst:label: Footer
+          hst:xtype: hst.vbox
+      /homepage:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: efb67c8b-01ea-4dc1-bcf1-f70ad30ec054
+          hst:label: Home Page Main
+          hst:xtype: hst.vbox
+      /pagenotfound:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 38b0475e-f1df-47fe-8b4d-5430cd0390d2
+          hst:label: Page-Not-Found Main
+          hst:xtype: hst.vbox
+      /bloglistdetail:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: ffce1d52-2750-4d0e-abef-088e8a813650
+          hst:label: Blog List Main
+          hst:xtype: hst.vbox
+      /bloglistsidebar:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 725f5cb3-8cee-42f8-814b-3e93c5ac6b0c
+          hst:label: Blog List Sidebar
+          hst:xtype: hst.vbox
+      /blogpagesidebar:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 7ab4b8ae-c691-4685-8def-ec2a76f3f82f
+          hst:label: Blog Page Sidebar
+          hst:xtype: hst.vbox
+      /blogpagedetail:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 5253a008-a7ed-4468-b049-e29788e048a8
+          hst:label: Blog Page Main
+          hst:lastmodified: 2014-04-15T15:02:10.775+02:00
+          hst:xtype: hst.vbox
+      /eventslist:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 220f409f-f9ee-4e59-b94b-1f1694eea4df
+          hst:label: Event List Main
+          hst:xtype: hst.vbox
+      /eventspage:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 32de50cc-7baa-4054-9315-5d89a9172ae5
+          hst:label: Event Page Main
+          hst:xtype: hst.vbox
+      /newslist:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: df39999e-1f72-42a5-924a-98b7cec34b84
+          hst:label: News List Main
+          hst:xtype: hst.vbox
+      /newspage:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: c75a3a68-d9b5-44c7-b0b4-c3b0fef5d283
+          hst:label: News Page Main
+          hst:xtype: hst.vbox
+      /contentlist:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: 33cd98fc-52fa-40ca-a886-41cf1adb215d
+          hst:label: Content List Main
+          hst:xtype: hst.vbox
+      /contentpage:
+        jcr:primaryType: hst:containercomponentfolder
+        /main:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:containercomponent
+          hippo:identifier: d98f2cb7-63df-40a2-926f-120edfb939a3
+          hst:label: Content Page Main
+          hst:xtype: hst.vbox

@@ -1,0 +1,5 @@
+group: 
+  name: breadcrumb-demo
+project: breadcrumb-demo
+module:
+  name: breadcrumb-demo-repository-data-webfiles

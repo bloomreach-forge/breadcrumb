@@ -1,0 +1,15 @@
+definitions:
+  config:
+    /hippo:namespaces/breadcrumbdemo/basedocument:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 57626229-bce3-4d96-af3f-929c89b595c4
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 0b494d8f-55f6-4dc1-b8f5-70465aba0a28
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['hipposysedit:remodel']
+          hipposysedit:supertype: ['hippo:document', 'hippostdpubwf:document', 'hippostd:publishableSummary']
+          hipposysedit:uri: http://www.breadcrumbdemo.com/breadcrumbdemo/nt/1.0

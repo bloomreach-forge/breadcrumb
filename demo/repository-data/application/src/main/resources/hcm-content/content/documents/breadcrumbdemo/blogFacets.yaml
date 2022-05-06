@@ -1,0 +1,15 @@
+/content/documents/breadcrumbdemo/blogFacets:
+  jcr:primaryType: hippofacnav:facetnavigation
+  hippo:docbase: c79ffe6f-b0c5-4ad8-ab19-0baabe96bdb5
+  hippofacnav:facetnodenames: [Authors, Categories, Tags, Date]
+  hippofacnav:facets: ['breadcrumbdemo:authornames', 'breadcrumbdemo:categories',
+    'hippostd:tags', "breadcrumbdemo:publicationdate$[\n                {name:'Last\
+      \ 7 days',resolution:'day', begin:-6, end:1},\n                {name:'Last month',resolution:'day',\
+      \ begin:-30, end:1},\n                {name:'Last 3 months',resolution:'day',\
+      \ begin:-91, end:1},\n                {name:'Last 6 months',resolution:'day',\
+      \ begin:-182, end:1},\n                {name:'Last year',resolution:'day', begin:-365,\
+      \ end:1}\n                ]"]
+  hippofacnav:filters: ['jcr:primaryType = breadcrumbdemo:blogpost']
+  hippofacnav:limit: 100
+  hippofacnav:sortby: ['breadcrumbdemo:publicationdate']
+  hippofacnav:sortorder: [descending]

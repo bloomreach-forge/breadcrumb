@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project>
+  <projectNamespace>breadcrumbdemo</projectNamespace>
+  <confirmParams>false</confirmParams>
+  <selectedProjectPackage>org.bloomreach.forge.breadcrumb</selectedProjectPackage>
+  <selectedBeansPackage>org.bloomreach.forge.breadcrumb.beans</selectedBeansPackage>
+  <selectedComponentsPackage>org.bloomreach.forge.breadcrumb.components</selectedComponentsPackage>
+  <selectedRestPackage>org.bloomreach.forge.breadcrumb.rest</selectedRestPackage>
+  <hstRoot>/hst:breadcrumbdemo</hstRoot>
+  <webfileBundleName>site</webfileBundleName>
+  <setupDone>false</setupDone>
+  <useSamples>true</useSamples>
+  <extraTemplates>true</extraTemplates>
+</project>
