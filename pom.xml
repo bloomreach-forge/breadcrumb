@@ -19,14 +19,14 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>31.0.0</version>
+    <version>15.0.0</version>
   </parent>
 
   <name>Bloomreach Forge Breadcrumb Plugin</name>
   <description>Bloomreach Forge Breadcrumb Plugin</description>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb-root</artifactId>
-  <version>4.1.3-SNAPSHOT</version>
+  <version>5.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <inceptionYear>2009</inceptionYear>
@@ -60,7 +60,7 @@
   </licenses>
 
   <properties>
-    <hst.version>14.0.0</hst.version>
+    <hst.version>${hippo.release.version}</hst.version>
     <junit.version>4.10</junit.version>
 
     <maven.plugin.site.version>3.9.1</maven.plugin.site.version>
