@@ -1,0 +1,12 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/breadcrumbdemo/hst:catalog:
+      jcr:primaryType: hst:catalog
+      /breadcrumbdemo-catalog:
+        jcr:primaryType: hst:containeritempackage
+        /breadcrumb:
+          jcr:primaryType: hst:containeritemcomponent
+          hst:componentclassname: org.onehippo.forge.breadcrumb.components.BreadcrumbComponent
+          hst:iconpath: images/breadcrumbdemo/catalog-component-icons/breadcrumb.png
+          hst:label: Breadcrumb
+          hst:template: breadcrumb.template

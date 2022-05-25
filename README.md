@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/bloomreach-forge/breadcrumb.svg?branch=develop)](https://travis-ci.org/bloomreach-forge/breadcrumb)
-
 # Breadcrumb Plugin
 
 The Breadcrumb Plugin is an HST component, providing the structure of your site based on a menu and also on the 

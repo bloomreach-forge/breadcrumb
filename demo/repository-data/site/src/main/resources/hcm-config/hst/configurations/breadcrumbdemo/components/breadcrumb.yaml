@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/breadcrumbdemo/hst:components/breadcrumb:
+      jcr:primaryType: hst:component
+      hst:componentclassname: org.onehippo.forge.breadcrumb.components.BreadcrumbComponent
+      hst:template: breadcrumb.template

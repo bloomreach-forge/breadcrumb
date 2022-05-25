@@ -1,0 +1,7 @@
+/content/gallery/breadcrumbdemo:
+  jcr:primaryType: hippogallery:stdImageGallery
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: df3bf261-e271-4234-981e-e1a4f5be2243
+  hippo:name: Bloomreach Forge Breadcrumb Demo
+  hippostd:foldertype: [new-image-folder]
+  hippostd:gallerytype: ['hippogallery:imageset']

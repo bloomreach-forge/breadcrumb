@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2021 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2022 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -19,14 +19,14 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>31.0.0</version>
+    <version>15.0.0</version>
   </parent>
 
   <name>Bloomreach Forge Breadcrumb Plugin</name>
   <description>Bloomreach Forge Breadcrumb Plugin</description>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb-root</artifactId>
-  <version>4.1.2</version>
+  <version>5.0.0</version>
   <packaging>pom</packaging>
 
   <inceptionYear>2009</inceptionYear>
@@ -60,8 +60,8 @@
   </licenses>
 
   <properties>
-    <hst.version>14.0.0</hst.version>
-    <junit.version>4.10</junit.version>
+    <hst.version>${hippo.release.version}</hst.version>
+    <junit.version>4.13.1</junit.version>
 
     <maven.plugin.site.version>3.9.1</maven.plugin.site.version>
   </properties>
@@ -123,27 +123,18 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.hippoecm/ippo-ecm-frontend-plugins -->
-     <dependency>
-      <groupId>org.hippoecm</groupId>
-      <artifactId>hippo-ecm-frontend-plugins</artifactId>
-      <version>2.16.13</version>
-      <scope>provided</scope>
-     </dependency>
-    
-    
   </dependencies>
 
   <repositories>
     <repository>
       <id>hippo-maven2-public</id>
       <name>Hippo Maven 2 Public Repository</name>
-      <url>http://maven.onehippo.com/maven2</url>
+      <url>https://maven.onehippo.com/maven2</url>
     </repository>
     <repository>
       <id>hippo-maven2-forge</id>
       <name>Hippo Maven 2 Forge Repositories</name>
-      <url>http://maven.onehippo.com/maven2-forge</url>
+      <url>https://maven.onehippo.com/maven2-forge</url>
     </repository>
   </repositories>
 

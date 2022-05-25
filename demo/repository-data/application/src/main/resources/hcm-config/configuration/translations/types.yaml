@@ -1,0 +1,238 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:types/breadcrumbdemo:blogpost:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:authors: Author(s)
+        breadcrumbdemo:authors#hint: Link to author document(s)
+        breadcrumbdemo:categories: Categories
+        breadcrumbdemo:content: Content
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:publicationdate: Publication Date
+        breadcrumbdemo:title: Title
+        jcr:name: Blog Post
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:authors: Auteur(s)
+        breadcrumbdemo:authors#hint: Link naar auteur document(en)
+        breadcrumbdemo:categories: Categorieën
+        breadcrumbdemo:content: Inhoud
+        breadcrumbdemo:introduction: Introductie
+        breadcrumbdemo:publicationdate: Publicatiedatum
+        breadcrumbdemo:title: Titel
+        jcr:name: Blogpost
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:authors: Auteur(s)
+        breadcrumbdemo:authors#hint: Lien vers le(s) document(s) de l'auteur
+        breadcrumbdemo:categories: Catégories
+        breadcrumbdemo:content: Contenu
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:publicationdate: Date de publication
+        breadcrumbdemo:title: Titre
+        jcr:name: Post blog
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:authors: Verfasser
+        breadcrumbdemo:authors#hint: Link zu Verfasserdokument(en)
+        breadcrumbdemo:categories: Kategorien
+        breadcrumbdemo:content: Inhalt
+        breadcrumbdemo:introduction: Einführung
+        breadcrumbdemo:publicationdate: Publikationsdatum
+        breadcrumbdemo:title: Titel
+        jcr:name: Blog-Post
+    /hippo:configuration/hippo:translations/hippo:types/breadcrumbdemo:author:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:accounts: Accounts
+        breadcrumbdemo:accounts#hint: External social media accounts
+        breadcrumbdemo:content: Description
+        breadcrumbdemo:content#hint: Information about the author
+        breadcrumbdemo:fullname: Name
+        breadcrumbdemo:fullname#hint: Full name
+        breadcrumbdemo:photo: Photo
+        breadcrumbdemo:photo#hint: Photo of the author
+        breadcrumbdemo:role: Role
+        jcr:name: Author
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:accounts: Accounts
+        breadcrumbdemo:accounts#hint: Externe social media accounts
+        breadcrumbdemo:content: Beschrijving
+        breadcrumbdemo:content#hint: Informatie over de auteur
+        breadcrumbdemo:fullname: Naam
+        breadcrumbdemo:fullname#hint: Volledige naam
+        breadcrumbdemo:photo: Foto
+        breadcrumbdemo:photo#hint: Foto van de auteur
+        breadcrumbdemo:role: Rol
+        jcr:name: Auteur
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:accounts: Konten
+        breadcrumbdemo:accounts#hint: Comptes médias sociaux externes
+        breadcrumbdemo:content: Description
+        breadcrumbdemo:content#hint: Informations sur l'auteur
+        breadcrumbdemo:fullname: Nom
+        breadcrumbdemo:fullname#hint: Nom complet
+        breadcrumbdemo:photo: Photo
+        breadcrumbdemo:photo#hint: Photo de l'auteur
+        breadcrumbdemo:role: Rôle
+        jcr:name: Auteur
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:accounts: Comptes
+        breadcrumbdemo:accounts#hint: Externe Konten soziale Medien
+        breadcrumbdemo:content: Beschreibung
+        breadcrumbdemo:content#hint: Informationen über den Verfasser
+        breadcrumbdemo:fullname: Name
+        breadcrumbdemo:fullname#hint: Vollständiger Name
+        breadcrumbdemo:photo: Foto
+        breadcrumbdemo:photo#hint: Foto des Verfassers
+        breadcrumbdemo:role: Rolle
+        jcr:name: Verfasser
+    /hippo:configuration/hippo:translations/hippo:types/breadcrumbdemo:account:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:link: Link
+        breadcrumbdemo:link#hint: External link to the account
+        breadcrumbdemo:type: Type
+        jcr:name: Account (Compound)
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:link: Link
+        breadcrumbdemo:link#hint: Externe link naar het account
+        breadcrumbdemo:type: Soort
+        jcr:name: Account (Compound)
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:link: Lien
+        breadcrumbdemo:link#hint: Lien externe vers le compte
+        breadcrumbdemo:type: Type
+        jcr:name: Compte (Compound)
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:link: Link
+        breadcrumbdemo:link#hint: Externer Link zum Konto
+        breadcrumbdemo:type: Art
+        jcr:name: Konto (Compound)
+    /hippo:configuration/hippo:translations/hippo:types/breadcrumbdemo:eventsdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Content
+        breadcrumbdemo:date: Start date
+        breadcrumbdemo:enddate: End date
+        breadcrumbdemo:image: Image
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:location: Location
+        breadcrumbdemo:title: Title
+        jcr:name: Event
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Inhoud
+        breadcrumbdemo:date: Startdatum
+        breadcrumbdemo:enddate: Einddatum
+        breadcrumbdemo:image: Afbeelding
+        breadcrumbdemo:introduction: Introductie
+        breadcrumbdemo:location: Locatie
+        breadcrumbdemo:title: Titel
+        jcr:name: Evenement
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Contenu
+        breadcrumbdemo:date: Date de début
+        breadcrumbdemo:enddate: Date de fin
+        breadcrumbdemo:image: Image
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:location: Lieu
+        breadcrumbdemo:title: Titre
+        jcr:name: Événement
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Inhalt
+        breadcrumbdemo:date: Startdatum
+        breadcrumbdemo:enddate: Enddatum
+        breadcrumbdemo:image: Abbildung
+        breadcrumbdemo:introduction: Einführung
+        breadcrumbdemo:location: Standort
+        breadcrumbdemo:title: Titel
+        jcr:name: Event
+    /hippo:configuration/hippo:translations/hippo:types/breadcrumbdemo:newsdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:author: Author
+        breadcrumbdemo:content: Content
+        breadcrumbdemo:date: Date
+        breadcrumbdemo:image: Image
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:location: Location
+        breadcrumbdemo:source: Source
+        breadcrumbdemo:title: Title
+        jcr:name: News Item
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:author: Auteur
+        breadcrumbdemo:content: Inhoud
+        breadcrumbdemo:date: Datum
+        breadcrumbdemo:image: Afbeelding
+        breadcrumbdemo:introduction: Introductie
+        breadcrumbdemo:location: Locatie
+        breadcrumbdemo:source: Bron
+        breadcrumbdemo:title: Titel
+        jcr:name: Nieuwsbericht
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:author: Verfasser
+        breadcrumbdemo:content: Inhalt
+        breadcrumbdemo:date: Datum
+        breadcrumbdemo:image: Abbildung
+        breadcrumbdemo:introduction: Einführung
+        breadcrumbdemo:location: Standort
+        breadcrumbdemo:source: Quelle
+        breadcrumbdemo:title: Titel
+        jcr:name: News
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:author: Auteur
+        breadcrumbdemo:content: Contenu
+        breadcrumbdemo:date: Date
+        breadcrumbdemo:image: Image
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:location: Lieu
+        breadcrumbdemo:source: Source
+        breadcrumbdemo:title: Titre
+        jcr:name: Message d'info
+    /hippo:configuration/hippo:translations/hippo:types/breadcrumbdemo:contentdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Content
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:publicationdate: Publication date
+        breadcrumbdemo:title: Title
+        jcr:name: Simple Document
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Inhoud
+        breadcrumbdemo:introduction: Introductie
+        breadcrumbdemo:publicationdate: Publicatiedatum
+        breadcrumbdemo:title: Titel
+        jcr:name: Eenvoudig Document
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Contenu
+        breadcrumbdemo:introduction: Introduction
+        breadcrumbdemo:publicationdate: Date de publication
+        breadcrumbdemo:title: Titre
+        jcr:name: Document simple
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        breadcrumbdemo:content: Inhalt
+        breadcrumbdemo:introduction: Einführung
+        breadcrumbdemo:publicationdate: Publikationsdatum
+        breadcrumbdemo:title: Titel
+        jcr:name: Einfaches Dokument
