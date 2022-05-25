@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  Copyright 2010-2021 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2010-2022 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -22,10 +22,10 @@
   
     <section name="Release Notes">
       <subsection name="5.0.0">
-        <p class="smallinfo">Release Date: 6 May 2022</p>
+        <p class="smallinfo">Release Date: 25 May 2022</p>
         <ul>
           <li>Upgrade to Bloomreach Experience Manager 15.</li>
-          <li>Added a demo project.</li>
+          <li>Added a 15.0.0 demo project.</li>
         </ul>
       </subsection>
       <subsection name="4.1.2">
