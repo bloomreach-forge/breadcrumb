@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2021 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2022 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@
 
   <properties>
     <hst.version>${hippo.release.version}</hst.version>
-    <junit.version>4.10</junit.version>
+    <junit.version>4.13.1</junit.version>
 
     <maven.plugin.site.version>3.9.1</maven.plugin.site.version>
   </properties>
