@@ -5,25 +5,23 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-release</artifactId>
-    <version>15.0.0</version>
+    <version>16.0.0-SNAPSHOT</version>
   </parent>
 
   <name>Bloomreach Forge Breadcrumb Demo</name>
   <description>Bloomreach Forge Breadcrumb Demo</description>
   <groupId>org.bloomreach.forge.breadcrumb</groupId>
   <artifactId>breadcrumb-demo</artifactId>
-  <version>5.0.0</version>
+  <version>6.0.0</version>
   <packaging>pom</packaging>
 
-  <!-- 
+  <!--
     The below project elements are emptied/overridden as otherwise their metadata would be
     inherited or merged from the parent hippo-cms7-release pom (or its hippo-cms7-project pom).
 
-    DO NOT remove these tags but instead fill them in appropriately as needed, 
+    DO NOT remove these tags but instead fill them in appropriately as needed,
     UNLESS the inherited values are valid for your project.
   -->
-  <url/>
-  <inceptionYear/>
   <organization/>
   <licenses>
     <license/>
@@ -65,9 +63,7 @@
 
     <forge.breadcrumb.version>${project.version}</forge.breadcrumb.version>
 
-    <essentials.version>15.0.0</essentials.version>
-    <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.5</taglibs.version>
+    <essentials.version>16.0.0-SNAPSHOT</essentials.version>
 
     <development-module-deploy-dir>shared/lib</development-module-deploy-dir>
 
@@ -79,7 +75,7 @@
 
   <repositories>
     <repository>
-      <id>bloomreach</id>
+      <id>bloomreach-maven2</id>
       <name>Bloomreach Maven 2 repository.</name>
       <url>https://maven.bloomreach.com/repository/maven2/</url>
     </repository>
@@ -100,23 +96,23 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>javax.servlet.jsp</groupId>
-        <artifactId>jsp-api</artifactId>
+        <groupId>jakarta.servlet.jsp</groupId>
+        <artifactId>jakarta.servlet.jsp-api</artifactId>
         <version>${jsp-api.version}</version>
         <scope>provided</scope>
       </dependency>
 
       <!-- other predefined runtime scope versioned dependencies -->
       <dependency>
-        <groupId>org.apache.taglibs</groupId>
-        <artifactId>taglibs-standard-spec</artifactId>
+        <groupId>com.bloomreach.xm</groupId>
+        <artifactId>taglibs-standard-spec-jakarta</artifactId>
         <version>${taglibs.version}</version>
         <scope>runtime</scope>
       </dependency>
 
       <dependency>
-        <groupId>org.apache.taglibs</groupId>
-        <artifactId>taglibs-standard-impl</artifactId>
+        <groupId>com.bloomreach.xm</groupId>
+        <artifactId>taglibs-standard-impl-jakarta</artifactId>
         <version>${taglibs.version}</version>
         <scope>runtime</scope>
       </dependency>
@@ -299,8 +295,8 @@
           <scope>compile</scope>
         </dependency>
         <dependency>
-          <groupId>javax.annotation</groupId>
-          <artifactId>javax.annotation-api</artifactId>
+          <groupId>jakarta.annotation</groupId>
+          <artifactId>jakarta.annotation-api</artifactId>
           <scope>compile</scope>
         </dependency>
         <dependency>
@@ -318,7 +314,7 @@
         <plugins>
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
-            <artifactId>cargo-maven2-plugin</artifactId>
+            <artifactId>cargo-maven3-plugin</artifactId>
             <configuration>
               <configuration>
                 <configfiles>
@@ -406,32 +402,6 @@
     <profile>
       <id>dist</id>
       <dependencies>
-        <dependency>
-          <groupId>jakarta.xml.bind</groupId>
-          <artifactId>jakarta.xml.bind-api</artifactId>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>jakarta.xml.ws</groupId>
-          <artifactId>jakarta.xml.ws-api</artifactId>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>javax.annotation</groupId>
-          <artifactId>javax.annotation-api</artifactId>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>jakarta.activation</groupId>
-          <artifactId>jakarta.activation-api</artifactId>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.glassfish.jaxb</groupId>
-          <artifactId>jaxb-runtime</artifactId>
-          <scope>provided</scope>
-        </dependency>
-
         <dependency>
           <groupId>org.apache.logging.log4j</groupId>
           <artifactId>log4j-slf4j-impl</artifactId>

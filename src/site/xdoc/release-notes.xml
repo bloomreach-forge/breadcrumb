@@ -19,8 +19,15 @@
     <title>Release Notes</title>
   </properties>
   <body>
-  
+
     <section name="Release Notes">
+      <subsection name="6.0.0">
+        <p class="smallinfo">Release Date: 24 July 2024</p>
+        <ul>
+          <li>Upgrade to Bloomreach Experience Manager 16.</li>
+          <li>Added a 16.0.0 demo project.</li>
+        </ul>
+      </subsection>
       <subsection name="5.0.0">
         <p class="smallinfo">Release Date: 25 May 2022</p>
         <ul>
