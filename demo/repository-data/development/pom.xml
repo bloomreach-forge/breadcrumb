@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.bloomreach.forge.breadcrumb</groupId>
     <artifactId>breadcrumb-demo-repository-data</artifactId>
-    <version>5.0.1-SNAPSHOT</version>
+    <version>6.0.0</version>
   </parent>
 
   <name>Bloomreach Forge Breadcrumb Demo Repository Data For Development</name>
