@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2021 Bloomreach
+ * Copyright 2009-2026 Bloomreach
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.Strings;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
 import org.hippoecm.hst.configuration.HstNodeTypes;
 import org.hippoecm.hst.configuration.sitemap.HstSiteMapItem;
@@ -83,7 +83,7 @@ public class BreadcrumbProvider {
 
 		public static LinkNotFoundMode safeValueOf(String name) {
 			try {
-				return StringUtils.isBlank(name) ? null : valueOf(name.toUpperCase());
+				return Strings.isNullOrEmpty(name) ? null : valueOf(name.toUpperCase());
 			} catch (Exception e) {
 				return null;
 			}
@@ -484,10 +484,10 @@ public class BreadcrumbProvider {
 		for (BreadcrumbItem item : items) {
 			HstSiteMapItem hstSiteMapItem = item.getLink().getHstSiteMapItem();
 			if (hstSiteMapItem != null) {
-				if (StringUtils.isNotEmpty(hstSiteMapItem.getComponentConfigurationId()) && hstSiteMapItem.getComponentConfigurationId().endsWith(HST_PAGES_PAGENOTFOUND_ID)) {
+				if (!Strings.isNullOrEmpty(hstSiteMapItem.getComponentConfigurationId()) && hstSiteMapItem.getComponentConfigurationId().endsWith(HST_PAGES_PAGENOTFOUND_ID)) {
 					item.getLink().setNotFound(true);
 				}
-				if (hstSiteMapItem.getComponentConfigurationIdMappings().size() != 0) {
+				if (!hstSiteMapItem.getComponentConfigurationIdMappings().isEmpty()) {
 					ResolvedSiteMapItem resolvedSiteMapItem = item.getLink().getMount().getHstSiteMapMatcher()
 							.match(item.getLink().getPath(), request.getRequestContext().getResolvedMount());
 					if (resolvedSiteMapItem != null && HST_PAGES_PAGENOTFOUND_ID
