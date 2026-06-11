@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  Copyright 2010-2022 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2026 Bloomreach (http://www.bloomreach.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -21,6 +21,12 @@
   <body>
 
     <section name="Release Notes">
+      <subsection name="7.0.0">
+        <p class="smallinfo">Release Date: 11 June 2026</p>
+        <ul>
+          <li>Upgrade to Bloomreach Experience Manager 17.</li>
+        </ul>
+      </subsection>
       <subsection name="6.0.1">
         <p class="smallinfo">Release Date: 18 February 2026</p>
         <ul>
